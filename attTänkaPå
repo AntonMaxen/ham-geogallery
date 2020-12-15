@@ -1,0 +1,27 @@
+Nyttan av planering: undvika att göra dubbelt arbete (t.ex. namngivning på modellerna osv)
+
+Gemensam bild: Gå igenom hur vi vill att våran applikation ska fungera, UI och databas
+
+Kommunikation: Återkoppling, be om hjälp ifall man fastnar, ha återkommande möten, meddela grupp ifall man inte kan komma på möte
+
+Github: Använda oss av protected master branch, så att man inte kan commita rakt in i Master, Använda oss av en dev-branch, endast fungerande kod i master.
+
+ Dev-Branch: Dagliga pr kollar som punkt på möte. Master: endasta merga när dev är fullt testad.
+
+Issues: Använda oss av issues för att markera vad som behöver göras i projektet i kombination med github projekt
+
+Migrationsverktyg: Vi tar det när vi kommer till det.
+
+Dagordning: använda oss av bestämmda punkter vid alla standups, effektiva möten.
+
+Fördela arbetsuppgifter: Fördela uppgifter under möten och endast ta kort/issues som redan finns, endast lägga till kort/issues under möten.
+
+Namngivning: Vanliga namngivningsregler för vanlig kod. Modeller/databas vara tydliga och bestäm innan namngivningsregler.
+
+Regler och struktur: se ovan, inga fler ännu.
+
+Inte gör med än va man kommit överens om: Gruppen är enig.
+
+Parprogrammering: Försöka få in sessioner sammankopplade med möten. En timma efter varje möte.
+
+Projektledare: möteshållaren är projektledare, möteshållare är flytande.
