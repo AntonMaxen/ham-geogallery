@@ -6,7 +6,7 @@
  - [x] Define naming conventions for database (plural/singular)
  - [x] Define functionality
  - [x] Make UML diagrams
- - [ ] Setup project structure on github
+ - [x] Setup project structure on github
  
  
  ### Project TODO
