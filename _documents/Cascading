@@ -1,4 +1,5 @@
 CRUD - (Create, Read, Update, Delete)
+Total: 13 Tables
 Comment: 
   - OnDelete: Delete rows matching CommentId in comment_like table.
   - Create: A logged in user can create a comment.
@@ -19,8 +20,8 @@ Review:
     - Delete rows in review_like table with matching ReviewId.   
   - Create: Logged in user
   - Read: Anyone can read
-  - Update: User can update their own like
-  - Delete: User can delete their own like
+  - Update: User can update their own review
+  - Delete: User can delete their own review
     
 Review_like:
   - OnDelete: Dont Cascade
@@ -33,10 +34,87 @@ Location:
   - OnDelete:
     - Delete rows in review table matching LocationId
     - Delete rows in picture table matching LocationId
+    - Delete rows in visited_location table matching LocationId
+    - Delete rows in rating table matching LocationId
   - Create: Logged in user
   - Read: Anyone can read
   - Update: The location creator can update the name of the location nothing else.
+  - Delete: No delete (delete request)
+  
+Category:
+  - OnDelete:
+    - Delete rows in Category table matching ParentId (Self cascading)
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: No update
+  - Delete: No delete
+ 
+ Rating
+  - OnDelete:
+    - Dont Cascade
+  - OnCreate:
+    - add row to visited locations (- Score)
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: User can update their own rating
+  - Delete: User can delete their own rating
+  
+  Visited_Location
+    - OnDelete:
+      - Dont Cascade
+    - Create: Logged in user
+    - Read: User can only see their own visited locations
+    - Update: No update
+    - Delete: User can delete their visited_locations
+    
+    
+Picture:
+  - OnDelete:
+    - Delete rows in picture_like table matching PictureId
+  - Create: Logged in user
+  - Read: All users can read
+  - Update: ImageName
+  - Delete: User can delete their own pictures
+  
+Picture_like:
+  - OnDelete: Dont Cascade
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: User can update their own like
   - Delete: User can delete their own like
-     
-    
-    
+  
+User:
+  - OnDelete:
+    - Delete rows in visited_location table matching UserId
+    - Delete rows in rating matching table UserId
+    - Delete rows in user_has_badge table matching UserId
+    - Delete rows in comment_like table matching UserId
+    - Delete rows in comment table matching UserId
+    - Delete rows in review_like table matching UserId
+    - Delete rows in review table matching UserId
+    - Delete rows in picture table matching UserId
+    - Delete rows in picture_like table matching UserId
+    - Change UserId to 0 in location table Matching UserID
+
+  - Create: Anyone can create a user
+  - Read: Only user can read user
+  - Update: FirstName, LastName, Email, UserName, Password, PhoneNumber, DateOfBirth
+  - Delete: User can delete themselves
+  
+user_has_badge:
+  - OnDelete:
+    - Dont cascade
+  - Create: Higher PermissionLevel can add badges to users
+  - Read: Anyone can see anyones badges
+  - Update: No update
+  - Delete: Higher PermissionLevel can delete badges
+  
+Badge:
+  - OnDelete:
+    - Delete rows in user_has_badge table matching BadgeId
+  - Create: Higher PermissionLevel can add badges
+  - Read: anyone can see all badges
+  - Update: Image, Name, Description
+  - Delete: Higher PermissionLevel can delete badges
+
+   
