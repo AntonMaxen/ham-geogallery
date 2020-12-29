@@ -1,0 +1,42 @@
+CRUD - (Create, Read, Update, Delete)
+Comment: 
+  - OnDelete: Delete rows matching CommentId in comment_like table.
+  - Create: A logged in user can create a comment.
+  - Read: Anyone can read.
+  - Update: No update, You cant edit a comment you have made, delete and make new one.
+  - Delete: Only delete their own comment or a user with higher PermissionLevel (Moderator)
+ 
+Comment_Like: 
+  - OnDelete: Dont Cascade
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: User can update their own like
+  - Delete: User can delete their own like
+  
+Review:
+  - OnDelete: 
+    - Delete rows in comment table with matching ReviewId.
+    - Delete rows in review_like table with matching ReviewId.   
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: User can update their own like
+  - Delete: User can delete their own like
+    
+Review_like:
+  - OnDelete: Dont Cascade
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: User can update their own like
+  - Delete: User can delete their own like
+  
+Location:
+  - OnDelete:
+    - Delete rows in review table matching LocationId
+    - Delete rows in picture table matching LocationId
+  - Create: Logged in user
+  - Read: Anyone can read
+  - Update: The location creator can update the name of the location nothing else.
+  - Delete: User can delete their own like
+     
+    
+    
