@@ -11,8 +11,8 @@
  
  ### Project TODO
  - [ ] Define how to use Googlemaps api (library/framework)
- - [ ] Database Modeling + Figure out how cascading will work (delete comments on a review that is deleted)
- - [ ] Define db naming conventions
+ - [x] Database Modeling + Figure out how cascading will work (delete comments on a review that is deleted)
+ - [x] Define db naming conventions
  - [ ] (Fixa docker)
  - [ ] Setup Alembic Migrations
  - [ ] Create SQLAlchemy Models
