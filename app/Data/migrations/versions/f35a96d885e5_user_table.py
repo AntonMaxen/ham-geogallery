@@ -28,7 +28,7 @@ def upgrade():
         sa.Column('Password', sa.String(45), nullable=False),
         sa.Column('PhoneNumber', sa.String(45)),
         sa.Column('DateOfBirth', sa.Date),
-        sa.Column('JoinDate', sa.Date),
+        sa.Column('JoinDate', sa.Date, nullable=False),
         sa.Column('PermissionLevel', sa.Integer, nullable=False)
     )
 
