@@ -13,7 +13,7 @@
  - [ ] Define how to use Googlemaps api (library/framework)
  - [x] Database Modeling + Figure out how cascading will work (delete comments on a review that is deleted)
  - [x] Define db naming conventions
- - [ ] (Fixa docker)
+ - [x] (Fixa docker)
  - [ ] Setup Alembic Migrations
  - [ ] Create SQLAlchemy Models
  - [ ] Make Cascading work
