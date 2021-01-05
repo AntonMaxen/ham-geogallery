@@ -21,7 +21,7 @@ depends_on = None
 def upgrade():
     op.create_table(
         'visited_location',
-        sa.Column('LocationId', sa.Integer, sa.ForeignKey('review.Id'), primary_key=True, nullable=False),
+        sa.Column('LocationId', sa.Integer, sa.ForeignKey('location.Id'), primary_key=True, nullable=False),
         sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False)
     )
 
