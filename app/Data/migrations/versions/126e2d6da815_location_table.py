@@ -7,6 +7,7 @@ Create Date: 2021-01-04 14:21:51.044626
 """
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy.engine.reflection import Inspector
 
 
 # revision identifiers, used by Alembic.
@@ -17,8 +18,20 @@ depends_on = None
 
 
 def upgrade():
-    pass
+    op.create_table(
+        'badge',
+        sa.Column('Id', sa.Integer, primary_key=True, autoincrement=True),
+        sa.Column('Place', sa.String(45), nullable=False),
+        sa.Column('Longitude', sa.DECIMAL(6, 3), nullable=False),
+        sa.Column('Latitude', sa.DECIMAL(5, 3), nullable=False),
+        sa.Column('Name', sa.String(45), nullable=False),
+        sa.Column('CategoryId', sa.Integer, nullable=False)
+    )
 
 
 def downgrade():
-    pass
+    conn = op.get_bind()
+    inspector = Inspector.from_engine(conn)
+    tables = inspector.get_table_names()
+    if 'location' in tables:
+        op.drop_table('location')
