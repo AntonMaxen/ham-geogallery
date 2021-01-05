@@ -19,7 +19,7 @@ depends_on = None
 
 def upgrade():
     op.create_table(
-        'badge',
+        'location',
         sa.Column('Id', sa.Integer, primary_key=True, autoincrement=True),
         sa.Column('Place', sa.String(45), nullable=False),
         sa.Column('Longitude', sa.DECIMAL(6, 3), nullable=False),
