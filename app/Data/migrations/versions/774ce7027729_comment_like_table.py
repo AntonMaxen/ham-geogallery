@@ -7,6 +7,7 @@ Create Date: 2021-01-04 14:23:01.356323
 """
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy.engine.reflection import Inspector
 
 
 # revision identifiers, used by Alembic.
@@ -17,8 +18,17 @@ depends_on = None
 
 
 def upgrade():
-    pass
+    op.create_table(
+        'comment_like',
+        sa.Column('UserId', sa.Integer, primary_key=True, autoincrement=True),
+        sa.Column('CommentId', sa.Integer, primary_key=True, nullable=False),
+        sa.Column('Liked', sa.BOOLEAN(), nullable=False),
+        )
 
 
 def downgrade():
-    pass
+    conn = op.get_bind()
+    inspector = Inspector.from_engine(conn)
+    tables = inspector.get_table_names()
+    if 'comment_like' in tables:
+        op.drop_table('comment_like')
