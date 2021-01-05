@@ -7,6 +7,7 @@ Create Date: 2021-01-04 14:23:33.272211
 """
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy.engine.reflection import Inspector
 
 
 # revision identifiers, used by Alembic.
@@ -17,8 +18,16 @@ depends_on = None
 
 
 def upgrade():
-    pass
+    op.create_table(
+        'badge',
+        sa.Column('UserId', sa.Integer, primary_key=True, autoincrement=True),
+        sa.Column('BadgeId', sa.Integer, primary_key=True, nullable=False),
+    )
 
 
 def downgrade():
-    pass
+    conn = op.get_bind()
+    inspector = Inspector.from_engine(conn)
+    tables = inspector.get_table_names()
+    if 'user_has_badge' in tables:
+        op.drop_table('user_has_badge')
