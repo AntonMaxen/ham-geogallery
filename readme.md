@@ -14,7 +14,7 @@
  - [x] Database Modeling + Figure out how cascading will work (delete comments on a review that is deleted)
  - [x] Define db naming conventions
  - [x] (Fixa docker)
- - [ ] Setup Alembic Migrations
+ - [x] Setup Alembic Migrations
  - [ ] Create SQLAlchemy Models
  - [ ] Make Cascading work
  - [ ] Create DB Repository (Figure out how the querys should work, what info do we want to get/add)
