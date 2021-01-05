@@ -25,7 +25,7 @@ def upgrade():
         sa.Column('ImageName', sa.String(45), nullable=False),
         sa.Column('Date', sa.Date, nullable=False),
         sa.Column('UserId', sa.Integer, sa.ForeignKey('review.Id'), nullable=False),
-        sa.Column('LocationId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False),
+        sa.Column('LocationId', sa.Integer, sa.ForeignKey('location.Id'), nullable=False),
         sa.Column('FileName', sa.String(45), nullable=False)
     )
 
