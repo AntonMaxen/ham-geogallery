@@ -19,9 +19,10 @@ depends_on = None
 
 def upgrade():
     op.create_table(
-        'badge',
-        sa.Column('UserId', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('BadgeId', sa.Integer, primary_key=True, nullable=False),
+        'user_has_badge',
+        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False),
+        sa.Column('BadgeId', sa.Integer, sa.ForeignKey('badge.Id'), primary_key=True, nullable=False),
+        sa.Column('DateAcquired', sa.Date, nullable=False)
     )
 
 

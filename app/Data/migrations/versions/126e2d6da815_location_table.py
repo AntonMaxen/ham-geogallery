@@ -25,7 +25,8 @@ def upgrade():
         sa.Column('Longitude', sa.DECIMAL(6, 3), nullable=False),
         sa.Column('Latitude', sa.DECIMAL(5, 3), nullable=False),
         sa.Column('Name', sa.String(45), nullable=False),
-        sa.Column('CategoryId', sa.Integer, nullable=False)
+        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False),
+        sa.Column('CategoryId', sa.Integer, sa.ForeignKey('category.Id'), nullable=False)
     )
 
 

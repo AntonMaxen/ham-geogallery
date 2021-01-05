@@ -20,9 +20,9 @@ depends_on = None
 def upgrade():
     op.create_table(
         'comment_like',
-        sa.Column('UserId', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('CommentId', sa.Integer, primary_key=True, nullable=False),
-        sa.Column('Liked', sa.BOOLEAN(), nullable=False),
+        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False),
+        sa.Column('CommentId', sa.Integer, sa.ForeignKey('comment.Id'), primary_key=True, nullable=False),
+        sa.Column('Liked', sa.Boolean, nullable=False),
         )
 
 
