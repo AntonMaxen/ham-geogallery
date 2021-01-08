@@ -17,3 +17,30 @@ Mötehållare: Anton Maxén
   * Bestämma nästa möte och nästa Ordförande
     - Henrik håller i nästa möte på Torsdag.
     - Mötet när vi får tid, förmodligen efter lunch, meddela varandra om tid, Discord/telefon.
+
+
+2021-01-08
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Mötehållare: Henrik Liman
+  * Lägg till nya kort/issues ifall dom finns.
+   - Anton fylerl på med sqlalchemy kort
+   
+  * Gå igenom aktuella plockade kort
+   - inga kort är plockade för tillfället
+   
+  * Granska PR
+   - Alla PR graskade och godkända
+   
+  * Fördela kort/issues
+   - Fördelning sker senare under dagen eller vid nästa tillfälle
+   
+  * Övriga kommentarer
+   - Ändra så att avändarnamn,email och Filename ska vara ett unikt värde i databasen
+   - Istället för Password har vi Salt och Hash
+   - Deadline på att vara klara med sqlalchemy och fungerande cascading är onsdagen den 13 januari
+   
+  * Bestämma nästa möte och nästa Ordförande
+   - Nästa möte måndag om tid finns.
+   - Anton håller i nästa möte på måndag om Mattias inte kan.
+   
