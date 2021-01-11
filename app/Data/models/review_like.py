@@ -2,7 +2,7 @@ from app.Data.db import Base
 import sqlalchemy as sa
 
 
-class Review_like(Base):
+class ReviewLike(Base):
     __tablename__ = 'review_like'
 
     ReviewId = sa.Column(sa.Integer, sa.ForeignKey('review.Id'), nullable=False)
@@ -11,4 +11,4 @@ class Review_like(Base):
 
 
 if __name__ == "__main__":
-    review_like = Review_like()
+    review_like = ReviewLike()
