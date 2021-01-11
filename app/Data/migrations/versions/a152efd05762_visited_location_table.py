@@ -42,3 +42,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'visited_location' in tables:
         op.drop_table('visited_location')
+        print('visited_location')

@@ -47,3 +47,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'picture_like' in tables:
         op.drop_table('picture_like')
+        print('picture_like')

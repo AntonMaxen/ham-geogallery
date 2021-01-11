@@ -45,3 +45,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'comment_like' in tables:
         op.drop_table('comment_like')
+        print('comment_like')

@@ -75,3 +75,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'user' in tables:
         op.drop_table('user')
+        print('user')

@@ -43,3 +43,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'review_like' in tables:
         op.drop_table('review_like')
+        print('review_like')

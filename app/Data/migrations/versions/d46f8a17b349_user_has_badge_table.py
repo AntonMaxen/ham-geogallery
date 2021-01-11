@@ -45,3 +45,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'user_has_badge' in tables:
         op.drop_table('user_has_badge')
+        print('user_has_badge')

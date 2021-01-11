@@ -44,3 +44,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'category' in tables:
         op.drop_table('category')
+        print('category')
