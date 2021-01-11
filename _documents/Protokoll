@@ -1,7 +1,7 @@
 2021-01-05
 Närvarande:
 Mattias Barth, Henrik Liman, Anton Maxén
-Mötehållare: Anton Maxén
+Möteshållare: Anton Maxén
   * Lägg till nya kort/issues ifall dom finns.
     - Vi har 11 Issues för tillfället inga nya innan dessa är gjorda
   * Gå igenom aktuella plockade kort
@@ -22,15 +22,15 @@ Mötehållare: Anton Maxén
 2021-01-08
 Närvarande:
 Mattias Barth, Henrik Liman, Anton Maxén
-Mötehållare: Henrik Liman
+Möteshållare: Henrik Liman
   * Lägg till nya kort/issues ifall dom finns.
-   - Anton fylerl på med sqlalchemy kort
+   - Anton fyller på med sqlalchemy kort
    
   * Gå igenom aktuella plockade kort
    - inga kort är plockade för tillfället
    
   * Granska PR
-   - Alla PR graskade och godkända
+   - Alla PR granskade och godkända
    
   * Fördela kort/issues
    - Fördelning sker senare under dagen eller vid nästa tillfälle
@@ -40,7 +40,47 @@ Mötehållare: Henrik Liman
    - Istället för Password har vi Salt och Hash
    - Deadline på att vara klara med sqlalchemy och fungerande cascading är onsdagen den 13 januari
    
-  * Bestämma nästa möte och nästa Ordförande
+  * Bestämma nästa möte och nästa ordförande
    - Nästa möte måndag om tid finns.
    - Anton håller i nästa möte på måndag om Mattias inte kan.
    
+   
+2021-01-11
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+ 
+ * Gå igenom aktuella plockade kort
+   - inga kort är plockade för tillfället
+   
+ * Granska PR
+  - Alla PR granskade och godkända
+ 
+ * Lägga till nya kort/issues
+  - lägger till relationship och cascade
+ 
+ * Övriga kommentarer
+  - Alla läser på om relationships och cascade
+ 
+ * Bestämma nästa möte och nästa ordförande
+ - Nästa möte tisdag 12/1 kl 9:00
+ - Anton håller nästa möte
+ 
+ 
+ 
+ 
+ ***Mall:***
+ 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare:
+
+* Gå igenom aktuella plockade kort
+
+* Granska PR
+
+* Lägga till nya kort/issues
+ 
+* Övriga kommentarer
+ 
+* Bestämma nästa möte och nästa ordförande
