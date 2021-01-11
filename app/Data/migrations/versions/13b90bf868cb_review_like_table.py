@@ -20,9 +20,20 @@ depends_on = None
 def upgrade():
     op.create_table(
         'review_like',
-        sa.Column('ReviewId', sa.Integer, sa.ForeignKey('review.Id'), nullable=False),
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False),
-        sa.Column('Liked', sa.Boolean, nullable=False)
+        sa.Column(
+            'ReviewId',
+            sa.Integer,
+            sa.ForeignKey('review.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'Liked',
+            sa.Boolean,
+            nullable=False)
     )
 
 
