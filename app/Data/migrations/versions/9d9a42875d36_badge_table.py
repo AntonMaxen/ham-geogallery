@@ -20,10 +20,22 @@ depends_on = None
 def upgrade():
     op.create_table(
         'badge',
-        sa.Column('Id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('Image', sa.BLOB, nullable=False),
-        sa.Column('Name', sa.String(45), nullable=False),
-        sa.Column('Description', sa.String(255))
+        sa.Column(
+            'Id',
+            sa.Integer,
+            primary_key=True,
+            autoincrement=True),
+        sa.Column(
+            'Image',
+            sa.BLOB,
+            nullable=False),
+        sa.Column(
+            'Name',
+            sa.String(45),
+            nullable=False),
+        sa.Column(
+            'Description',
+            sa.String(255))
     )
 
 
