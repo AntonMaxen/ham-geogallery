@@ -22,9 +22,22 @@ depends_on = None
 def upgrade():
     op.create_table(
         'picture_like',
-        sa.Column('PictureId', sa.Integer, sa.ForeignKey('picture.Id'), primary_key=True, nullable=False),
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False),
-        sa.Column('Liked', sa.Boolean, nullable=False)
+        sa.Column(
+            'PictureId',
+            sa.Integer,
+            sa.ForeignKey('picture.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'Liked',
+            sa.Boolean,
+            nullable=False)
     )
 
 

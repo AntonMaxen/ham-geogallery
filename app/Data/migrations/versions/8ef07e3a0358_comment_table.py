@@ -21,10 +21,25 @@ depends_on = None
 def upgrade():
     op.create_table(
         'comment',
-        sa.Column('Id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('CommentText', sa.String(255), nullable=False),
-        sa.Column('ReviewId', sa.Integer, sa.ForeignKey('review.Id'), nullable=False),
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False)
+        sa.Column(
+            'Id',
+            sa.Integer,
+            primary_key=True,
+            autoincrement=True),
+        sa.Column(
+            'CommentText',
+            sa.String(255),
+            nullable=False),
+        sa.Column(
+            'ReviewId',
+            sa.Integer,
+            sa.ForeignKey('review.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            nullable=False)
     )
 
 
