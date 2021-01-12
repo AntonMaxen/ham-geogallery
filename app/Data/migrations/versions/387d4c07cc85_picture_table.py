@@ -21,12 +21,34 @@ depends_on = None
 def upgrade():
     op.create_table(
         'picture',
-        sa.Column('Id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('ImageName', sa.String(45), nullable=False),
-        sa.Column('Date', sa.Date, nullable=False),
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False),
-        sa.Column('LocationId', sa.Integer, sa.ForeignKey('location.Id'), nullable=False),
-        sa.Column('FileName', sa.String(45), nullable=False, unique=True)
+        sa.Column(
+            'Id',
+            sa.Integer,
+            primary_key=True,
+            autoincrement=True),
+        sa.Column(
+            'ImageName',
+            sa.String(45),
+            nullable=False),
+        sa.Column(
+            'Date',
+            sa.Date,
+            nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'LocationId',
+            sa.Integer,
+            sa.ForeignKey('location.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'FileName',
+            sa.String(45),
+            nullable=False,
+            unique=True)
     )
 
 
@@ -36,3 +58,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'picture' in tables:
         op.drop_table('picture')
+        print('picture')

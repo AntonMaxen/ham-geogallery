@@ -20,9 +20,20 @@ depends_on = None
 def upgrade():
     op.create_table(
         'review_like',
-        sa.Column('ReviewId', sa.Integer, sa.ForeignKey('review.Id'), nullable=False),
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False),
-        sa.Column('Liked', sa.Boolean, nullable=False)
+        sa.Column(
+            'ReviewId',
+            sa.Integer,
+            sa.ForeignKey('review.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'Liked',
+            sa.Boolean,
+            nullable=False)
     )
 
 
@@ -32,3 +43,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'review_like' in tables:
         op.drop_table('review_like')
+        print('review_like')

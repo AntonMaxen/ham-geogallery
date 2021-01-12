@@ -21,8 +21,18 @@ depends_on = None
 def upgrade():
     op.create_table(
         'visited_location',
-        sa.Column('LocationId', sa.Integer, sa.ForeignKey('location.Id'), primary_key=True, nullable=False),
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False)
+        sa.Column(
+            'LocationId',
+            sa.Integer,
+            sa.ForeignKey('location.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False)
     )
 
 
@@ -32,3 +42,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'visited_location' in tables:
         op.drop_table('visited_location')
+        print('visited_location')

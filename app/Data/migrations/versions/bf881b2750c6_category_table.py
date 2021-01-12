@@ -20,9 +20,21 @@ depends_on = None
 def upgrade():
     op.create_table(
         'category',
-        sa.Column('Id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('Name', sa.String(45), nullable=False),
-        sa.Column('ParentId', sa.Integer, sa.ForeignKey('category.Id'), nullable=False, default=0)
+        sa.Column(
+            'Id',
+            sa.Integer,
+            primary_key=True,
+            autoincrement=True),
+        sa.Column(
+            'Name',
+            sa.String(45),
+            nullable=False),
+        sa.Column(
+            'ParentId',
+            sa.Integer,
+            sa.ForeignKey('category.Id', ondelete='CASCADE'),
+            nullable=False,
+            default=0)
     )
 
 
@@ -32,3 +44,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'category' in tables:
         op.drop_table('category')
+        print('category')

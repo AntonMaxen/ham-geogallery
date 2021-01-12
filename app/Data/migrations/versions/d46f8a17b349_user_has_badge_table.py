@@ -20,9 +20,22 @@ depends_on = None
 def upgrade():
     op.create_table(
         'user_has_badge',
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False),
-        sa.Column('BadgeId', sa.Integer, sa.ForeignKey('badge.Id'), primary_key=True, nullable=False),
-        sa.Column('DateAcquired', sa.Date, nullable=False)
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'BadgeId',
+            sa.Integer,
+            sa.ForeignKey('badge.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'DateAcquired',
+            sa.Date,
+            nullable=False)
     )
 
 
@@ -32,3 +45,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'user_has_badge' in tables:
         op.drop_table('user_has_badge')
+        print('user_has_badge')

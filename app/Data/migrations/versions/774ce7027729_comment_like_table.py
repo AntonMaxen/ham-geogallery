@@ -20,9 +20,22 @@ depends_on = None
 def upgrade():
     op.create_table(
         'comment_like',
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), primary_key=True, nullable=False),
-        sa.Column('CommentId', sa.Integer, sa.ForeignKey('comment.Id'), primary_key=True, nullable=False),
-        sa.Column('Liked', sa.Boolean, nullable=False),
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'CommentId',
+            sa.Integer,
+            sa.ForeignKey('comment.Id', ondelete='CASCADE'),
+            primary_key=True,
+            nullable=False),
+        sa.Column(
+            'Liked',
+            sa.Boolean,
+            nullable=False),
         )
 
 
@@ -32,3 +45,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'comment_like' in tables:
         op.drop_table('comment_like')
+        print('comment_like')

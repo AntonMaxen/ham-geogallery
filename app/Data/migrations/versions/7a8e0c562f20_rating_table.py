@@ -21,9 +21,20 @@ depends_on = None
 def upgrade():
     op.create_table(
         'rating',
-        sa.Column('UserId', sa.Integer, sa.ForeignKey('user.Id'), nullable=False),
-        sa.Column('LocationId', sa.Integer, sa.ForeignKey('location.Id'),  nullable=False),
-        sa.Column('Score', sa.Numeric(2, 1), nullable=False)
+        sa.Column(
+            'UserId',
+            sa.Integer,
+            sa.ForeignKey('user.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'LocationId',
+            sa.Integer,
+            sa.ForeignKey('location.Id', ondelete='CASCADE'),
+            nullable=False),
+        sa.Column(
+            'Score',
+            sa.DECIMAL(2, 1),
+            nullable=False)
     )
 
 
@@ -33,3 +44,4 @@ def downgrade():
     tables = inspector.get_table_names()
     if 'rating' in tables:
         op.drop_table('rating')
+        print('rating')
