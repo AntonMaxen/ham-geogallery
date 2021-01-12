@@ -24,3 +24,4 @@ class Badge(Base):
 
 if __name__ == "__main__":
     badge = Badge()
+    print("badge")

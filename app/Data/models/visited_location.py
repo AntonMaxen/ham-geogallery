@@ -21,3 +21,4 @@ class VisitedLocation(Base):
 
 if __name__ == '__main__':
     visited_location = VisitedLocation()
+    print(visited_location)

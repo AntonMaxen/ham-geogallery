@@ -35,8 +35,7 @@ class User(Base):
         nullable=False,
         unique=True)
     DateOfBirth = sa.Column(
-        sa.Date,
-        nullable=False)
+        sa.Date)
     JoinDate = sa.Column(
         sa.Date,
         nullable=False)

@@ -30,3 +30,4 @@ class Comment(Base):
 
 if __name__ == "__main__":
     comment = Comment()
+    print('comment')
