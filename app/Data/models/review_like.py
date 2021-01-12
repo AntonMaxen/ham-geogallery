@@ -24,3 +24,4 @@ class ReviewLike(Base):
 
 if __name__ == "__main__":
     review_like = ReviewLike()
+    print(review_like)

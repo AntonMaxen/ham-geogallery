@@ -27,3 +27,4 @@ class UserBadge(Base):
 
 if __name__ == '__main__':
     user_has_badge = UserBadge()
+    print(user_has_badge)

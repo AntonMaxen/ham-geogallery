@@ -9,7 +9,8 @@ class PictureLike(Base):
     PictureId = sa.Column(
         sa.Integer,
         sa.ForeignKey('picture.Id', ondelete='CASCADE'),
-        primary_key=True, nullable=False)
+        primary_key=True,
+        nullable=False)
     UserId = sa.Column(
         sa.Integer,
         sa.ForeignKey('user.Id', ondelete='CASCADE'),

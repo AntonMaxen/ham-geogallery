@@ -36,5 +36,6 @@ class Review(Base):
     comment = relationship('Comment', back_populates='review')
     review_like = relationship('ReviewLike', back_populates='review')
 
+
 if __name__ == "__main__":
     review = Review()

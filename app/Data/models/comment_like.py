@@ -26,3 +26,4 @@ class CommentLike(Base):
 
 if __name__ == "__main__":
     comment_like = CommentLike()
+    print('comment_like')

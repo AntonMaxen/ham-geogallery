@@ -37,3 +37,4 @@ class Picture(Base):
 
 if __name__ == "__main__":
     picture = Picture()
+    print('picture')
