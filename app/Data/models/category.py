@@ -9,7 +9,7 @@ class Category(Base):
     Id = sa.Column(
         sa.Integer,
         primary_key=True,
-        utoincrement=True)
+        autoincrement=True)
     Name = sa.Column(
         sa.String(45),
         nullable=False)
