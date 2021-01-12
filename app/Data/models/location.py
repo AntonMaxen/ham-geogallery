@@ -1,6 +1,7 @@
 from sqlalchemy.orm import relationship
 from app.Data.db import Base
 import sqlalchemy as sa
+from sqlalchemy.orm import relationship
 
 
 class Location(Base):
@@ -17,15 +18,26 @@ class Location(Base):
     Latitude = sa.Column(
         sa.DECIMAL(6, 3),
         nullable=False)
-    Name = sa.Column(sa.String(45))
+    Name = sa.Column(
+        sa.String(45),
+        nullable=False)
     UserId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('user.Id'),
-        nullable=False)
+        sa.ForeignKey('user.Id',
+                      ondelete='SET NULL'),
+        nullable=True)
     CategoryId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('category.Id'),
-        nullable=False)
+        sa.ForeignKey('category.Id',
+                      ondelete='SET NULL'),
+        nullable=True)
+
+    category = relationship('Category', back_populates='location')
+    user = relationship('User', back_populates='location')
+    picture = relationship('Picture', back_populates='location')
+    visited_location = relationship(
+        'VisitedLocation', back_populates='location')
+    rating = relationship('Rating', back_populates='location')
 
     review = relationship('Review', back_populates='location')
 
