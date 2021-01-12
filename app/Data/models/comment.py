@@ -15,7 +15,7 @@ class Comment(Base):
         nullable=False)
     ReviewId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('review.Id'),
+        sa.ForeignKey('review.Id', ondelete='CASCADE'),
         nullable=False)
     UserId = sa.Column(
         sa.Integer,
