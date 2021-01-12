@@ -1,3 +1,4 @@
+from sqlalchemy.orm import relationship
 from app.Data.db import Base
 import sqlalchemy as sa
 
@@ -5,10 +6,20 @@ import sqlalchemy as sa
 class Badge(Base):
     __tablename__ = 'badge'
 
-    Id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    Image = sa.Column(sa.BLOB, nullable=False)
-    Name = sa.Column(sa.String(45), nullable=False)
-    Description = sa.Column(sa.String(255))
+    Id = sa.Column(
+        sa.Integer,
+        primary_key=True,
+        autoincrement=True)
+    Image = sa.Column(
+        sa.BLOB,
+        nullable=False)
+    Name = sa.Column(
+        sa.String(45),
+        nullable=False)
+    Description = sa.Column(
+        sa.String(255))
+
+    user_has_badge = relationship('UserBadge', back_populates='badge')
 
 
 if __name__ == "__main__":
