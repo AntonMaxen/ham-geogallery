@@ -1,3 +1,4 @@
+from sqlalchemy.orm import relationship
 from app.Data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
@@ -9,7 +10,8 @@ class Location(Base):
         autoincrement=True,
         nullable=False)
     Place = sa.Column(
-        sa.String(45), nullable=False)
+        sa.String(45),
+        nullable=False)
     Longitude = sa.Column(
         sa.DECIMAL(6, 3),
         nullable=False)
@@ -17,7 +19,8 @@ class Location(Base):
         sa.DECIMAL(6, 3),
         nullable=False)
     Name = sa.Column(
-        sa.String(45))
+        sa.String(45),
+        nullable=False)
     UserId = sa.Column(
         sa.Integer,
         sa.ForeignKey('user.Id',
@@ -36,6 +39,7 @@ class Location(Base):
         'VisitedLocation', back_populates='location')
     rating = relationship('Rating', back_populates='location')
 
+    review = relationship('Review', back_populates='location')
 
 if __name__ == '__main__':
     location = Location()
