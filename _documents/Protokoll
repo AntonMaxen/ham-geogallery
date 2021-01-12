@@ -67,6 +67,31 @@ Möteshållare: Mattias Barth
  - Anton håller nästa möte
  
  
+Datum: 2021-01-12
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Inga sittande kort
+
+* Granska PR
+ - Cascading i alembic och omformattering enligt pep 8 gick igenom
+
+* Lägga till nya kort/issues
+ - Inga nya issues vi fortsätter på dom gamla
+ 
+* Fördela kort/issues
+ - SQLA Modellerna delas ut jämnt i gruppen
+ 
+* Övriga kommentarer
+ - Vara färdiga med PR kl 13 idag, eget arbete från 10:00 - 13:00
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Henrik kör som nästa orförande, på mötet onsdag den 13:e under föreläsning,
+ - Tid obestämt men förmodligen runt lunch.
+ 
+ 
  
  
  ***Mall:***
@@ -80,6 +105,8 @@ Möteshållare:
 * Granska PR
 
 * Lägga till nya kort/issues
+
+* Fördela kort/issues
  
 * Övriga kommentarer
  
