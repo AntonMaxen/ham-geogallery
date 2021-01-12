@@ -1,3 +1,4 @@
+from sqlalchemy.orm import relationship
 from app.Data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
@@ -43,12 +44,13 @@ class User(Base):
     PermissionLevel = sa.Column(
         sa.Integer,
         nullable=False)
-
+    
     visited_location = relationship('VisitedLocation', back_populates='user')
     rating = relationship('Rating', back_populates='user')
     picture_like = relationship('PictureLike', back_populates='user')
     picture = relationship('Picture', back_populates='user')
-
+    user_has_badge = relationship('UserBadge', back_populates='user')
+    location = relationship('Location', back_populates='user')
 
 if __name__ == '__main__':
     user = User()
