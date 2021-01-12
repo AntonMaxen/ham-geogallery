@@ -24,11 +24,11 @@ class Review(Base):
         nullable=False)
     UserId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('user.Id', ondelete='Cascade'),
+        sa.ForeignKey('user.Id', ondelete='CASCADE'),
         nullable=False)
     LocationId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('location.Id', ondelete='Cascade'),
+        sa.ForeignKey('location.Id', ondelete='CASCADE'),
         nullable=False)
 
     user = relationship('User', back_populates='review')

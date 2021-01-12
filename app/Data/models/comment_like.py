@@ -8,12 +8,12 @@ class CommentLike(Base):
 
     UserId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('user.Id', ondelete='Cascade'),
+        sa.ForeignKey('user.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False)
     CommentId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('comment.Id', ondelete='Cascade'),
+        sa.ForeignKey('comment.Id', ondelete='CASCADE'),
         primary_key=True,
         nullable=False)
     Liked = sa.Column(
@@ -21,7 +21,7 @@ class CommentLike(Base):
         nullable=False)
 
     comment = relationship('Comment', back_populates='comment_like')
-    user = relationship('Comment', back_populates='user')
+    user = relationship('User', back_populates='comment_like')
 
 
 if __name__ == "__main__":

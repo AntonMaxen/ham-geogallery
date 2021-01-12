@@ -19,7 +19,7 @@ class Comment(Base):
         nullable=False)
     UserId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('user.Id', ondelete='Cascade'),
+        sa.ForeignKey('user.Id', ondelete='CASCADE'),
         nullable=False,
         )
 
