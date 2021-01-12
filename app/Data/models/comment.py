@@ -19,8 +19,9 @@ class Comment(Base):
         nullable=False)
     UserId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('user.Id'),
-        nullable=False)
+        sa.ForeignKey('user.Id', ondelete='Cascade'),
+        nullable=False,
+        )
 
     review = relationship('Review', back_populates='comment')
     user = relationship('User', back_populates='comment')
