@@ -9,10 +9,12 @@ class ReviewLike(Base):
     ReviewId = sa.Column(
         sa.Integer,
         sa.ForeignKey('review.Id', ondelete='CASCADE'),
+        primary_key=True,
         nullable=False)
     UserId = sa.Column(
         sa.Integer,
         sa.ForeignKey('user.Id', ondelete='CASCADE'),
+        primary_key=True,
         nullable=False)
     Liked = sa.Column(
         sa.Boolean,

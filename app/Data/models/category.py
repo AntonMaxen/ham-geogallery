@@ -20,7 +20,7 @@ class Category(Base):
         default=0)
 
     location = relationship('Location', back_populates='category')
-    category = relationship('Category', back_populates='category')
+    #category = relationship('Category', back_populates='category')
 
 
 if __name__ == "__main__":
