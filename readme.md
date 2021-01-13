@@ -15,7 +15,7 @@
  - [x] Define db naming conventions
  - [x] (Fixa docker)
  - [x] Setup Alembic Migrations
- - [ ] Create SQLAlchemy Models
+ - [x] Create SQLAlchemy Models
  - [ ] Make Cascading work
  - [ ] Create DB Repository (Figure out how the querys should work, what info do we want to get/add)
  - [ ] Create Business Layer
