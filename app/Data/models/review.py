@@ -8,6 +8,7 @@ class Review(Base):
 
     Id = sa.Column(
         sa.Integer,
+        primary_key=True,
         nullable=False,
         autoincrement=True)
     Title = sa.Column(

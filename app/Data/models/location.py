@@ -5,8 +5,11 @@ from sqlalchemy.orm import relationship
 
 
 class Location(Base):
+    __tablename__ = 'location'
+
     Id = sa.Column(
         sa.Integer,
+        primary_key=True,
         autoincrement=True,
         nullable=False)
     Place = sa.Column(
