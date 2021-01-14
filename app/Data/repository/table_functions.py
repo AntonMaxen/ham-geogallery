@@ -1,4 +1,5 @@
 from app.Data.db import session
+from sqlalchemy.sql.expression import func
 import datetime
 
 
@@ -88,6 +89,10 @@ def refresh_row(model_obj):
     if no refresh is done on a commited object, the object will have
     unexpected behaviour."""
     session.refresh(model_obj)
+
+
+def get_random_row(model):
+    return session.query(model).order_by(func.random()).first()
 
 
 if __name__ == '__main__':
