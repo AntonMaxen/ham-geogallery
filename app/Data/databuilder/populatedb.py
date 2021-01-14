@@ -21,6 +21,7 @@ def add_row(model, gen_model):
 
 
 def populate_db():
+    add_rows(Category, GenCategory, 10)
     add_rows(User, GenUser, 10)
 
 
