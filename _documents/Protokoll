@@ -38,6 +38,24 @@ Möteshållare: Henrik Liman
   * Övriga kommentarer
    - Ändra så att avändarnamn,email och Filename ska vara ett unikt värde i databasen
    - Istället för Password har vi Salt och Hash
+   
+
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - 
+
+* Granska PR
+
+* Lägga till nya kort/issues
+
+* Fördela kort/issues
+ 
+* Övriga kommentarer
+ 
+* Bestämma nästa möte och nästa ordförande
    - Deadline på att vara klara med sqlalchemy och fungerande cascading är onsdagen den 13 januari
    
   * Bestämma nästa möte och nästa ordförande
@@ -111,9 +129,31 @@ Möteshållare:
  
 * Bestämma nästa möte och nästa ordförande
  - Nästa möte Torsdagen 14/1 förmodligen runt lunch
- - Matthias håller i nästa möte
+ - Mattias håller i nästa möte
  
  
+ 
+ Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias
+
+* Gå igenom aktuella plockade kort
+ - Inga aktuella kort
+* Granska PR
+ - Table functions, la till kommentarer och några hjälpfunktioner
+* Lägga till nya kort/issues
+ - inga nya kort
+* Fördela kort/issues
+ - 13 kort fördelade,
+* Övriga kommentarer
+ - Vi gör Repo category gemensamt
+ - Mer ingående planering nästa vecka
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte på fredag 15/1 kl 13
+ - Anton håller nästa möte 
+
+
+
  ***Mall:***
  
 Närvarande:
