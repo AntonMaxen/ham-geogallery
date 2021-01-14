@@ -49,7 +49,7 @@ def upgrade():
             nullable=False),
         sa.Column(
             'Salt',
-            sa.String(45),
+            sa.String(255),
             nullable=False),
         sa.Column(
             'PhoneNumber',
