@@ -1,5 +1,6 @@
 ## webapp
 ### Planning
+ - [ ] Deadline is February 8th
  - [x] Choose database manager
  - [x] Chose Migration tool
  - [x] Plan UI
