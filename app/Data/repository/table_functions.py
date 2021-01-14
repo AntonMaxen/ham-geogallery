@@ -1,5 +1,4 @@
 from app.Data.db import session
-from app.Data.models.model_imports import *
 import datetime
 
 
@@ -15,13 +14,23 @@ def get_row_by_column(model, row_id, col_name='Id'):
         .first()
 
 
-def get_rows_by_column_value(model, col_name, value):
+def get_rows_like_column_value(model, col_name, value):
     """Return all rows that contains model.col_name LIKE value
     Good way to search database. """
     return session.query(model) \
         .filter(getattr(model, col_name)) \
         .ilike(f'%{value}%') \
         .all()
+
+
+def validate_number(number):
+    if isinstance(number, int):
+        return True
+
+    if isinstance(number, str) and number.isdigit():
+        return True
+
+    return False
 
 
 def add_row(model, new_row):
@@ -31,8 +40,8 @@ def add_row(model, new_row):
         row = model(**new_row)
         session.add(row)
         session.commit()
-    except:
-        print('rollback')
+    except ValueError:
+        print('rollback add_row')
         session.rollback()
         return None
 
@@ -45,7 +54,7 @@ def update_row_column(model_obj, col_name, new_value):
         setattr(model_obj, col_name, new_value)
         session.commit()
     except:
-        print('rollback')
+        print('rollback update_row_column')
         session.rollback()
         return None
 
@@ -62,7 +71,7 @@ def remove_row_by_id(model, row_id, col_name='Id'):
         session.delete(obj)
         session.commit()
     except:
-        print('rollback')
+        print('rollback remove_row_by_id')
         session.rollback()
         return None
 
@@ -95,8 +104,4 @@ if __name__ == '__main__':
         "PermissionLevel": 5
     }
 
-    current_row = get_row_by_column(User, 2)
-    print(get_columns(current_row))
 
-    update_row_column(current_row, "FirstName", "Inte anton")
-    print(get_columns(current_row))

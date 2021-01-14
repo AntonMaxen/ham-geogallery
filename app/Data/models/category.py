@@ -15,12 +15,9 @@ class Category(Base):
         nullable=False)
     ParentId = sa.Column(
         sa.Integer,
-        sa.ForeignKey('category.Id', ondelete='CASCADE'),
-        nullable=False,
-        default=0)
+        sa.ForeignKey('category.Id', ondelete='CASCADE'))
 
     location = relationship('Location', back_populates='category')
-    #category = relationship('Category', back_populates='category')
 
 
 if __name__ == "__main__":
