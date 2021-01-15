@@ -18,12 +18,12 @@ def get_user_has_badge_by_badge_id(row_id):
 
 def remove_user_has_badge_by_user_id(row_id):
     if tf.validate_number(row_id):
-        return tf.remove_row_by_id(Category, row_id, "UserId")
+        return tf.remove_row_by_id(UserBadge, row_id, "UserId")
 
 
 def remove_user_badge_by_badge_id(row_id):
     if tf.validate_number(row_id):
-        return tf.remove_row_by_id(Category, row_id, "BadgeId")
+        return tf.remove_row_by_id(UserBadge, row_id, "BadgeId")
 
 
 def add_user_has_badge(row_dict):
