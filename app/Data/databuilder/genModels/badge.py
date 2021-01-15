@@ -11,4 +11,5 @@ class GenBadge:
 
 
 if __name__ == '__main__':
-    pass
+    gen_badge = GenBadge()
+    print(gen_badge.__dict__)
