@@ -16,8 +16,8 @@ def download_image(image_url, suffix='.png'):
         image_folder = 'Photos'
         image_folder_path = os.path.join(get_project_root(), image_folder)
         photo_name += suffix if '.' not in photo_name else ''
-        time_stamp = int(time.time())
-        file_name = f'{time_stamp}_{photo_name}'
+        time_stamp = str(time.time())
+        file_name = f'{time_stamp.replace(".", "-")}_{photo_name}'
         Path(image_folder_path).mkdir(parents=True, exist_ok=True)
         file_path = os.path.join(image_folder_path, file_name)
         with open(file_path, 'wb') as f:

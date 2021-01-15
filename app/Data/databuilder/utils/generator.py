@@ -71,7 +71,8 @@ def get_random_location():
 
 def get_random_image_data():
     filename = download_image('https://picsum.photos/200')
-    return get_file_binary_data(filename)
+    if filename is not None:
+        return get_file_binary_data(filename)
 
 
 def get_hash_salt(password):

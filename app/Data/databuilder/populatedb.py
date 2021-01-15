@@ -35,19 +35,19 @@ def add_row(model, gen_model):
 
 
 def populate_db():
-    add_rows(Category, GenCategory, 10)
-    add_rows(User, GenUser, 10)
-    add_rows(Location, GenLocation, 10)
+    add_rows(Category, GenCategory, 100)
+    add_rows(User, GenUser, 100)
+    add_rows(Location, GenLocation, 100)
     add_rows(Rating, GenRating, 10)
-    add_rows(VisitedLocation, GenVisitedLocation, 10)
-    add_rows(Picture, GenPicture, 10)
-    add_rows(PictureLike, GenPictureLike, 10)
-    add_rows(Review, GenReview, 10)
-    add_rows(ReviewLike, GenReviewLike, 10)
-    add_rows(Comment, GenComment, 10)
-    add_rows(CommentLike, GenCommentLike, 10)
-    add_rows(Badge, GenBadge, 10)
-    add_rows(UserBadge, GenUserBadge, 10)
+    add_rows(VisitedLocation, GenVisitedLocation, 100)
+    add_rows(Picture, GenPicture, 100)
+    add_rows(PictureLike, GenPictureLike, 100)
+    add_rows(Review, GenReview, 100)
+    add_rows(ReviewLike, GenReviewLike, 100)
+    add_rows(Comment, GenComment, 100)
+    add_rows(CommentLike, GenCommentLike, 100)
+    add_rows(Badge, GenBadge, 100)
+    add_rows(UserBadge, GenUserBadge, 100)
 
 
 if __name__ == '__main__':
