@@ -3,7 +3,7 @@ from app.Data.models.model_imports import *
 
 
 def get_all_rating():
-    return tf.get_all_rows(VisitedLocation)
+    return tf.get_all_rows(Rating)
 
 
 def get_rating_by_location_id(row_id):
