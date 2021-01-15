@@ -6,9 +6,10 @@ def get_all_pic_likes():
     return tf.get_all_rows(PictureLike)
 
 
-def get_pic_like_by_id(row_id):
+# pic_or_user_id input as a string
+def get_pic_like_by_id(row_id, pic_or_user_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(PictureLike, row_id)
+        return tf.get_row_by_column(PictureLike, row_id, pic_or_user_id)
 
 
 def add_pic_like(row_dict):
