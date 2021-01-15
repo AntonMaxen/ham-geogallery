@@ -7,6 +7,7 @@ from app.Data.databuilder.genModels.rating import GenRating
 from app.Data.databuilder.genModels.visited_location import GenVisitedLocation
 from app.Data.databuilder.genModels.picture import GenPicture
 from app.Data.databuilder.genModels.picture_like import GenPictureLike
+from app.Data.databuilder.genModels.review import GenReview
 from sqlalchemy import exc
 
 
@@ -33,6 +34,7 @@ def populate_db():
     add_rows(VisitedLocation, GenVisitedLocation, 10)
     add_rows(Picture, GenPicture, 10)
     add_rows(PictureLike, GenPictureLike, 10)
+    add_rows(Review, GenReview, 10)
 
 
 if __name__ == '__main__':

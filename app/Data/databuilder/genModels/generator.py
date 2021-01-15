@@ -13,6 +13,14 @@ def get_random_word():
     return fake.word()
 
 
+def get_random_words(amount=3, unique=True):
+    return fake.words(nb=amount, unique=unique)
+
+
+def get_random_text(max_chars=200):
+    return fake.text(max_nb_chars=max_chars)
+
+
 def get_random_first_name():
     return fake.first_name()
 
@@ -75,4 +83,5 @@ def get_hash_salt(password):
 
 if __name__ == '__main__':
     print(get_random_decimal(2, 1))
+    print(get_random_words(amount=5, unique=False))
 
