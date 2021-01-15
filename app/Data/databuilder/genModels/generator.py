@@ -3,6 +3,7 @@ from app.Data.db import session
 import random
 import os
 import hashlib
+import decimal
 
 from faker import Faker
 fake = Faker()
@@ -44,8 +45,14 @@ def get_random_date():
     return fake.past_date()
 
 
-def get_random_number(min, max):
-    return random.randint(min, max)
+def get_random_number(min_v, max_v):
+    return random.randint(min_v, max_v)
+
+
+def get_random_decimal(tot_numbers, decimals):
+    return decimal.Decimal(
+        random.randrange(10 ** tot_numbers)
+    ) / 10 ** decimals
 
 
 def get_random_location():
@@ -67,5 +74,5 @@ def get_hash_salt(password):
 
 
 if __name__ == '__main__':
-    pass
+    print(get_random_decimal(2, 1))
 
