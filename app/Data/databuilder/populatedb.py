@@ -9,6 +9,7 @@ from app.Data.databuilder.genModels.picture import GenPicture
 from app.Data.databuilder.genModels.picture_like import GenPictureLike
 from app.Data.databuilder.genModels.review import GenReview
 from app.Data.databuilder.genModels.review_like import GenReviewLike
+from app.Data.databuilder.genModels.comment import GenComment
 from sqlalchemy import exc
 
 
@@ -37,6 +38,7 @@ def populate_db():
     add_rows(PictureLike, GenPictureLike, 10)
     add_rows(Review, GenReview, 10)
     add_rows(ReviewLike, GenReviewLike, 10)
+    add_rows(Comment, GenComment, 10)
 
 
 if __name__ == '__main__':
