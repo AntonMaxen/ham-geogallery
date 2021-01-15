@@ -1,4 +1,4 @@
-import app.Data.databuilder.genModels.generator as gen
+import app.Data.databuilder.utils.generator as gen
 from app.Data.models.model_imports import *
 import app.Data.repository.table_functions as tf
 

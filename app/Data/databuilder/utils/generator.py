@@ -4,6 +4,8 @@ import random
 import os
 import hashlib
 import decimal
+from app.Data.databuilder.utils.image_downloader import download_image
+from app.Data.databuilder.utils import get_file_binary_data
 
 from faker import Faker
 fake = Faker()
@@ -67,6 +69,11 @@ def get_random_location():
     return fake.location_on_land()
 
 
+def get_random_image_data():
+    filename = download_image('https://picsum.photos/200')
+    return get_file_binary_data(filename)
+
+
 def get_hash_salt(password):
     salt = os.urandom(32)
     hash = hashlib.pbkdf2_hmac(
@@ -84,4 +91,5 @@ def get_hash_salt(password):
 if __name__ == '__main__':
     print(get_random_decimal(2, 1))
     print(get_random_words(amount=5, unique=False))
+    get_random_image_data()
 

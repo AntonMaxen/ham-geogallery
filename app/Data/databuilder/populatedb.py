@@ -13,6 +13,7 @@ from app.Data.databuilder.genModels.review import GenReview
 from app.Data.databuilder.genModels.review_like import GenReviewLike
 from app.Data.databuilder.genModels.comment import GenComment
 from app.Data.databuilder.genModels.comment_like import GenCommentLike
+from app.Data.databuilder.genModels.badge import GenBadge
 # external imports
 from sqlalchemy import exc
 
@@ -44,6 +45,7 @@ def populate_db():
     add_rows(ReviewLike, GenReviewLike, 10)
     add_rows(Comment, GenComment, 10)
     add_rows(CommentLike, GenCommentLike, 10)
+    add_rows(Badge, GenBadge, 10)
 
 
 if __name__ == '__main__':

@@ -3,3 +3,5 @@ SQLAlchemy
 sqlacodegen
 alembic
 Flask
+requests
+Faker
