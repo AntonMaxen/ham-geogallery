@@ -2,6 +2,7 @@ from app.Data.db import session
 from app.Data.models.model_imports import *
 from app.Data.databuilder.genModels.category import GenCategory
 from app.Data.databuilder.genModels.user import GenUser
+from app.Data.databuilder.genModels.location import GenLocation
 from sqlalchemy import exc
 
 
@@ -23,6 +24,7 @@ def add_row(model, gen_model):
 def populate_db():
     add_rows(Category, GenCategory, 10)
     add_rows(User, GenUser, 10)
+    add_rows(Location, GenLocation, 10)
 
 
 if __name__ == '__main__':

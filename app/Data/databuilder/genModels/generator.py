@@ -39,12 +39,17 @@ def get_random_password(length=10):
 def get_random_phonenumber():
     return fake.phone_number()
 
+
 def get_random_date():
     return fake.past_date()
 
 
 def get_random_number(min, max):
     return random.randint(min, max)
+
+
+def get_random_location():
+    return fake.location_on_land()
 
 
 def get_hash_salt(password):
