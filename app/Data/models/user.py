@@ -28,7 +28,7 @@ class User(Base):
         sa.String(255),
         nullable=False)
     Salt = sa.Column(
-        sa.String(45),
+        sa.String(255),
         nullable=False)
     PhoneNumber = sa.Column(
         sa.String(45),

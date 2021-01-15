@@ -1,4 +1,6 @@
 from app.Data.db import session
+from sqlalchemy.sql.expression import func
+from sqlalchemy import exc
 import datetime
 
 
@@ -40,7 +42,7 @@ def add_row(model, new_row):
         row = model(**new_row)
         session.add(row)
         session.commit()
-    except ValueError:
+    except exc.SQLAlchemyError:
         print('rollback add_row')
         session.rollback()
         return None
@@ -53,7 +55,7 @@ def update_row_column(model_obj, col_name, new_value):
     try:
         setattr(model_obj, col_name, new_value)
         session.commit()
-    except:
+    except exc.SQLAlchemyError:
         print('rollback update_row_column')
         session.rollback()
         return None
@@ -70,7 +72,7 @@ def remove_row_by_id(model, row_id, col_name='Id'):
 
         session.delete(obj)
         session.commit()
-    except:
+    except exc.SQLAlchemyError:
         print('rollback remove_row_by_id')
         session.rollback()
         return None
@@ -88,6 +90,10 @@ def refresh_row(model_obj):
     if no refresh is done on a commited object, the object will have
     unexpected behaviour."""
     session.refresh(model_obj)
+
+
+def get_random_row(model):
+    return session.query(model).order_by(func.random()).first()
 
 
 if __name__ == '__main__':
