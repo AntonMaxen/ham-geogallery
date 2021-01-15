@@ -8,26 +8,26 @@ def get_all_visited_location():
 
 def get_visited_location_by_location_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(UserBadge, row_id, "LocationId")
+        return tf.get_row_by_column(VisitedLocation, row_id, "LocationId")
 
 
 def get_visited_location_by_user_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(UserBadge, row_id, "UserId")
+        return tf.get_row_by_column(VisitedLocation, row_id, "UserId")
 
 
 def remove_visited_location_by_location_id(row_id):
     if tf.validate_number(row_id):
-        return tf.remove_row_by_id(Category, row_id, "LocationId")
+        return tf.remove_row_by_id(VisitedLocation, row_id, "LocationId")
 
 
 def remove_visited_location_by_user_id(row_id):
     if tf.validate_number(row_id):
-        return tf.remove_row_by_id(Category, row_id, "UserId")
+        return tf.remove_row_by_id(VisitedLocation, row_id, "UserId")
 
 
 def add_visited_location(row_dict):
-    return tf.add_row(UserBadge, row_dict)
+    return tf.add_row(VisitedLocation, row_dict)
 
 
 def update_visited_location(category_row, col_name, new_value):
@@ -35,4 +35,4 @@ def update_visited_location(category_row, col_name, new_value):
 
 
 def search_visited_location(col_name, value):
-    return tf.get_rows_like_column_value(UserBadge, col_name, value)
+    return tf.get_rows_like_column_value(VisitedLocation, col_name, value)
