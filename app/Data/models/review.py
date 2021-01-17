@@ -34,8 +34,16 @@ class Review(Base):
 
     user = relationship('User', back_populates='review')
     location = relationship('Location', back_populates='review')
-    comment = relationship('Comment', back_populates='review')
-    review_like = relationship('ReviewLike', back_populates='review')
+    comment = relationship(
+        'Comment',
+        back_populates='review',
+        passive_deletes=True
+    )
+    review_like = relationship(
+        'ReviewLike',
+        back_populates='review',
+        passive_deletes=True
+    )
 
 
 if __name__ == "__main__":

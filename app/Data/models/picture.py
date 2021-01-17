@@ -32,7 +32,11 @@ class Picture(Base):
 
     user = relationship('User', back_populates='picture')
     location = relationship('Location', back_populates='picture')
-    picture_like = relationship('PictureLike', back_populates='picture')
+    picture_like = relationship(
+        'PictureLike',
+        back_populates='picture',
+        passive_deletes=True
+    )
 
 
 if __name__ == "__main__":

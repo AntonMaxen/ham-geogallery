@@ -85,6 +85,11 @@ def get_columns(model_obj):
     return [column.key for column in model_obj.__table__.columns]
 
 
+def row_to_dict(row):
+    return {column: getattr(row, column, None)
+            for column in get_columns(row)}
+
+
 def refresh_row(model_obj):
     """Refreshes the sqla object, used after a commit on given object.
     if no refresh is done on a commited object, the object will have

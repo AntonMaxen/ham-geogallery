@@ -25,7 +25,11 @@ class Comment(Base):
 
     review = relationship('Review', back_populates='comment')
     user = relationship('User', back_populates='comment')
-    comment_like = relationship('CommentLike', back_populates='comment')
+    comment_like = relationship(
+        'CommentLike',
+        back_populates='comment',
+        passive_deletes=True
+    )
 
 
 if __name__ == "__main__":

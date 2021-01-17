@@ -51,12 +51,5 @@ if __name__ == '__main__':
         result = {col: getattr(row, col) for col in tf.get_columns(row)}
         print(result)
 
-    ss = get_category_by_id(2)
-    so = get_parent_categories(ss)
-    print(so)
-    for row in so:
-        print(row.Name)
 
-    for row in get_all_categories():
-        result = {col: getattr(row, col) for col in tf.get_columns(row)}
-        print(result)
+
