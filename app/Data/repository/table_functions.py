@@ -13,7 +13,7 @@ def get_row_by_column(model, row_id, col_name='Id'):
     # Returns First row that matches model.col_name == row_id
     return session.query(model) \
         .filter(getattr(model, col_name) == row_id) \
-        .first()
+        .all()
 
 
 def get_rows_like_column_value(model, col_name, value):
@@ -73,6 +73,20 @@ def remove_row_by_id(model, row_id, col_name='Id'):
         session.commit()
     except exc.SQLAlchemyError:
         print('rollback remove_row_by_id')
+        session.rollback()
+        return None
+
+    return obj
+
+
+def remove_rows_by_column_name(model, row_id, col_name='Id'):
+    try:
+        obj = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .delete()
+        session.commit()
+    except exc.SQLAlchemyError:
+        print('rollback remove rows by col name')
         session.rollback()
         return None
 

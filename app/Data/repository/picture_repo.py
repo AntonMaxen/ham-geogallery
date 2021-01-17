@@ -9,7 +9,18 @@ def get_all_pictures():
 
 def get_picture_by_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(Picture, row_id)
+        rows = tf.get_row_by_column(Picture, row_id)
+        return rows[0] if len(rows) > 0 else rows
+
+
+def get_pictures_by_user_id(row_id):
+    if tf.validate_number(row_id):
+        return tf.get_row_by_column(Picture, row_id, col_name='UserId')
+
+
+def get_pictures_by_location_id(row_id):
+    if tf.validate_number(row_id):
+        return tf.get_row_by_column(Picture, row_id, col_name='LocationId')
 
 
 def remove_picture_by_id(row_id):
