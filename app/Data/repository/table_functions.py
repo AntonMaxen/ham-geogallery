@@ -20,8 +20,7 @@ def get_rows_like_column_value(model, col_name, value):
     """Return all rows that contains model.col_name LIKE value
     Good way to search database. """
     return session.query(model) \
-        .filter(getattr(model, col_name)) \
-        .ilike(f'%{value}%') \
+        .filter(getattr(model, col_name).ilike(f'%{value}%')) \
         .all()
 
 
@@ -88,6 +87,10 @@ def get_columns(model_obj):
 def row_to_dict(row):
     return {column: getattr(row, column, None)
             for column in get_columns(row)}
+
+
+def rows_to_dicts(rows):
+    return [row_to_dict(row) for row in rows]
 
 
 def refresh_row(model_obj):

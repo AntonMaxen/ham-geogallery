@@ -1,6 +1,6 @@
 import app.Data.repository.table_functions as tf
 from app.Data.models.model_imports import *
-from app.utils import print_dict
+from app.utils import print_dict, print_dicts
 
 
 def get_all_users():
@@ -33,7 +33,10 @@ if __name__ == '__main__':
     for u in [tf.row_to_dict(user) for user in get_all_users()]:
         pass
         # print_dict(u)
-    tf.remove_row_by_id(Badge, 3)
+
+    dicts = tf.rows_to_dicts(search_user('FirstName', "Allison"))
+    print_dicts(dicts)
+
 
 
 
