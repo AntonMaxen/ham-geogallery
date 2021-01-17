@@ -9,8 +9,7 @@ def get_all_users():
 
 def get_user_by_id(row_id):
     if tf.validate_number(row_id):
-        rows = tf.get_row_by_column(User, row_id)
-        return rows[0] if len(rows) > 0 else rows
+        return tf.get_row_by_column(User, row_id)
 
 
 def remove_user_by_id(row_id):

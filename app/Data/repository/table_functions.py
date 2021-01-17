@@ -13,6 +13,12 @@ def get_row_by_column(model, row_id, col_name='Id'):
     # Returns First row that matches model.col_name == row_id
     return session.query(model) \
         .filter(getattr(model, col_name) == row_id) \
+        .one()
+
+
+def get_rows_by_column(model, row_id, col_name='Id'):
+    return session.query(model) \
+        .filter(getattr(model, col_name) == row_id) \
         .all()
 
 

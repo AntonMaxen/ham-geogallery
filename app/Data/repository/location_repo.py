@@ -9,18 +9,17 @@ def get_all_locations():
 
 def get_location_by_id(row_id):
     if tf.validate_number(row_id):
-        rows = tf.get_row_by_column(Location, row_id)
-        return rows[0] if len(rows) > 0 else rows
+        return tf.get_row_by_column(Location, row_id)
 
 
 def get_locations_by_user_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(Location, row_id, col_name='UserId')
+        return tf.get_rows_by_column(Location, row_id, col_name='UserId')
 
 
 def get_locations_by_category_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(Location, row_id, col_name='CategoryId')
+        return tf.get_rows_by_column(Location, row_id, col_name='CategoryId')
 
 
 def remove_location_by_id(row_id):
