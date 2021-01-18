@@ -19,7 +19,11 @@ class Badge(Base):
     Description = sa.Column(
         sa.String(255))
 
-    user_has_badge = relationship('UserBadge', back_populates='badge')
+    user_has_badge = relationship(
+        'UserBadge',
+        back_populates='badge',
+        passive_deletes=True
+    )
 
 
 if __name__ == "__main__":

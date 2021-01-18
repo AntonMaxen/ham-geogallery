@@ -33,10 +33,26 @@ class Location(Base):
 
     category = relationship('Category', back_populates='location')
     user = relationship('User', back_populates='location')
-    picture = relationship('Picture', back_populates='location')
-    visited_location = relationship('VisitedLocation', back_populates='location')
-    rating = relationship('Rating', back_populates='location')
-    review = relationship('Review', back_populates='location')
+    picture = relationship(
+        'Picture',
+        back_populates='location',
+        passive_deletes=True
+    )
+    visited_location = relationship(
+        'VisitedLocation',
+        back_populates='location',
+        passive_deletes=True
+    )
+    rating = relationship(
+        'Rating',
+        back_populates='location',
+        passive_deletes=True
+    )
+    review = relationship(
+        'Review',
+        back_populates='location',
+        passive_deletes=True
+    )
 
 
 if __name__ == '__main__':
