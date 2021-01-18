@@ -30,8 +30,8 @@ def add_rating(row_dict):
     return tf.add_row(Rating, row_dict)
 
 
-def update_rating(category_row, col_name, new_value):
-    return tf.update_row_column(category_row, col_name, new_value)
+def update_rating(rating_row, col_name, new_value):
+    return tf.update_row_column(rating_row, col_name, new_value)
 
 
 def search_rating(col_name, value):
