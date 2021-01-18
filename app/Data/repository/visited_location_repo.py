@@ -30,8 +30,8 @@ def add_visited_location(row_dict):
     return tf.add_row(VisitedLocation, row_dict)
 
 
-def update_visited_location(category_row, col_name, new_value):
-    return tf.update_row_column(category_row, col_name, new_value)
+def update_visited_location(visited_location_row, col_name, new_value):
+    return tf.update_row_column(visited_location_row, col_name, new_value)
 
 
 def search_visited_location(col_name, value):

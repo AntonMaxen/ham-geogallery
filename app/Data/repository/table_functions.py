@@ -13,15 +13,20 @@ def get_row_by_column(model, row_id, col_name='Id'):
     # Returns First row that matches model.col_name == row_id
     return session.query(model) \
         .filter(getattr(model, col_name) == row_id) \
-        .first()
+        .one()
+
+
+def get_rows_by_column(model, row_id, col_name='Id'):
+    return session.query(model) \
+        .filter(getattr(model, col_name) == row_id) \
+        .all()
 
 
 def get_rows_like_column_value(model, col_name, value):
     """Return all rows that contains model.col_name LIKE value
     Good way to search database. """
     return session.query(model) \
-        .filter(getattr(model, col_name)) \
-        .ilike(f'%{value}%') \
+        .filter(getattr(model, col_name).ilike(f'%{value}%')) \
         .all()
 
 
@@ -80,9 +85,32 @@ def remove_row_by_id(model, row_id, col_name='Id'):
     return obj
 
 
+def remove_rows_by_column_name(model, row_id, col_name='Id'):
+    try:
+        obj = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .delete()
+        session.commit()
+    except exc.SQLAlchemyError:
+        print('rollback remove rows by col name')
+        session.rollback()
+        return None
+
+    return obj
+
+
 def get_columns(model_obj):
     # Returns Names of the columns for a given Table (model_obj).
     return [column.key for column in model_obj.__table__.columns]
+
+
+def row_to_dict(row):
+    return {column: getattr(row, column, None)
+            for column in get_columns(row)}
+
+
+def rows_to_dicts(rows):
+    return [row_to_dict(row) for row in rows]
 
 
 def refresh_row(model_obj):

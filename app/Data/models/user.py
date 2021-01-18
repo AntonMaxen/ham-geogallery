@@ -9,50 +9,100 @@ class User(Base):
     Id = sa.Column(
         sa.Integer,
         primary_key=True,
-        autoincrement=True)
+        autoincrement=True
+    )
     FirstName = sa.Column(
         sa.String(45),
-        nullable=False)
+        nullable=False
+    )
     LastName = sa.Column(
         sa.String(45),
-        nullable=False)
+        nullable=False
+    )
     Email = sa.Column(
         sa.String(45),
         nullable=False,
-        unique=True)
+        unique=True
+    )
     Username = sa.Column(
         sa.String(45),
         nullable=False,
-        unique=True)
+        unique=True
+    )
     Hash = sa.Column(
         sa.String(255),
-        nullable=False)
+        nullable=False
+    )
     Salt = sa.Column(
         sa.String(255),
-        nullable=False)
+        nullable=False
+    )
     PhoneNumber = sa.Column(
         sa.String(45),
         nullable=False,
-        unique=True)
+        unique=True
+    )
     DateOfBirth = sa.Column(
-        sa.Date)
+        sa.Date
+    )
     JoinDate = sa.Column(
         sa.Date,
-        nullable=False)
+        nullable=False
+    )
     PermissionLevel = sa.Column(
         sa.Integer,
-        nullable=False)
+        nullable=False
+    )
 
-    review = relationship('Review', back_populates='user')
-    review_like = relationship('ReviewLike', back_populates='user')
-    comment = relationship('Comment', back_populates='user')
-    comment_like = relationship('CommentLike', back_populates='user')
-    visited_location = relationship('VisitedLocation', back_populates='user')
-    rating = relationship('Rating', back_populates='user')
-    picture_like = relationship('PictureLike', back_populates='user')
-    picture = relationship('Picture', back_populates='user')
-    user_has_badge = relationship('UserBadge', back_populates='user')
-    location = relationship('Location', back_populates='user')
+    review = relationship(
+        'Review',
+        back_populates='user',
+        passive_deletes=True
+    )
+    review_like = relationship(
+        'ReviewLike',
+        back_populates='user',
+        passive_deletes=True
+    )
+    comment = relationship(
+        'Comment',
+        back_populates='user',
+        passive_deletes=True
+    )
+    comment_like = relationship(
+        'CommentLike',
+        back_populates='user',
+        passive_deletes=True
+    )
+    visited_location = relationship(
+        'VisitedLocation',
+        back_populates='user',
+        passive_deletes=True
+    )
+    rating = relationship(
+        'Rating',
+        back_populates='user',
+        passive_deletes=True
+    )
+    picture_like = relationship(
+        'PictureLike',
+        back_populates='user',
+        passive_deletes=True
+    )
+    picture = relationship(
+        'Picture',
+        back_populates='user',
+        passive_deletes=True
+    )
+    user_has_badge = relationship(
+        'UserBadge',
+        back_populates='user',
+        passive_deletes=True
+    )
+    location = relationship(
+        'Location',
+        back_populates='user'
+    )
 
 
 if __name__ == '__main__':

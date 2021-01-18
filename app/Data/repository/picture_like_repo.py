@@ -20,8 +20,8 @@ def add_pic_like(row_dict):
     return tf.add_row(PictureLike, row_dict)
 
 
-def update_pic_like(category_row, col_name, new_value):
-    return tf.update_row_column(category_row, col_name, new_value)
+def update_pic_like(picture_like_row, col_name, new_value):
+    return tf.update_row_column(picture_like_row, col_name, new_value)
 
 
 def get_liked_pictures(pic_id):
