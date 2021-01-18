@@ -38,7 +38,7 @@ def remove_review_likes_by_user_id(row_id):
 def remove_review_likes_by_review_id(row_id):
     if tf.validate_number(row_id):
         return tf.remove_rows_by_column_name(
-            CommentLike,
+            ReviewLike,
             row_id,
             col_name='ReviewId'
         )
