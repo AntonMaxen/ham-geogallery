@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place_name</title>
+</head>
+<body>
+    <h1>{{place_name}}</h1>
+    <div>
+        {% for place in places_dicts %}
+            <ul>
+            {% for key, value in place.items() %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
