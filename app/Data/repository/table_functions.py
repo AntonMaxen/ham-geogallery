@@ -124,6 +124,12 @@ def get_random_row(model):
     return session.query(model).order_by(func.random()).first()
 
 
+def get_highest_row(model, col_name='Id'):
+    rows = session.query(model).order_by(col_name).all()
+    if len(rows) > 0:
+        return rows[-1]
+
+
 if __name__ == '__main__':
     user = {
         "FirstName": "anton",

@@ -2,4 +2,6 @@ venv/
 .idea/
 __pycache__/
 mapsdb.mwb.bak
-Photos/
+Photos
+
+
