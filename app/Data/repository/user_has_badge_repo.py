@@ -30,8 +30,8 @@ def add_user_has_badge(row_dict):
     return tf.add_row(UserBadge, row_dict)
 
 
-def update_user_has_badge(category_row, col_name, new_value):
-    return tf.update_row_column(category_row, col_name, new_value)
+def update_user_has_badge(user_badge_row, col_name, new_value):
+    return tf.update_row_column(user_badge_row, col_name, new_value)
 
 
 def search_user_has_badge(col_name, value):
