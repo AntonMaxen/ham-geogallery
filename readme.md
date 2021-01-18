@@ -18,7 +18,7 @@
  - [x] Setup Alembic Migrations
  - [x] Create SQLAlchemy Models
  - [x] Make Cascading work
- - [ ] Create DB Repository (Figure out how the querys should work, what info do we want to get/add)
+ - [x] Create DB Repository (Figure out how the querys should work, what info do we want to get/add)
  - [ ] Create Business Layer
  - [ ] Create Flask Application
  - [ ] Create UI Layer
