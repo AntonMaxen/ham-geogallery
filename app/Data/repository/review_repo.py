@@ -11,6 +11,16 @@ def get_review_by_user_id(row_id):
         return tf.get_row_by_column(Review, row_id, 'UserId')
 
 
+def get_review_by_id(row_id):
+    if tf.validate_number(row_id):
+        return tf.get_row_by_column(Review, row_id, 'Id')
+
+
+def get_review_by_location_id(row_id):
+    if tf.validate_number(row_id):
+        return tf.get_row_by_column(Review, row_id, 'LocationId')
+
+
 def remove_review_by_id(row_id):
     if tf.validate_number(row_id):
         return tf.remove_row_by_id(Review, row_id)
