@@ -20,13 +20,5 @@ def remove_badge(row_id):
         return tf.remove_row_by_id(Badge, row_id)
 
 
-def update_badge_image(badge_row, col_name, new_value):
-    return tf.update_row_column(badge_row, col_name, new_value)
-
-
-def update_badge_name(badge_row, col_name, new_value):
-    return tf.update_row_column(badge_row, col_name, new_value)
-
-
-def update_badge_description(badge_row, col_name, new_value):
+def update_badge_row(badge_row, col_name, new_value):
     return tf.update_row_column(badge_row, col_name, new_value)
