@@ -8,8 +8,8 @@ def create_app():
     app.register_blueprint(index.bp)
     from app.ui.routes import place
     app.register_blueprint(place.bp)
+    from app.ui.routes import map
+    app.register_blueprint(map.bp)
     app.add_url_rule('/', endpoint='index')
 
     return app
-
-
