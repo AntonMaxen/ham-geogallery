@@ -222,8 +222,26 @@ Möteshållare: Mattias Barth
  - Nästa möte den 20/1 kl 9:00 
  - Anton håller mötet
 
+Datum: 21-01-20
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
 
-
+* Gå igenom aktuella plockade kort
+    - Platsview henrik, det går frammåt men lite svårigheter med js och css. Lite funderingar på hur datan ska grupperas.
+    - Mapview anton, kollat mer på maps apit för att planera strategin och UI, lite funderingar på hur UI ska se ut, för att göra det så enkelt som möjligt till att börja med
+    - Loginview, Mattias kollar hur vi ska vi authentication på våran hemsida, https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login
+* Granska PR
+    - Inga pr.
+* Lägga till nya kort/issues
+    - Inga ny kort / issues
+* Fördela kort/issues
+    - allt är fördelat
+* Övriga kommentarer
+    - Inga övriga kommentarer.
+* Bestämma nästa möte och nästa ordförande
+    - 2020-01-20 09:00
+    - Möteshållare Henrik Liman
 
  ***Mall:***
  
