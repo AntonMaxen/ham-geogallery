@@ -8,9 +8,13 @@ window.initMap = async () => {
     let home = map.getCenter()
     place_current_location_marker(map, home)
     let location_objects = load_locations(map, locations);
-    let focused_location = init_center_map(map, location_objects)
+    let focused_location = init_center_map(map, location_objects);
+    let current_location = get_location_obj(location_objects, location_id);
 
 
+    if (current_location) {
+        load_location_data(current_location.location);
+    }
 }
 
 let create_map = async () => {
@@ -70,8 +74,24 @@ let center_map_on_marker = (map, marker) => {
 }
 
 
-let load_location_data = (loc) => {
-    console.log(loc)
+let load_location_data = async (loc) => {
+    let container = document.querySelector('#sidebar-image-container');
+    if (container) {
+        container.parentNode.removeChild(container);
+    }
+    let response = await fetch(`http://localhost:5000/api/resource/location/${loc.Id}/picture/all`);
+    let images = await response.json();
+    let img_div = document.createElement('div');
+    img_div.setAttribute('id', 'sidebar-image-container');
+    let sidebar = document.querySelector('#sidebar');
+    sidebar.appendChild(img_div);
+    images.forEach(image => {
+        let image_element = document.createElement('img');
+        image_element.setAttribute('class', 'sidebar-image')
+        image_element.setAttribute('src', `http://localhost:5000/api/static/image/${image.FileName}`);
+        img_div.appendChild(image_element);
+    });
+
 }
 
 
@@ -79,7 +99,8 @@ let load_locations = (map, locations) => {
     let location_objects = [];
     locations.forEach(loc => {
         let location_object = {}
-        let title_text = `Place: ${loc.Place}\n`+
+        let title_text = `Id: ${loc.Id}\n` +
+            `Place: ${loc.Place}\n`+
             `Name: ${loc.Name}\n` +
             `Longitude: ${loc.Longitude}\n` +
             `Latitude: ${loc.Latitude}\n`;
@@ -90,7 +111,7 @@ let load_locations = (map, locations) => {
             title: title_text
         });
         location_object.marker.addListener('click', () => {
-            load_location_data(loc)
+            load_location_data(loc);
         });
         location_object.location = loc;
         location_objects.push(location_object);

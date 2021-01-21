@@ -5,3 +5,4 @@ alembic
 Flask
 requests
 Faker
+flask-cors
