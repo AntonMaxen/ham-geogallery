@@ -107,8 +107,9 @@ let load_locations = (map, locations) => {
 
         location_object.marker = new google.maps.Marker({
             position: {lat: loc.Latitude, lng: loc.Longitude},
-            map,
-            title: title_text
+            map: map,
+            title: title_text,
+            icon: '../static/images/Templatic-map-icons/meetups.png'
         });
         location_object.marker.addListener('click', () => {
             load_location_data(loc);

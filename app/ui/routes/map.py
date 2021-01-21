@@ -9,8 +9,6 @@ bp = Blueprint('map', __name__, url_prefix='/map')
 @bp.route('/')
 def index():
     locations = lc.get_all_locations()
-    test_l = locations[1]
-    print(test_l.picture)
     location_dicts = uc.rows_to_dicts(locations)
     location_dicts = make_list_of_dicts_jsonable(location_dicts)
     location_id = request.args.get('location_id')

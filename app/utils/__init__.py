@@ -28,7 +28,6 @@ def make_dict_jsonable(my_dict):
         if isinstance(v, decimal.Decimal):
             insert_value = float(str(v))
         elif isinstance(v, datetime.date):
-            print(v)
             insert_value = str(v)
         else:
             insert_value = v
