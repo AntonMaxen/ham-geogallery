@@ -17,6 +17,7 @@ def get_locations_by_user_id(row_id):
         return tf.get_rows_by_column(Location, row_id, col_name='UserId')
 
 
+
 def get_locations_by_category_id(row_id):
     if tf.validate_number(row_id):
         return tf.get_rows_by_column(Location, row_id, col_name='CategoryId')
@@ -55,6 +56,10 @@ def update_location(location_row, col_name, new_value):
 
 def search_location(col_name, value):
     return tf.get_rows_like_column_value(Location, col_name, value)
+
+
+def get_pictures_by_location_id(location_id):
+    pass
 
 
 if __name__ == '__main__':

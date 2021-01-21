@@ -70,21 +70,29 @@ let center_map_on_marker = (map, marker) => {
 }
 
 
+let load_location_data = (loc) => {
+    console.log(loc)
+}
+
+
 let load_locations = (map, locations) => {
     let location_objects = [];
-    locations.forEach(l => {
+    locations.forEach(loc => {
         let location_object = {}
-        let title_text = `Place: ${l.Place}\n`+
-            `Name: ${l.Name}\n` +
-            `Longitude: ${l.Longitude}\n` +
-            `Latitude: ${l.Latitude}\n`;
+        let title_text = `Place: ${loc.Place}\n`+
+            `Name: ${loc.Name}\n` +
+            `Longitude: ${loc.Longitude}\n` +
+            `Latitude: ${loc.Latitude}\n`;
 
         location_object.marker = new google.maps.Marker({
-            position: {lat: l.Latitude, lng: l.Longitude},
+            position: {lat: loc.Latitude, lng: loc.Longitude},
             map,
             title: title_text
         });
-        location_object.location = l;
+        location_object.marker.addListener('click', () => {
+            load_location_data(loc)
+        });
+        location_object.location = loc;
         location_objects.push(location_object);
     });
 
