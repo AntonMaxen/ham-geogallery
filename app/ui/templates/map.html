@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map.css')}}" />
+    <script>
+        let locations = {{ locations | tojson }};
+        let location_id = null
+        {% if location_id is not none %}
+            location_id = {{ location_id }}
+        {% endif %}
+    </script>
     <script src="{{ url_for('static', filename='js/map.js') }}"></script>
 </head>
 <body>
-    <div id="top-bar"></div>
-    <div id="container">
-        <div id="sidebar"></div>
-        <div id="map"></div>
+    <div id="content">
+        <div id="top-bar"></div>
+        <div id="container">
+            <div id="sidebar"></div>
+            <div id="map"></div>
+        </div>
     </div>
 </body>
 </html>
