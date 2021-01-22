@@ -75,17 +75,44 @@ let center_map_on_marker = (map, marker) => {
 }
 
 
-let load_location_data = async (loc) => {
-    let container = document.querySelector('#sidebar-image-container');
-    if (container) {
-        container.parentNode.removeChild(container);
-    }
-    let response = await fetch(`http://localhost:5000/api/resource/location/${loc.Id}/picture/all`);
+let get_images_by_location_id = async (loc_id) => {
+    let response = await fetch(`http://localhost:5000/api/resource/location/${loc_id}/picture/all`);
     let images = await response.json();
-    let img_div = document.createElement('div');
-    img_div.setAttribute('id', 'sidebar-image-container');
+    return images
+}
+
+
+let sidebar_cleanup = () => {
+    let img_container = document.querySelector('#sidebar-image-container');
+
+    if (img_container) {
+        img_container.parentNode.removeChild(img_container);
+    }
+}
+
+let load_location_data = async (loc) => {
+
+    sidebar_cleanup()
+    let images = await get_images_by_location_id(loc.Id);
+
     let sidebar = document.querySelector('#sidebar');
-    sidebar.appendChild(img_div);
+
+    let sidebar_image_container = document.createElement('div');
+    sidebar_image_container.setAttribute('id', 'sidebar-image-container');
+    sidebar.appendChild(sidebar_image_container);
+
+    let img_header = document.createElement('div');
+    img_header.setAttribute('id', 'sidebar-image-header');
+    let img_header_text = document.createElement('h4');
+    img_header_text.innerText = `Images for ${loc.Place}`;
+
+    img_header.appendChild(img_header_text);
+    sidebar_image_container.appendChild(img_header);
+
+    let img_div = document.createElement('div')
+    img_div.setAttribute('id', 'sidebar-image-group');
+    sidebar_image_container.appendChild(img_div);
+
     images.forEach(image => {
         let image_element = document.createElement('img');
         image_element.setAttribute('class', 'sidebar-image')
