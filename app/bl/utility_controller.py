@@ -5,7 +5,7 @@ def row_to_dict(row):
     return tf.row_to_dict(row)
 
 
-def rows_to_dict(rows):
+def rows_to_dicts(rows):
     return tf.rows_to_dicts(rows)
 
 

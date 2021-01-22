@@ -19,7 +19,7 @@ def place_name(place_name):
     # comment_likes
     # users
 
-    place_dicts = uc.rows_to_dict(places)
+    place_dicts = uc.rows_to_dicts(places)
     return render_template('place_name.html', place_name=place_name,
                            places_dicts=place_dicts)
 

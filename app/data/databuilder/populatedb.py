@@ -50,5 +50,9 @@ def populate_db(amount=10):
     add_rows(UserBadge, GenUserBadge, amount)
 
 
+def populate_pictures(amount=1000):
+    add_rows(Picture, GenPicture, amount)
+
+
 if __name__ == '__main__':
-    populate_db(amount=100)
+    populate_db()
