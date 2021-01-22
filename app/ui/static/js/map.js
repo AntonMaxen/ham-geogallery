@@ -1,4 +1,5 @@
-let api_key = 'AIzaSyDmfIZTORaan7mk7CLAlKAnXS4t0csT9E0';
+import {config} from './config.js';
+let api_key = config.api_key;
 let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${api_key}&callback=initMap&libraries=&v=weekly`;
 script.defer = true;
