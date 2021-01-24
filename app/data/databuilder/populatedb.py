@@ -54,5 +54,9 @@ def populate_pictures(amount=1000):
     add_rows(Picture, GenPicture, amount)
 
 
+def populate_reviews(amount=1000):
+    add_rows(Review, GenReview, amount)
+
+
 if __name__ == '__main__':
-    populate_db()
+    populate_reviews()

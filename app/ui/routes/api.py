@@ -29,6 +29,15 @@ def location_pictures(location_id):
     return json.dumps(picture_dicts)
 
 
+@bp.route('/resource/location/<location_id>/review/all')
+def location_reviews(location_id):
+    location = lc.get_location_by_id(location_id)
+    reviews = location.review
+    review_dicts = uc.rows_to_dicts(reviews)
+    review_dicts = make_list_of_dicts_jsonable(review_dicts)
+    return json.dumps(review_dicts)
+
+
 @bp.route('/static/image/<file_name>')
 def picture(file_name):
     image_folder = 'Photos'

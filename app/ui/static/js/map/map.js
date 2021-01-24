@@ -1,4 +1,6 @@
 import {config} from './config.js';
+import {load_sidebar_data} from "./sidebar.js";
+
 let api_key = config.api_key;
 let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${api_key}&callback=initMap&libraries=&v=weekly`;
@@ -14,7 +16,7 @@ window.initMap = async () => {
 
 
     if (current_location) {
-        load_location_data(current_location.location);
+        load_sidebar_data(current_location.location);
     }
 }
 
@@ -75,54 +77,6 @@ let center_map_on_marker = (map, marker) => {
 }
 
 
-let get_images_by_location_id = async (loc_id) => {
-    let response = await fetch(`http://localhost:5000/api/resource/location/${loc_id}/picture/all`);
-    let images = await response.json();
-    return images
-}
-
-
-let sidebar_cleanup = () => {
-    let img_container = document.querySelector('#sidebar-image-container');
-
-    if (img_container) {
-        img_container.parentNode.removeChild(img_container);
-    }
-}
-
-let load_location_data = async (loc) => {
-
-    sidebar_cleanup()
-    let images = await get_images_by_location_id(loc.Id);
-
-    let sidebar = document.querySelector('#sidebar');
-
-    let sidebar_image_container = document.createElement('div');
-    sidebar_image_container.setAttribute('id', 'sidebar-image-container');
-    sidebar.appendChild(sidebar_image_container);
-
-    let img_header = document.createElement('div');
-    img_header.setAttribute('id', 'sidebar-image-header');
-    let img_header_text = document.createElement('h4');
-    img_header_text.innerText = `Images for ${loc.Place}`;
-
-    img_header.appendChild(img_header_text);
-    sidebar_image_container.appendChild(img_header);
-
-    let img_div = document.createElement('div')
-    img_div.setAttribute('id', 'sidebar-image-group');
-    sidebar_image_container.appendChild(img_div);
-
-    images.forEach(image => {
-        let image_element = document.createElement('img');
-        image_element.setAttribute('class', 'sidebar-image')
-        image_element.setAttribute('src', `http://localhost:5000/api/static/image/${image.FileName}`);
-        img_div.appendChild(image_element);
-    });
-
-}
-
-
 let load_locations = (map, locations) => {
     let location_objects = [];
     locations.forEach(loc => {
@@ -140,7 +94,7 @@ let load_locations = (map, locations) => {
             icon: '../static/images/Templatic-map-icons/meetups.png'
         });
         location_object.marker.addListener('click', () => {
-            load_location_data(loc);
+            load_sidebar_data(loc);
         });
         location_object.location = loc;
         location_objects.push(location_object);
