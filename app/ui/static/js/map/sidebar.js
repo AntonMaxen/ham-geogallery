@@ -25,12 +25,44 @@ let load_image_container = async (loc) => {
     img_div.setAttribute('id', 'sidebar-image-group');
     sidebar_container.appendChild(img_div);
 
-    images.forEach(image => {
+    await asyncForEach(images,async (image) => {
+        console.log('starting');
+        let image_container = document.createElement('div');
+        image_container.setAttribute('class', 'sidebar-image-container');
+
         let image_element = document.createElement('img');
-        image_element.setAttribute('class', 'sidebar-image')
+        image_element.setAttribute('class', 'sidebar-image');
         image_element.setAttribute('src', `http://localhost:5000/api/static/image/${image.FileName}`);
-        img_div.appendChild(image_element);
+
+        let image_text = document.createElement('div');
+        image_text.setAttribute('class', 'image-text');
+        let picture_likes = await api.get_amount_likes_by_picture_id(image.Id);
+        image_text.innerText = `${picture_likes.likes}`;
+
+        image_container.addEventListener('mouseover', show_element);
+        image_container.addEventListener('mouseleave', hide_element);
+
+        image_container.appendChild(image_element);
+        image_container.appendChild(image_text);
+        img_div.appendChild(image_container);
     });
+    console.log('done');
+}
+
+async function asyncForEach(array, callback) {
+    for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array);
+    }
+}
+
+function show_element(e) {
+   let text_element = this.querySelector('.image-text');
+   text_element.style.opacity = 1;
+}
+
+function hide_element(e) {
+    let text_element = this.querySelector('.image-text');
+    text_element.style.opacity = 0;
 }
 
 let load_review_container = async (loc) => {

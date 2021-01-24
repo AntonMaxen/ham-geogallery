@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, url_for, request, send_file
 import app.bl.location_controller as lc
 import app.bl.utility_controller as uc
 import app.bl.picture_controller as pc
+import app.bl.picture_like_controller as plc
+import app.bl.review_like_controller as rlc
 from app.utils import (
     make_list_of_dicts_jsonable,
     make_dict_jsonable,
@@ -36,6 +38,27 @@ def location_reviews(location_id):
     review_dicts = uc.rows_to_dicts(reviews)
     review_dicts = make_list_of_dicts_jsonable(review_dicts)
     return json.dumps(review_dicts)
+
+
+@bp.route('/resource/picture/<picture_id>/like/count')
+def picture_likes(picture_id):
+    amount_of_likes = plc.get_amount_of_likes_by_picture_id(picture_id)
+    if amount_of_likes is None:
+        amount_of_likes = {
+            'status': 404
+        }
+    return json.dumps(amount_of_likes)
+
+
+@bp.route('/resource/review/<review_id>/like/count')
+def review_likes(review_id):
+    amount_of_likes = rlc.get_amount_of_likes_by_review_id(review_id)
+    if amount_of_likes is None:
+        amount_of_likes = {
+            'status': 404
+        }
+
+    return json.dumps(amount_of_likes)
 
 
 @bp.route('/static/image/<file_name>')

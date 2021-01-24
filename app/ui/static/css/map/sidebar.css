@@ -23,16 +23,27 @@ hide scrollbar
 }
 
 .sidebar-image {
-    flex:none;
-    box-sizing: border-box;
-    border-radius: 7%;
-    border: rgba(0, 0, 0, 0.3) 1px solid;
-    width: calc((100% / 3) - 8px);
-    padding: 2px;
-    margin: 4px;
-    background-color: gainsboro;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    box-sizing: inherit;
+    border: rgba(0, 0, 0, 0.1) 1px solid;;
 }
 
+
+.sidebar-image-container {
+    position: relative;
+    flex:none;
+    box-sizing: border-box;
+    border-radius: 5%;
+    border: rgba(0, 0, 0, 0.2) 1px solid;
+    --width: calc((100% / 3) - 8px);
+    width: var(--width);
+    padding: 1px;
+    margin: 4px;
+    background-color: darkcyan;
+    cursor: pointer;
+}
 
 .sidebar-container-header {
     text-align: center;
@@ -61,6 +72,20 @@ hide scrollbar
     display: flex;
     flex-flow: row wrap;
     margin: 5px;
+}
+
+.image-text {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color:darkseagreen;
+    font-family: monospace;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0,0,0,0.3);
+    font-size: 50px;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s linear;
 }
 
 .sidebar-review-group {
