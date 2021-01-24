@@ -79,7 +79,7 @@ let load_review_container = async (loc) => {
     review_container.setAttribute('class', 'sidebar-review-group');
     sidebar_container.appendChild(review_container);
 
-    reviews.forEach(review => {
+    await asyncForEach(reviews, async (review) => {
        let review_div = document.createElement('div');
        review_div.setAttribute('class', 'sidebar-review');
        let title = document.createElement('h5');
@@ -91,7 +91,8 @@ let load_review_container = async (loc) => {
        let bottom_bar = document.createElement('div');
        bottom_bar.setAttribute('class', 'sidebar-container-bottombar');
        let likes = document.createElement('span');
-       likes.innerText = `Likes 10`;
+       let review_likes = await api.get_amount_likes_by_review_id(review.Id);
+       likes.innerText = `Likes ${review_likes.likes}`;
        likes.addEventListener('click', () => {
            let split_string = likes.innerText.split(' ');
            let new_value = parseInt(split_string[1]) + 1;

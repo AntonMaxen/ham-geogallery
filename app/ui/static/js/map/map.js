@@ -18,6 +18,12 @@ window.initMap = async () => {
     if (current_location) {
         load_sidebar_data(current_location.location);
     }
+
+    map.addListener('click', (mapsMouseEvent) => {
+        console.log(mapsMouseEvent.latLng.lat())
+        console.log(mapsMouseEvent.latLng.lng())
+
+    });
 }
 
 let create_map = async () => {
