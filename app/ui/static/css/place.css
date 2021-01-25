@@ -22,7 +22,7 @@ body {
 
 
 #container {
-    background-color: #f1f1f1;
+    background-color: white;
     width: 100%;
     overflow: auto;
     position: absolute;
@@ -33,15 +33,13 @@ body {
 
 
 .scroll_left {
-  background-color: white;
   float: left;
   width: 60%;
   height: 100%;
   overflow-y: scroll;
 }
 .scroll_right {
-  background-color: white;
-  margin-left: 60%;
+  float: right;
   width: 40%;
   height: 100%;
   overflow-y: scroll;
@@ -59,7 +57,7 @@ body {
 #myProgress {
   width: 10%;
   background-color: red;
-  margin-left: 1%;
+  float: right;
 }
 
 #myBar {

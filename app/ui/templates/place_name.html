@@ -8,22 +8,20 @@
 <body>
     <div id="content">
         <div id="top-bar"></div>
-        <div id="container_left">
+        <div id="container">
             <div class="scroll_left">
                 {% for loc in locrev %}
                 <b>{{loc.Place}}</b>
                 <div>
                     {% for r in loc.review %}
                     <div>
-
+                        {{r.Title}}
                         <div id="myProgress">
                             <div id="myBar"style="width:calc({{r.Score}}% * 10)"></div>
-                        </div>
 
-                        {{r.Title}}
-                        <div>
-                            <li class="box">{{r.ReviewText}}</li>
                         </div>
+                            <li class="box">{{r.ReviewText}}</li>
+
                     </div>
                     {% endfor %}
                 </div>
