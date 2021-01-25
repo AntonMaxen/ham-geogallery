@@ -244,6 +244,7 @@ Möteshållare: Anton Maxén
     - Möteshållare Henrik Liman
 
 
+Datum: 21-01-21
 Närvarande:
 Mattias Barth, Henrik Liman, Anton Maxén
 Möteshållare:Henrik Liman
@@ -261,6 +262,54 @@ Möteshållare:Henrik Liman
 * Bestämma nästa möte och nästa ordförande
  - Nästa möte Fredag 22/1 kl 13:00
  - Mattias håller i nästa möte
+ 
+ 
+ 
+Datum: 21-01-22 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Inget att rapportera
+* Granska PR
+ - Gick igenom Map view samt api.route och godkände
+* Lägga till nya kort/issues
+ - Inget nytt
+* Fördela kort/issues
+ - Inget att fördela
+* Övriga kommentarer
+ - Gick igenom vad Anton gjort. Främst kollade vi map view.
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte 210125
+ - Anton håller nästa möte kl 8:30, eller när ev föreläsning slutat
+
+ 
+Datum: 21-01-25
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Mattias: Ska börja att implementera login efter lite research, signup, login sidor.
+ - Henrik: Ska få in bilder i places som man letar efter och lite styling. Visat status hur det ser ut.
+ - Anton: Lägga till funktionalitet när man klickar på kartan så att man får möjlighet till att lägga till en plats, samt begränsa hur måga bilder / reviews som visas när en plats laddas.
+
+* Granska PR
+ - mapsview-v2 är mergas, med lite nya api routes
+
+* Lägga till nya kort/issues
+ - inget nytt slutspurt göra det som vi hinner med.
+
+* Fördela kort/issues
+ - inget nytt att fördela
+ 
+* Övriga kommentarer
+ - Jobba på!
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Henrik tar rodret, 2021-01-26 Imorgon Tisdag kl 09:00 på pricken!!!
+
 
  ***Mall:***
  

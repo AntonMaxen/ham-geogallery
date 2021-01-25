@@ -6,9 +6,13 @@ def get_all_pic_likes():
     return tf.get_all_rows(PictureLike)
 
 
-def get_pic_like_by_picture_id(row_id):
+def get_pic_likes_by_picture_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(PictureLike, row_id, 'PictureId')
+        rows = tf.get_rows_by_column(PictureLike, row_id, 'PictureId')
+        if rows is not None:
+            return rows
+        else:
+            return []
 
 
 def get_pic_like_by_user_id(row_id):

@@ -3,5 +3,4 @@ venv/
 __pycache__/
 mapsdb.mwb.bak
 Photos
-
-
+app/ui/static/js/map/config.js

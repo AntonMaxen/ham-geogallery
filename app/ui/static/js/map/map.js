@@ -1,4 +1,7 @@
-let api_key = 'AIzaSyDmfIZTORaan7mk7CLAlKAnXS4t0csT9E0';
+import {config} from './config.js';
+import {load_sidebar_data} from "./sidebar.js";
+
+let api_key = config.api_key;
 let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${api_key}&callback=initMap&libraries=&v=weekly`;
 script.defer = true;
@@ -13,8 +16,14 @@ window.initMap = async () => {
 
 
     if (current_location) {
-        load_location_data(current_location.location);
+        load_sidebar_data(current_location.location);
     }
+
+    map.addListener('click', (mapsMouseEvent) => {
+        console.log(mapsMouseEvent.latLng.lat())
+        console.log(mapsMouseEvent.latLng.lng())
+
+    });
 }
 
 let create_map = async () => {
@@ -74,27 +83,6 @@ let center_map_on_marker = (map, marker) => {
 }
 
 
-let load_location_data = async (loc) => {
-    let container = document.querySelector('#sidebar-image-container');
-    if (container) {
-        container.parentNode.removeChild(container);
-    }
-    let response = await fetch(`http://localhost:5000/api/resource/location/${loc.Id}/picture/all`);
-    let images = await response.json();
-    let img_div = document.createElement('div');
-    img_div.setAttribute('id', 'sidebar-image-container');
-    let sidebar = document.querySelector('#sidebar');
-    sidebar.appendChild(img_div);
-    images.forEach(image => {
-        let image_element = document.createElement('img');
-        image_element.setAttribute('class', 'sidebar-image')
-        image_element.setAttribute('src', `http://localhost:5000/api/static/image/${image.FileName}`);
-        img_div.appendChild(image_element);
-    });
-
-}
-
-
 let load_locations = (map, locations) => {
     let location_objects = [];
     locations.forEach(loc => {
@@ -112,7 +100,7 @@ let load_locations = (map, locations) => {
             icon: '../static/images/Templatic-map-icons/meetups.png'
         });
         location_object.marker.addListener('click', () => {
-            load_location_data(loc);
+            load_sidebar_data(loc);
         });
         location_object.location = loc;
         location_objects.push(location_object);
