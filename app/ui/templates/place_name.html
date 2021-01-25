@@ -15,33 +15,37 @@
                 <div>
                     {% for r in loc.review %}
                     <div>
+
+                        <div id="myProgress">
+                            <div id="myBar"style="width:calc({{r.Score}}% * 10)"></div>
+                        </div>
+
+                        {{r.Title}}
+                        <div>
+                            <li class="box">{{r.ReviewText}}</li>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                    {% endfor %}
+            </div>
+
+            <div class="scroll_right">
+                {% for loc in locrev %}
+                <b>{{loc.Place}}</b>
+                <div>
+                    {% for r in loc.review %}
+                    <div>
                         {{r.Title}}
                         {{r.Score}}
                         <div>
                             {{r.ReviewText}}
                         </div>
-                    </div>
-                    {% endfor %}
-                            </div>
+                        </div>
                     {% endfor %}
                 </div>
-
-                <div class="scroll_right">
-                    {% for loc in locrev %}
-                    <b>{{loc.Place}}</b>
-                    <div>
-                        {% for r in loc.review %}
-                        <div>
-                            {{r.Title}}
-                            {{r.Score}}
-                            <div>
-                                {{r.ReviewText}}
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endfor %}
-                    <div/>
+                {% endfor %}
+                <div/>
             </div>
         </div>
     </div>

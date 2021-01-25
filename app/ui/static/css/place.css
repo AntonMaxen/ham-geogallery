@@ -47,3 +47,23 @@ body {
   overflow-y: scroll;
 }
 
+.box {
+  background: #CDF0F6;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  list-style-type: none;
+  margin: 4px;
+  padding: 2px;
+}
+
+#myProgress {
+  width: 10%;
+  background-color: red;
+  margin-left: 1%;
+}
+
+#myBar {
+  width: 1%;
+  height: 10px;
+  background-color: green;
+}
