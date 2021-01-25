@@ -13,12 +13,12 @@ def get_review_like_by_user_id(row_id):
 
 def get_review_likes_by_user_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(ReviewLike, row_id, col_name='UserId')
+        return tf.get_rows_by_column(ReviewLike, row_id, col_name='UserId')
 
 
 def get_review_likes_by_review_id(row_id):
     if tf.validate_number(row_id):
-        return tf.get_row_by_column(ReviewLike, row_id, col_name='ReviewId')
+        return tf.get_rows_by_column(ReviewLike, row_id, col_name='ReviewId')
 
 
 def remove_review_like_by_id(row_id):
