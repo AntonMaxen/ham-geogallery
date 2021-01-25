@@ -4,23 +4,17 @@
     overflow-y: scroll;
     top: 50px;
     bottom: 0;
-}
-
-/*********************
-hide scrollbar
-**********************/
-#sidebar::-webkit-scrollbar {
-    display: none;
-}
-
-#sidebar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
     box-sizing: border-box;
     border-right: rgba(0, 0, 0, 0.1) solid 1px;
     background-color: rgba(0, 139, 139, 0.8);
     padding: 20px;
+    scrollbar-color: darkseagreen rgba(0, 139, 139, 0.5);
 }
+
+
+/*********************
+hide scrollbar
+**********************/
 
 .sidebar-image {
     width: 100%;
@@ -48,7 +42,9 @@ hide scrollbar
 .sidebar-container-header {
     text-align: center;
     box-sizing: border-box;
-    border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
+    border: rgba(0, 0, 0, 0) 1px solid;
+    background-color: rgba(0,0,0,0.05);
+    cursor: pointer;
 }
 
 .sidebar-container-header > h4 {
@@ -67,7 +63,7 @@ hide scrollbar
     border-radius: 3px;
 }
 
-#sidebar-image-group {
+.sidebar-image-group {
     box-sizing: border-box;
     display: flex;
     flex-flow: row wrap;
@@ -90,7 +86,7 @@ hide scrollbar
 
 .sidebar-review-group {
     box-sizing: border-box;
-    margin: 5px;
+    margin: 10px;
 }
 
 .sidebar-container-bottombar {

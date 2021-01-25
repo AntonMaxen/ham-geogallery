@@ -1,12 +1,14 @@
 import app.data.databuilder.utils.generator as gen
+import random
 
 
 class GenUser:
     def __init__(self):
         self.FirstName = gen.get_random_first_name()
         self.LastName = gen.get_random_last_name()
-        self.Email = gen.get_random_email()
-        self.Username = gen.get_random_username()
+        self.Email = str(random.randint(1, 1000000)) + gen.get_random_email()
+        self.Username = gen.get_random_username() + \
+            str(random.randint(1, 1000000))
         hash_salt = gen.get_hash_salt(gen.get_random_password())
         self.Hash = hash_salt['hash']
         self.Salt = hash_salt['salt']
