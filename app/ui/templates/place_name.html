@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Place_name</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/place.css')}}" />
 </head>
 <body>
-    <h1>{{place_name}}</h1>
-    <div>
-        {% for place in places_dicts %}
-            <ul>
-            {% for key, value in place.items() %}
-                <li>{{ key }}: {{ value }}</li>
-            {% endfor %}
-            </ul>
-        {% endfor %}
+    <div id="content">
+        <div id="top-bar"></div>
+        <div id="container_left">
+            <div class="scroll_left">
+                {% for loc in locrev %}
+                <b>{{loc.Place}}</b>
+                <div>
+                    {% for r in loc.review %}
+                    <div>
+                        {{r.Title}}
+                        {{r.Score}}
+                        <div>
+                            {{r.ReviewText}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                            </div>
+                    {% endfor %}
+                </div>
+
+                <div class="scroll_right">
+                    {% for loc in locrev %}
+                    <b>{{loc.Place}}</b>
+                    <div>
+                        {% for r in loc.review %}
+                        <div>
+                            {{r.Title}}
+                            {{r.Score}}
+                            <div>
+                                {{r.ReviewText}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div/>
+            </div>
+        </div>
     </div>
 
 </body>
