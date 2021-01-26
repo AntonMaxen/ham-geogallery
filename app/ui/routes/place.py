@@ -20,10 +20,10 @@ def place_name(place_name):
     # users
 
     locrev = session.query(lc.lr.Location).filter(lc.lr.Location.Place.like(f'%{place_name}%')).all()
+    pic = []
 
 
-
-    return render_template('place_name.html', place_name=place_name,locrev=locrev)
+    return render_template('place_name.html', place_name=place_name,locrev=locrev,pic=pic)
 
 
 @bp.route('/<place_name>/<category_name>')

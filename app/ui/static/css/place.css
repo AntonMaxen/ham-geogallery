@@ -8,21 +8,14 @@ body {
 }
 #content {
    height: 100%;
-
 }
 #top-bar {
     height: 50px;
     width: 100%;
-    background-color: pink;
+    background-color: darkseagreen;
 }
-#container_left{
-    height: calc(100% - 50px);
-    width: 100%;
-}
-
-
 #container {
-    background-color: white;
+    background-color: darkcyan;
     width: 100%;
     overflow: auto;
     position: absolute;
@@ -32,36 +25,50 @@ body {
 }
 
 
+
 .scroll_left {
   float: left;
-  width: 60%;
+  width: 55%;
   height: 100%;
   overflow-y: scroll;
 }
 .scroll_right {
-  float: right;
-  width: 40%;
+  width: 45%;
   height: 100%;
   overflow-y: scroll;
 }
 
+#rev_box{
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 5%;
+}
 .box {
-  background: #CDF0F6;
-  border: 1px solid #d4d4d4;
-  border-radius: 4px;
+  background: white;
+  border: 2px solid black;
   list-style-type: none;
-  margin: 4px;
-  padding: 2px;
 }
 
 #myProgress {
   width: 10%;
   background-color: red;
   float: right;
+  border: 2px solid black;
+
 }
 
 #myBar {
-  width: 1%;
   height: 10px;
   background-color: green;
+}
+div.username{
+    float: right;
+}
+div.top_margin{
+    margin-top: 3%;
+}
+div.a {
+  text-align: center;
+  font-size: 30px;
 }

@@ -11,17 +11,14 @@
         <div id="container">
             <div class="scroll_left">
                 {% for loc in locrev %}
-                <b>{{loc.Place}}</b>
-                <div>
+                <div class="a"><b>{{loc.Place}}</b></div>
+                <div id="rev_box">
                     {% for r in loc.review %}
-                    <div>
-                        {{r.Title}}
-                        <div id="myProgress">
-                            <div id="myBar"style="width:calc({{r.Score}}% * 10)"></div>
-
-                        </div>
-                            <li class="box">{{r.ReviewText}}</li>
-
+                    <div class="top_margin">
+                        <div class="a" font-size="20px"> {{r.Title}}</div>
+                        <div id="myProgress"><div id="myBar"style="width:calc({{r.Score}}% * 10)"></div></div>
+                        <div class="box">{{r.ReviewText}}</div>
+                        <div class="username">{{r.user.Username}}</div>
                     </div>
                     {% endfor %}
                 </div>
@@ -30,16 +27,10 @@
 
             <div class="scroll_right">
                 {% for loc in locrev %}
-                <b>{{loc.Place}}</b>
+                <div class="a"><b>{{loc.Place}}</b></div>
                 <div>
-                    {% for r in loc.review %}
-                    <div>
-                        {{r.Title}}
-                        {{r.Score}}
-                        <div>
-                            {{r.ReviewText}}
-                        </div>
-                        </div>
+                    {% for p in loc.picture %}
+                        <img src="http://127.0.0.1:5000/api/static/image/{{p.ImageName}}.png" alt="Simply Easy Learning" width="200" height="200">
                     {% endfor %}
                 </div>
                 {% endfor %}
