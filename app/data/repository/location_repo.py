@@ -1,6 +1,11 @@
 import app.data.repository.table_functions as tf
 from app.data.models.model_imports import *
-from app.utils import print_dict, print_dicts
+from app.data.db import *
+
+
+def get_locations(place_name):
+    return session.query(Location).\
+        filter(Location.Place.like(f'%{place_name}%')).all()
 
 
 def get_all_locations():
@@ -15,7 +20,6 @@ def get_location_by_id(row_id):
 def get_locations_by_user_id(row_id):
     if tf.validate_number(row_id):
         return tf.get_rows_by_column(Location, row_id, col_name='UserId')
-
 
 
 def get_locations_by_category_id(row_id):
@@ -58,9 +62,7 @@ def search_location(col_name, value):
     return tf.get_rows_like_column_value(Location, col_name, value)
 
 
-def get_pictures_by_location_id(location_id):
-    pass
 
 
 if __name__ == '__main__':
-    remove_locations_by_user_id(6)
+    pass
