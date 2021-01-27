@@ -12,7 +12,7 @@ def place():
 
 @bp.route('/<place_name>')
 def place_name(place_name):
-    location = session.query(lc.lr.Location) \
-        .filter(lc.lr.Location.Place.like(f'%{place_name}%')).all()
+    location = lc.get_location(place_name)
+
     return render_template(
         'place_name.html', place_name=place_name, location=location)
