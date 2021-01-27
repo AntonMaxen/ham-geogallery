@@ -1,5 +1,5 @@
 import {config} from './config.js';
-import {load_sidebar_data} from "./sidebar.js";
+import {load_sidebar_data, load_sidebar_new_location_data} from "./sidebar.js";
 
 let api_key = config.api_key;
 let script = document.createElement('script');
@@ -20,9 +20,7 @@ window.initMap = async () => {
     }
 
     map.addListener('click', (mapsMouseEvent) => {
-        console.log(mapsMouseEvent.latLng.lat())
-        console.log(mapsMouseEvent.latLng.lng())
-
+        load_sidebar_new_location_data(mapsMouseEvent.latLng);
     });
 }
 

@@ -1,7 +1,7 @@
 import * as api from "./api.js";
 import {truncate_text} from "./utils.js";
 
-export {load_sidebar_data};
+export {load_sidebar_data, load_sidebar_new_location_data};
 
 let sidebar_cleanup = () => {
     let containers = document.querySelectorAll('.sidebar-container');
@@ -134,7 +134,7 @@ let load_image_container = async (loc, amount) => {
         let db_images = await api.get_all_images_by_location_id(loc.Id);
         if (db_images.length > amount_images) {
             let container = this.parentNode.querySelector('.sidebar-image-group');
-            for (let i = amount_images; i < amount_images + 1 && i < db_images.length; i++) {
+            for (let i = amount_images; i < amount_images + 3 && i < db_images.length; i++) {
                 let image = await create_image(db_images[i]);
                 container.appendChild(image);
             }
@@ -182,7 +182,7 @@ let load_review_container = async (loc, amount) => {
                 this.parentNode.parentNode.scrollBy({
                     top: review.offsetHeight + 10,
                     left: 0,
-                    behavior: 'smooth'
+                    behavior: 'auto'
                 });
             }
             if (container.childNodes.length == db_reviews.length) {
@@ -190,6 +190,11 @@ let load_review_container = async (loc, amount) => {
             }
         }
     });
+}
+
+
+let load_sidebar_new_location_data = async(lat_lng) => {
+    console.log(lat_lng.lat(), lat_lng.lng())
 }
 
 
