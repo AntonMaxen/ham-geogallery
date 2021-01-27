@@ -13,5 +13,9 @@ def get_all_locations():
     return lr.get_all_locations()
 
 
+def get_location(place_name):
+    return lr.get_locations(place_name)
+
+
 if __name__ == '__main__':
     pass

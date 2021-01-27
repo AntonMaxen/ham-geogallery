@@ -34,7 +34,7 @@ def add_row(model, gen_model):
     add_rows(model, gen_model, 1)
 
 
-def populate_db(amount=10):
+def populate_db(amount=100):
     add_rows(Category, GenCategory, amount)
     add_rows(User, GenUser, amount)
     add_rows(Location, GenLocation, amount)
@@ -50,7 +50,7 @@ def populate_db(amount=10):
     add_rows(UserBadge, GenUserBadge, amount)
 
 
-def populate_pictures(amount=1000):
+def populate_pictures(amount=100):
     add_rows(Picture, GenPicture, amount)
 
 
@@ -63,4 +63,5 @@ def populate_picture_likes(amount=10000):
 
 
 if __name__ == '__main__':
-    populate_picture_likes()
+    populate_db()
+    populate_pictures(200)
