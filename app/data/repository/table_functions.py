@@ -1,33 +1,57 @@
 from app.data.db import session
 from sqlalchemy.sql.expression import func
 from sqlalchemy import exc
+from app.data.models.model_imports import *
 import datetime
 
 
 def get_all_rows(model):
     # Return all rows in given table
-    return session.query(model).all()
+    try:
+        result = session.query(model).all()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        result = []
+
+    return result
 
 
 def get_row_by_column(model, row_id, col_name='Id'):
     # Returns First row that matches model.col_name == row_id
-    return session.query(model) \
-        .filter(getattr(model, col_name) == row_id) \
-        .one()
+    try:
+        result = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .one()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        result = None
+
+    return result
 
 
 def get_rows_by_column(model, row_id, col_name='Id'):
-    return session.query(model) \
-        .filter(getattr(model, col_name) == row_id) \
-        .all()
+    try:
+        result = session.query(model) \
+            .filter(getattr(model, col_name) == row_id).all()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        result = []
+
+    return result
 
 
 def get_rows_like_column_value(model, col_name, value):
     """Return all rows that contains model.col_name LIKE value
     Good way to search database. """
-    return session.query(model) \
-        .filter(getattr(model, col_name).ilike(f'%{value}%')) \
-        .all()
+    try:
+        result = session.query(model) \
+            .filter(getattr(model, col_name).ilike(f'%{value}%')) \
+            .all()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        result = []
+
+    return result
 
 
 def validate_number(number):
@@ -131,17 +155,7 @@ def get_highest_row(model, col_name='Id'):
 
 
 if __name__ == '__main__':
-    user = {
-        "FirstName": "anton",
-        "LastName": "maxen",
-        "Email": "Goiode@mail.com",
-        "Username": "hehehe",
-        "Hash": "fsgsdlkjtglksj5432lk",
-        "Salt": "4243234",
-        "PhoneNumber": "435363463",
-        "DateOfBirth": datetime.date.today(),
-        "JoinDate": datetime.date.today(),
-        "PermissionLevel": 5
-    }
+    print(get_rows_by_column(ReviewLike, 'sfdfs', 'ReviewId'))
+
 
 

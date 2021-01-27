@@ -1,5 +1,5 @@
 import {config} from './config.js';
-import {load_sidebar_data} from "./sidebar.js";
+import {load_sidebar_data, load_sidebar_new_location_data} from "./sidebar.js";
 
 let api_key = config.api_key;
 let script = document.createElement('script');
@@ -16,13 +16,11 @@ window.initMap = async () => {
 
 
     if (current_location) {
-        load_sidebar_data(current_location.location);
+        load_sidebar_data(current_location.location, 3, 3);
     }
 
     map.addListener('click', (mapsMouseEvent) => {
-        console.log(mapsMouseEvent.latLng.lat())
-        console.log(mapsMouseEvent.latLng.lng())
-
+        load_sidebar_new_location_data(mapsMouseEvent.latLng);
     });
 }
 
@@ -100,7 +98,7 @@ let load_locations = (map, locations) => {
             icon: '../static/images/Templatic-map-icons/meetups.png'
         });
         location_object.marker.addListener('click', () => {
-            load_sidebar_data(loc);
+            load_sidebar_data(loc, 3, 3);
         });
         location_object.location = loc;
         location_objects.push(location_object);

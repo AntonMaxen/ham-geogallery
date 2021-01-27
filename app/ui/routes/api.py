@@ -17,23 +17,70 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 @bp.route('/resource/location/all')
 def all_locations():
     locations = lc.get_all_locations()
+    if locations is None:
+        return json.dumps({
+            'status': 404
+        })
+
     location_dicts = uc.rows_to_dicts(locations)
     location_dicts = make_list_of_dicts_jsonable(location_dicts)
     return json.dumps(location_dicts)
 
 
 @bp.route('/resource/location/<location_id>/picture/all')
-def location_pictures(location_id):
+def location_pictures_all(location_id):
     location = lc.get_location_by_id(location_id)
+    if location is None:
+        return json.dumps({
+            'status': 404
+        })
+
     pictures = location.picture
     picture_dicts = uc.rows_to_dicts(pictures)
     picture_dicts = make_list_of_dicts_jsonable(picture_dicts)
     return json.dumps(picture_dicts)
 
 
-@bp.route('/resource/location/<location_id>/review/all')
-def location_reviews(location_id):
+@bp.route('/resource/location/<location_id>/picture')
+def location_picture(location_id):
     location = lc.get_location_by_id(location_id)
+    if location is None:
+        return json.dumps({
+            'status': 404
+        })
+
+    amount = request.args.get('amount')
+    amount = 1 if not amount or int(amount) < 1 else int(amount)
+    pictures = location.picture[:amount]
+    picture_dicts = uc.rows_to_dicts(pictures)
+    picture_dicts = make_list_of_dicts_jsonable(picture_dicts)
+    return json.dumps(picture_dicts)
+
+
+@bp.route('/resource/location/<location_id>/review')
+def location_review(location_id):
+    location = lc.get_location_by_id(location_id)
+    if location is None:
+        return json.dumps({
+            'status': 404
+        })
+
+    amount = request.args.get('amount')
+    amount = 1 if not amount or int(amount) < 1 else int(amount)
+    reviews = location.review[:amount]
+    review_dicts = uc.rows_to_dicts(reviews)
+    review_dicts = make_list_of_dicts_jsonable(review_dicts)
+    return json.dumps(review_dicts)
+
+
+@bp.route('/resource/location/<location_id>/review/all')
+def location_reviews_all(location_id):
+    location = lc.get_location_by_id(location_id)
+    if location is None:
+        return json.dumps({
+            'status': 404
+        })
+
     reviews = location.review
     review_dicts = uc.rows_to_dicts(reviews)
     review_dicts = make_list_of_dicts_jsonable(review_dicts)
