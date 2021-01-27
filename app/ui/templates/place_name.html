@@ -10,7 +10,7 @@
         <div id="top-bar"></div>
         <div id="container">
             <div class="scroll_left">
-                {% for loc in locrev %}
+                {% for loc in location %}
                 <div class="place_box">
                     <div class="align_center"><a><b>{{loc.Place}}</b></a></div>
                 </div>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="scroll_right">
-                {% for loc in locrev %}
+                {% for loc in location %}
                 <div class="align_center "><p class="place_box" style="margin-bottom: 0px;"><a><b>{{loc.Place}}</b></a></p></div>
                 <div class="align_center">
                     <div class="pic_box" style="margin-left: 5%; margin-right: 5%">
