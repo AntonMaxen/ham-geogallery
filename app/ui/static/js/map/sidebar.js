@@ -92,6 +92,13 @@ let create_sidebar_header = (sidebar_container) => {
     return sidebar_header;
 }
 
+let create_form_container = (sidebar_container) => {
+    let form_container = document.createElement('div');
+    form_container.setAttribute('class', 'form-container');
+    sidebar_container.appendChild(form_container);
+    return form_container;
+}
+
 
 function show_element(e) {
     let text_element = this.querySelector('.image-text');
@@ -132,6 +139,7 @@ let load_image_container = async (loc, amount) => {
     sidebar_footer.addEventListener('click', async function() {
         let amount_images = document.querySelectorAll('.sidebar-image-container').length;
         let db_images = await api.get_all_images_by_location_id(loc.Id);
+
         if (db_images.length > amount_images) {
             let container = this.parentNode.querySelector('.sidebar-image-group');
             for (let i = amount_images; i < amount_images + 3 && i < db_images.length; i++) {
@@ -194,7 +202,97 @@ let load_review_container = async (loc, amount) => {
 
 
 let load_sidebar_new_location_data = async(lat_lng) => {
-    console.log(lat_lng.lat(), lat_lng.lng())
+    let lat = lat_lng.lat();
+    let lng = lat_lng.lng();
+    console.log(lat, lng)
+    let location_information = await api.get_location_info_by_latlng(lat, lng)
+    console.log(location_information)
+
+}
+
+let load_sidebar_infobox = async(loc) => {
+    let sidebar = document.querySelector('#sidebar');
+
+    let sidebar_container = create_sidebar_container(sidebar, 0);
+    let sidebar_header = create_sidebar_header(sidebar_container);
+    let header_text = document.createElement('h4');
+    header_text.innerText = `${loc.Place}`;
+    sidebar_header.appendChild(header_text);
+
+    let button_container = document.createElement('div');
+    button_container.setAttribute('class', 'button-container');
+    let button_one = document.createElement('button');
+    button_one.setAttribute('class', 'info-button');
+    button_one.innerText = 'Add Image';
+    button_one.addEventListener('click', async function() {
+        let form_containers = document.querySelectorAll('.form-container');
+        form_containers.forEach(c => c.parentNode.removeChild(c));
+
+        let form_container = create_form_container(sidebar_container);
+        form_container.innerHTML = (
+            '<h5>Add Image</h5>' +
+            '<form action="#" enctype="multipart/form-data">' +
+            '<input type="text" name="image_name" placeholder="Image Name">' +
+            '<label for="image-browse">Choose file</label>' +
+            '<input type="file" id="image-browse" name="image" accept="image/png, image/jpeg">' +
+            '<button>Submit</button>' +
+            '</form>'
+        );
+
+
+        let input = document.querySelector('input[type="file"]');
+        input.addEventListener('change', function() {
+            let textbox = document.querySelector('label[for="image-browse"]');
+            let file_list = input.files;
+            if (file_list.length > 0) {
+                let current_file = file_list[0];
+                if (["image/png", "image/jpeg"].includes(current_file.type)) {
+                    textbox.innerText = `${current_file.name}`;
+                    console.log(URL.createObjectURL(current_file))
+                } else {
+                    textbox.innerText = `Filename ${current_file.name} is not a valid filetype.`;
+                }
+            }
+            else {
+                textbox.innerText = 'No files Selected';
+            }
+        });
+
+       let form = form_container.querySelector('form');
+       form.addEventListener('submit', function(e){
+           e.preventDefault();
+           let image_name = this.querySelector('input[type="text"]').value;
+           let files = this.querySelector('input[type="file"]').files;
+           let form_data = new FormData();
+
+           if (files.length > 0 && image_name.length) {
+               console.log(files[0])
+               form_data.append('user_id', 1)
+               form_data.append('location_id', loc.Id)
+               form_data.append('image', files[0]);
+               form_data.append('image_name', image_name);
+
+               fetch('http://localhost:5000/api/add/image', {
+                   method: 'POST',
+                   body: form_data
+               }).then(response => {
+                  console.log(response)
+               });
+           }
+           console.log(files);
+           console.log(image_name);
+
+       });
+
+    });
+
+    let button_two = document.createElement('button');
+    button_two.setAttribute('class', 'info-button');
+    button_two.innerText = 'Add Review';
+
+    button_container.appendChild(button_one);
+    button_container.appendChild(button_two);
+    sidebar_container.appendChild(button_container);
 }
 
 
@@ -202,12 +300,7 @@ let load_sidebar_data = async (loc, amount_pictures=3, amount_reviews=3) => {
     sidebar_cleanup();
     let sidebar = document.querySelector('#sidebar');
 
-    let sidebar_container_header = create_sidebar_container(sidebar, 0);
-    let sidebar_header = create_sidebar_header(sidebar_container_header);
-    let header_text = document.createElement('h4');
-    header_text.innerText = `${loc.Place}`;
-    sidebar_header.appendChild(header_text);
-
+    await load_sidebar_infobox(loc);
     await load_image_container(loc, amount_pictures);
     await load_review_container(loc, amount_reviews);
 
