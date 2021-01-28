@@ -210,9 +210,15 @@ let load_sidebar_new_location_data = async(lat_lng) => {
 
 }
 
+let remove_form = sidebar_container => {
+    let form_containers = sidebar_container.querySelectorAll('.form-container');
+    let footer_containers = sidebar_container.querySelectorAll('.form-footer')
+    form_containers.forEach(c => c.parentNode.removeChild(c));
+    footer_containers.forEach(f => f.parentNode.removeChild(f));
+}
+
 let load_sidebar_infobox = async(loc) => {
     let sidebar = document.querySelector('#sidebar');
-
     let sidebar_container = create_sidebar_container(sidebar, 0);
     let sidebar_header = create_sidebar_header(sidebar_container);
     let header_text = document.createElement('h4');
@@ -224,9 +230,10 @@ let load_sidebar_infobox = async(loc) => {
     let button_one = document.createElement('button');
     button_one.setAttribute('class', 'info-button');
     button_one.innerText = 'Add Image';
+
     button_one.addEventListener('click', async function() {
-        let form_containers = document.querySelectorAll('.form-container');
-        form_containers.forEach(c => c.parentNode.removeChild(c));
+        let sidebar_container = this.parentNode.parentNode;
+        remove_form(sidebar_container);
 
         let form_container = create_form_container(sidebar_container);
         form_container.innerHTML = (
@@ -238,6 +245,16 @@ let load_sidebar_infobox = async(loc) => {
             '<button>Submit</button>' +
             '</form>'
         );
+
+        let form_footer = create_sidebar_header(sidebar_container);
+        form_footer.classList.add('form-footer');
+        let footer_text = document.createElement('h4');
+        footer_text.innerText = 'Close';
+        form_footer.appendChild(footer_text);
+        form_footer.addEventListener('click', function (){
+            let sidebar_container = this.parentNode;
+            remove_form(sidebar_container);
+        });
 
 
         let input = document.querySelector('input[type="file"]');
@@ -276,7 +293,10 @@ let load_sidebar_infobox = async(loc) => {
                    method: 'POST',
                    body: form_data
                }).then(response => {
-                  console.log(response)
+                  if (response.status == 200) {
+                      let sidebar_container = this.parentNode.parentNode;
+                      remove_form(sidebar_container)
+                  }
                });
            }
            console.log(files);

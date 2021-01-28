@@ -1,6 +1,6 @@
 from app.data.db import session
 from sqlalchemy.sql.expression import func
-from sqlalchemy import exc
+from sqlalchemy import exc, desc
 from app.data.models.model_imports import *
 import datetime
 
@@ -33,6 +33,19 @@ def get_rows_by_column(model, row_id, col_name='Id'):
     try:
         result = session.query(model) \
             .filter(getattr(model, col_name) == row_id).all()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        result = []
+
+    return result
+
+
+def get_rows_by_column_order_by_desc(model, row_id,
+                                     col_name='Id', order_id='Id'):
+    try:
+        result = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .order_by(getattr(model, order_id).desc()).all()
     except exc.SQLAlchemyError:
         session.rollback()
         result = []
@@ -146,6 +159,16 @@ def refresh_row(model_obj):
 
 def get_random_row(model):
     return session.query(model).order_by(func.random()).first()
+
+
+def get_all_rows_ordered_by(model, col_name='Id'):
+    try:
+        result = session.query(model).order_by(col_name).all()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        result = []
+
+    return result
 
 
 def get_highest_row(model, col_name='Id'):

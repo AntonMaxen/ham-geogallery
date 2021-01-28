@@ -1,6 +1,10 @@
 from flask import (
     Blueprint, render_template, url_for, request, send_file, flash, redirect
 )
+import os
+import datetime
+from werkzeug.utils import secure_filename
+
 import app.bl.location_controller as lc
 import app.bl.utility_controller as uc
 import app.bl.picture_controller as pc
@@ -39,7 +43,7 @@ def location_pictures_all(location_id):
             'status': 404
         })
 
-    pictures = location.picture
+    pictures = sorted(location.picture, key=lambda x: x.Id, reverse=True)
     picture_dicts = uc.rows_to_dicts(pictures)
     picture_dicts = make_list_of_dicts_jsonable(picture_dicts)
     return json.dumps(picture_dicts)
@@ -55,7 +59,8 @@ def location_picture(location_id):
 
     amount = request.args.get('amount')
     amount = 1 if not amount or int(amount) < 1 else int(amount)
-    pictures = location.picture[:amount]
+    pictures = sorted(location.picture, key=lambda x: x.Id, reverse=True)
+    pictures = pictures[:amount]
     picture_dicts = uc.rows_to_dicts(pictures)
     picture_dicts = make_list_of_dicts_jsonable(picture_dicts)
     return json.dumps(picture_dicts)
@@ -71,7 +76,8 @@ def location_review(location_id):
 
     amount = request.args.get('amount')
     amount = 1 if not amount or int(amount) < 1 else int(amount)
-    reviews = location.review[:amount]
+    reviews = sorted(location.review, key=lambda x: x.Id, reverse=True)
+    reviews = reviews[:amount]
     review_dicts = uc.rows_to_dicts(reviews)
     review_dicts = make_list_of_dicts_jsonable(review_dicts)
     return json.dumps(review_dicts)
@@ -85,7 +91,7 @@ def location_reviews_all(location_id):
             'status': 404
         })
 
-    reviews = location.review
+    reviews = sorted(location.review, key=lambda x: x.Id, reverse=True)
     review_dicts = uc.rows_to_dicts(reviews)
     review_dicts = make_list_of_dicts_jsonable(review_dicts)
     return json.dumps(review_dicts)
@@ -129,17 +135,43 @@ def geocoding_reverse():
 @bp.route('/add/image', methods=['POST'])
 def add_image():
     image_name = request.form.get('image_name')
+    user_id = request.form.get('user_id')
+    location_id = request.form.get('location_id')
+    print(user_id)
+    print(location_id)
     if 'image' not in request.files:
         flash('No files')
-        return redirect(request.url)
+        return redirect('/map')
 
     image = request.files.get('image')
 
     if image.filename == '':
         flash('No selected file')
-        return redirect(request.url)
+        return redirect('/map')
 
     if image and allowed_file(image.filename):
+        recent_row = pc.get_most_recent_row()
+        highest_id = recent_row.Id
+        flash('success')
+
+        photo_dir = os.path.join(get_project_root(), 'Photos')
+        fixed_filename = secure_filename(image.filename)
+        s_filename = fixed_filename.split('.')
+        file_name = f'{s_filename[0]}-{highest_id+1}.{s_filename[1]}'
+        image.save(os.path.join(photo_dir, file_name))
+
+        pc.add_picture({
+            'ImageName': image_name,
+            'Date': datetime.date.today(),
+            'UserId': user_id,
+            'LocationId': location_id,
+            'FileName': file_name
+        })
+        return redirect('/map')
+    else:
+        print('error')
+        flash('not allowed file ending')
+        return redirect('/map')
 
 
 def allowed_file(filename):
@@ -148,4 +180,6 @@ def allowed_file(filename):
 
 
 if __name__ == '__main__':
-    pass
+    rows = pc.get_pictures_by_location_ordered_by_id_desc(1)
+    print(rows[0].Id)
+    print(rows[-1].Id)

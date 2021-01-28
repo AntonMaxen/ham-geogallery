@@ -144,7 +144,7 @@ hide scrollbar
 
 .button-container {
     display: flex;
-    padding:5px;
+    padding: 10px 5px;
 }
 
 .button-container > button {
@@ -163,7 +163,7 @@ hide scrollbar
 }
 
 .form-container {
-    margin: 10px;
+    margin: 0 10px 10px;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.2);
     padding: 10px;

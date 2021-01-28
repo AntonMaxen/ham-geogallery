@@ -38,19 +38,19 @@ def add_row(model, gen_model):
 
 
 def populate_db(amount=100):
-    add_rows(Category, GenCategory, amount)
-    add_rows(User, GenUser, amount)
-    add_rows(Location, GenLocation, amount)
-    add_rows(Rating, GenRating, amount)
-    add_rows(VisitedLocation, GenVisitedLocation, amount)
-    add_rows(Picture, GenPicture, amount)
-    add_rows(PictureLike, GenPictureLike, amount)
-    add_rows(Review, GenReview, amount)
-    add_rows(ReviewLike, GenReviewLike, amount)
-    add_rows(Comment, GenComment, amount)
-    add_rows(CommentLike, GenCommentLike, amount)
-    add_rows(Badge, GenBadge, amount)
-    add_rows(UserBadge, GenUserBadge, amount)
+    add_rows(Category, GenCategory, 1000)
+    add_rows(User, GenUser, 100000)
+    add_rows(Location, GenLocation, 100)
+    add_rows(Rating, GenRating, 100000)
+    add_rows(VisitedLocation, GenVisitedLocation, 100000)
+    add_rows(Picture, GenPicture, 10000)
+    add_rows(PictureLike, GenPictureLike, 100000)
+    add_rows(Review, GenReview, 10000)
+    add_rows(ReviewLike, GenReviewLike, 100000)
+    add_rows(Comment, GenComment, 100000)
+    add_rows(CommentLike, GenCommentLike, 100000)
+    add_rows(Badge, GenBadge, 100)
+    add_rows(UserBadge, GenUserBadge, 100000)
 
 
 def populate_pictures(amount=100):
@@ -74,6 +74,5 @@ def populate_review_likes(amount=100):
 
 
 if __name__ == '__main__':
-    populate_review_likes(amount=10000)
     populate_db()
-    populate_pictures(200)
+

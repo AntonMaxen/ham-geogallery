@@ -46,7 +46,7 @@ def upgrade():
             nullable=False),
         sa.Column(
             'FileName',
-            sa.String(45),
+            sa.String(255),
             nullable=False,
             unique=True)
     )
