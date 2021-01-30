@@ -1,5 +1,6 @@
 import * as api from "./api.js";
 import {truncate_text} from "./utils.js";
+import {load_location, center_map_on_marker} from "./map.js";
 
 export {load_sidebar_data, load_sidebar_new_location_data};
 
@@ -211,7 +212,7 @@ let load_review_container = async (loc, amount) => {
 }
 
 
-let load_sidebar_new_location_data = async(lat_lng) => {
+let load_sidebar_new_location_data = async(lat_lng, map) => {
     let lat = Number(lat_lng.lat().toFixed(2));
     let lng = Number(lat_lng.lng().toFixed(2));
     console.log(lat, lng);
@@ -289,7 +290,7 @@ let load_sidebar_new_location_data = async(lat_lng) => {
         });
 
         let form = form_container.querySelector('form');
-        form.addEventListener('submit', function(e){
+        form.addEventListener('submit', async function(e){
             e.preventDefault();
             let sidebar_container = document.querySelector('.newbox');
             let place = this.querySelector('input[name="place"]').value;
@@ -305,14 +306,17 @@ let load_sidebar_new_location_data = async(lat_lng) => {
                 form_data.append('name', name);
                 form_data.append('user_id', 1);
                 form_data.append('category_id', category_id);
-                fetch('http://localhost:5000/api/add/location', {
+
+                let response = await fetch('http://localhost:5000/api/add/location', {
                     method: 'POST',
                     body: form_data
-                }).then(async response => {
-                   if (response.status == 200) {
-                       sidebar_cleanup();
-                   }
                 });
+
+                let location = await response.json();
+                let created_location = load_location(map, location);
+                center_map_on_marker(map, created_location.marker);
+                sidebar_cleanup();
+                load_sidebar_data(location, 9, 3);
             }
         });
     });

@@ -212,7 +212,7 @@ def add_location():
     name = request.form.get('name')
     user_id = request.form.get('user_id')
     category_id = request.form.get('category_id')
-    lc.add_location({
+    location = lc.add_location({
         'Place': place,
         'Longitude': longitude,
         'Latitude': latitude,
@@ -221,7 +221,11 @@ def add_location():
         'CategoryId': category_id
     })
 
-    return redirect('/map')
+    uc.refresh_row(location)
+    location_dict = uc.row_to_dict(location)
+    location_dict = make_dict_jsonable(location_dict)
+
+    return json.dumps(location_dict)
 
 
 def allowed_file(filename):
