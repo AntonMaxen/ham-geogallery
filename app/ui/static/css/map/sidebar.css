@@ -22,6 +22,7 @@ hide scrollbar
     border-radius: inherit;
     box-sizing: inherit;
     border: rgba(0, 0, 0, 0.1) 1px solid;;
+    display: block;
 }
 
 
@@ -31,8 +32,8 @@ hide scrollbar
     box-sizing: border-box;
     border-radius: 5%;
     border: rgba(0, 0, 0, 0.2) 1px solid;
-    --width: calc((100% / 3) - 8px);
-    width: var(--width);
+    width: calc((100% / 3) - 8px);
+    height: calc((237px / 3) - 8px);
     padding: 1px;
     margin: 4px;
     background-color: darkcyan;
@@ -185,6 +186,7 @@ hide scrollbar
     border: 1px solid rgba(0,0,0,0.2);
     color: darkcyan;
     border-radius: 2px;
+    margin-top: 5px;
 }
 
 .form-container input[type="file"] {
@@ -216,6 +218,18 @@ hide scrollbar
     margin-top: 10px;
 }
 
+.form-container textarea {
+    margin-top: 5px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid rgba(0,0,0,0.2);
+    color: darkcyan;
+    border-radius: 2px;
+    padding: 5px;
+}
+
 .form-container button {
     background-color: rgba(143, 188, 143, 0.5);
     border: 1px solid rgba(0,0,0,0.1);
@@ -240,7 +254,6 @@ hide scrollbar
     background-color: rgba(143, 188, 143, 0.5);
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 1px;
-    margin-bottom: 5px;
     color: darkcyan;
     font-family: monospace;
     font-size: large;
@@ -267,4 +280,5 @@ select
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
+    outline: none;
 }

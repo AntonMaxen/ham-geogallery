@@ -16,7 +16,7 @@ window.initMap = async () => {
 
 
     if (current_location) {
-        load_sidebar_data(current_location.location, 3, 3);
+        load_sidebar_data(current_location.location, 9, 3);
     }
 
     map.addListener('click', (mapsMouseEvent) => {
@@ -98,7 +98,7 @@ let load_locations = (map, locations) => {
             icon: '../static/images/Templatic-map-icons/meetups.png'
         });
         location_object.marker.addListener('click', () => {
-            load_sidebar_data(loc, 3, 3);
+            load_sidebar_data(loc, 9, 3);
         });
         location_object.location = loc;
         location_objects.push(location_object);

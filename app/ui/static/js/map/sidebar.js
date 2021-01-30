@@ -11,8 +11,6 @@ let sidebar_cleanup = () => {
     });
 }
 
-
-
 let create_image = async (image) => {
     let image_container = document.createElement('div');
     image_container.setAttribute('class', 'sidebar-image-container');
@@ -31,6 +29,7 @@ let create_image = async (image) => {
 
     image_container.appendChild(image_element);
     image_container.appendChild(image_text);
+
     return image_container;
 }
 
@@ -77,9 +76,10 @@ async function asyncForEach(array, callback) {
 }
 
 
-let create_sidebar_container = (sidebar, order=0) => {
+let create_sidebar_container = (sidebar, name='noclass', order=0) => {
     let sidebar_container = document.createElement('div');
     sidebar_container.setAttribute('class', 'sidebar-container');
+    sidebar_container.classList.add(name);
     sidebar.insertBefore(sidebar_container, sidebar.childNodes[order]);
     return sidebar_container;
 }
@@ -116,7 +116,7 @@ let load_image_container = async (loc, amount) => {
     let images = await api.get_images_by_location_id(loc.Id, amount);
     let sidebar = document.querySelector('#sidebar');
 
-    let sidebar_container = create_sidebar_container(sidebar, 1);
+    let sidebar_container = create_sidebar_container(sidebar, 'imagebox', 1);
     let sidebar_header = create_sidebar_header(sidebar_container);
     let img_header_text = document.createElement('h4');
     img_header_text.innerText = `Images`;
@@ -137,12 +137,22 @@ let load_image_container = async (loc, amount) => {
     });
 
     sidebar_footer.addEventListener('click', async function() {
-        let amount_images = document.querySelectorAll('.sidebar-image-container').length;
+        let all_images = document.querySelectorAll('.sidebar-image-container');
+        let amount_images = all_images.length;
         let db_images = await api.get_all_images_by_location_id(loc.Id);
 
         if (db_images.length > amount_images) {
+            let amount = 3 - (amount_images % 3);
+            if (amount == 3) {
+                let scroll_height = all_images[0].offsetHeight;
+                this.parentNode.parentNode.scrollBy({
+                    top: scroll_height + 10,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
             let container = this.parentNode.querySelector('.sidebar-image-group');
-            for (let i = amount_images; i < amount_images + 3 && i < db_images.length; i++) {
+            for (let i = amount_images; i < amount_images + amount && i < db_images.length; i++) {
                 let image = await create_image(db_images[i]);
                 container.appendChild(image);
             }
@@ -157,7 +167,7 @@ let load_review_container = async (loc, amount) => {
     let sidebar = document.querySelector('#sidebar');
     let reviews = await api.get_reviews_by_location_id(loc.Id, amount);
     console.log(reviews)
-    let sidebar_container = create_sidebar_container(sidebar, 2);
+    let sidebar_container = create_sidebar_container(sidebar, 'reviewbox', 2);
     let sidebar_header = create_sidebar_header(sidebar_container);
     let header_text = document.createElement('h4');
     header_text.innerText = `Reviews`;
@@ -206,7 +216,7 @@ let load_sidebar_new_location_data = async(lat_lng) => {
     let lng = lat_lng.lng();
     console.log(lat, lng)
     let location_information = await api.get_location_info_by_latlng(lat, lng)
-    console.log(location_information)
+    console.log(location_information.results[0].locations)
 
 }
 
@@ -219,7 +229,8 @@ let remove_form = sidebar_container => {
 
 let load_sidebar_infobox = async(loc) => {
     let sidebar = document.querySelector('#sidebar');
-    let sidebar_container = create_sidebar_container(sidebar, 0);
+    let sidebar_container = create_sidebar_container(sidebar, 'infobox', 0);
+    sidebar_container.classList.add('infobox');
     let sidebar_header = create_sidebar_header(sidebar_container);
     let header_text = document.createElement('h4');
     header_text.innerText = `${loc.Place}`;
@@ -232,7 +243,7 @@ let load_sidebar_infobox = async(loc) => {
     button_one.innerText = 'Add Image';
 
     button_one.addEventListener('click', async function() {
-        let sidebar_container = this.parentNode.parentNode;
+        let sidebar_container = document.querySelector('.infobox');
         remove_form(sidebar_container);
 
         let form_container = create_form_container(sidebar_container);
@@ -252,7 +263,7 @@ let load_sidebar_infobox = async(loc) => {
         footer_text.innerText = 'Close';
         form_footer.appendChild(footer_text);
         form_footer.addEventListener('click', function (){
-            let sidebar_container = this.parentNode;
+            let sidebar_container = document.querySelector('.infobox');
             remove_form(sidebar_container);
         });
 
@@ -278,6 +289,7 @@ let load_sidebar_infobox = async(loc) => {
        let form = form_container.querySelector('form');
        form.addEventListener('submit', function(e){
            e.preventDefault();
+           let sidebar_container = document.querySelector('.infobox');
            let image_name = this.querySelector('input[type="text"]').value;
            let files = this.querySelector('input[type="file"]').files;
            let form_data = new FormData();
@@ -292,9 +304,12 @@ let load_sidebar_infobox = async(loc) => {
                fetch('http://localhost:5000/api/add/image', {
                    method: 'POST',
                    body: form_data
-               }).then(response => {
+               }).then(async response => {
                   if (response.status == 200) {
-                      let sidebar_container = this.parentNode.parentNode;
+                      let image_box = document.querySelector('.imagebox');
+                      let images = image_box.querySelectorAll('.sidebar-image-container');
+                      image_box.parentNode.removeChild(image_box);
+                      await load_image_container(loc, images.length + 1);
                       remove_form(sidebar_container)
                   }
                });
@@ -310,6 +325,80 @@ let load_sidebar_infobox = async(loc) => {
     button_two.setAttribute('class', 'info-button');
     button_two.innerText = 'Add Review';
 
+    button_two.addEventListener('click', async function(){
+        let sidebar_container = document.querySelector('.infobox');
+        remove_form(sidebar_container);
+
+        let form_container = create_form_container(sidebar_container);
+        form_container.innerHTML = (
+            '<h5>Add Review</h5>' +
+            '<form action="#" enctype="multipart/form-data">' +
+            '<input type="text" name="title" placeholder="Title"/>' +
+            '<textarea name="review_text" placeholder="Review Text"></textarea>' +
+            '<input type="text" name="show_score" placeholder="Score" readonly/>' +
+            '<input type="range" name="score" min="0" max="9.9" value="5" step="0.1"/>' +
+            '<button>Submit</button>' +
+            '</form>'
+        );
+
+
+        let form_footer = create_sidebar_header(sidebar_container);
+        form_footer.classList.add('form-footer');
+        let footer_text = document.createElement('h4');
+        footer_text.innerText = 'Close';
+        form_footer.appendChild(footer_text);
+        form_footer.addEventListener('click', function (){
+            let sidebar_container = document.querySelector('.infobox');
+            remove_form(sidebar_container);
+        });
+
+        let slider = sidebar_container.querySelector('input[type="range"]');
+        let show_score = sidebar_container.querySelector('input[name="show_score"]');
+        show_score.value = slider.value;
+
+        slider.addEventListener('change', function(){
+            let sidebar_container = document.querySelector('.infobox');
+            let show_score = sidebar_container.querySelector('input[name="show_score"]');
+            show_score.value = this.value;
+        });
+
+        slider.addEventListener('input', function(){
+            let sidebar_container = document.querySelector('.infobox');
+            let show_score = sidebar_container.querySelector('input[name="show_score"]');
+            show_score.value = this.value;
+        });
+
+        let form = form_container.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let title = this.querySelector('input[name="title"]').value;
+            let review_text = this.querySelector('textarea[name="review_text"]').value;
+            let score = this.querySelector('input[name="score"]').value;
+            let form_data = new FormData()
+            form_data.append('title', title);
+            form_data.append('review_text', review_text);
+            form_data.append('score', score);
+            form_data.append('user_id', 1);
+            form_data.append('location_id', loc.Id);
+
+            if (title != '' && review_text != '') {
+                fetch('http://localhost:5000/api/add/review', {
+                    method: 'POST',
+                    body: form_data
+                }).then(async response => {
+                    let sidebar_container = document.querySelector('.infobox');
+                    let review_box = document.querySelector('.reviewbox');
+                    let reviews = review_box.querySelectorAll('.sidebar-review');
+                    review_box.parentNode.removeChild(review_box);
+                    await load_review_container(loc, reviews.length + 1);
+                    remove_form(sidebar_container);
+                });
+            }
+
+        });
+
+    });
+
     button_container.appendChild(button_one);
     button_container.appendChild(button_two);
     sidebar_container.appendChild(button_container);
@@ -324,7 +413,7 @@ let load_sidebar_data = async (loc, amount_pictures=3, amount_reviews=3) => {
     await load_image_container(loc, amount_pictures);
     await load_review_container(loc, amount_reviews);
 
-    let sidebar_container_footer = create_sidebar_container(sidebar, 4);
+    let sidebar_container_footer = create_sidebar_container(sidebar, 'footerbox', 4);
     let sidebar_footer = create_sidebar_header(sidebar_container_footer);
     let footer_text = document.createElement('h4');
     footer_text.innerText = `Back To Top ^`

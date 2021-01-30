@@ -10,13 +10,14 @@ import app.bl.utility_controller as uc
 import app.bl.picture_controller as pc
 import app.bl.picture_like_controller as plc
 import app.bl.review_like_controller as rlc
+import app.bl.review_controller as rc
 from app.utils import (
     make_list_of_dicts_jsonable,
     make_dict_jsonable,
     get_project_root
 )
 
-import app.ui.external.api.mapbox.geocoding as geocoding
+import app.ui.external.api.mapquest.geocoding as geocoding
 import os
 import json
 bp = Blueprint('api', __name__, url_prefix='/api')
@@ -137,8 +138,6 @@ def add_image():
     image_name = request.form.get('image_name')
     user_id = request.form.get('user_id')
     location_id = request.form.get('location_id')
-    print(user_id)
-    print(location_id)
     if 'image' not in request.files:
         flash('No files')
         return redirect('/map')
@@ -172,6 +171,25 @@ def add_image():
         print('error')
         flash('not allowed file ending')
         return redirect('/map')
+
+
+@bp.route('/add/review', methods=['POST'])
+def add_review():
+    title = request.form.get('title')
+    review_text = request.form.get('review_text')
+    score = request.form.get('score')
+    location_id = request.form.get('location_id')
+    user_id = request.form.get('user_id')
+    rc.add_review({
+        'Title': title,
+        'ReviewText': review_text,
+        'Score': score,
+        'DateCreated': datetime.date.today(),
+        'UserId': user_id,
+        'LocationId': location_id
+    })
+
+    return redirect('/map')
 
 
 def allowed_file(filename):
