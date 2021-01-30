@@ -11,6 +11,7 @@ import app.bl.picture_controller as pc
 import app.bl.picture_like_controller as plc
 import app.bl.review_like_controller as rlc
 import app.bl.review_controller as rc
+import app.bl.category_controller as cc
 from app.utils import (
     make_list_of_dicts_jsonable,
     make_dict_jsonable,
@@ -96,6 +97,17 @@ def location_reviews_all(location_id):
     review_dicts = uc.rows_to_dicts(reviews)
     review_dicts = make_list_of_dicts_jsonable(review_dicts)
     return json.dumps(review_dicts)
+
+
+@bp.route('/resource/category')
+def category():
+    amount = request.args.get('amount')
+    amount = 1 if not amount or int(amount) < 1 else int(amount)
+    categories = cc.get_all_categories()
+    categories = categories[:amount]
+    category_dicts = uc.rows_to_dicts(categories)
+    category_dicts = make_list_of_dicts_jsonable(category_dicts)
+    return json.dumps(category_dicts)
 
 
 @bp.route('/resource/picture/<picture_id>/like/count')
@@ -187,6 +199,26 @@ def add_review():
         'DateCreated': datetime.date.today(),
         'UserId': user_id,
         'LocationId': location_id
+    })
+
+    return redirect('/map')
+
+
+@bp.route('/add/location', methods=['POST'])
+def add_location():
+    place = request.form.get('place')
+    longitude = request.form.get('longitude')
+    latitude = request.form.get('latitude')
+    name = request.form.get('name')
+    user_id = request.form.get('user_id')
+    category_id = request.form.get('category_id')
+    lc.add_location({
+        'Place': place,
+        'Longitude': longitude,
+        'Latitude': latitude,
+        'Name': name,
+        'UserId': user_id,
+        'CategoryId': category_id
     })
 
     return redirect('/map')

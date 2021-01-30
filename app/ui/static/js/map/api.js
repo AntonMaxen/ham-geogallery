@@ -5,7 +5,8 @@ export {
     get_amount_likes_by_review_id,
     get_all_images_by_location_id,
     get_all_reviews_by_location_id,
-    get_location_info_by_latlng
+    get_location_info_by_latlng,
+    get_categories
 }
 
 
@@ -17,6 +18,12 @@ let get_images_by_location_id = async (loc_id, amount) => {
 
 let get_reviews_by_location_id = async (loc_id, amount) => {
     let response = await fetch(`http://localhost:5000/api/resource/location/${loc_id}/review?amount=${amount}`);
+    let reviews = await response.json();
+    return reviews;
+}
+
+let get_categories = async (amount) => {
+    let response = await fetch(`http://localhost:5000/api/resource/category?amount=${amount}`);
     let reviews = await response.json();
     return reviews;
 }

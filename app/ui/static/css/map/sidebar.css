@@ -56,6 +56,23 @@ hide scrollbar
     -webkit-text-stroke-color: rgba(0,0,0,0.1);
 }
 
+.header-extra-info {
+    background-color: darkseagreen;
+    padding: 5px;
+    display: flex;
+}
+
+
+.header-extra-info > h6 {
+    flex: 1;
+    text-align: center;
+    color: darkcyan;
+    font-family: 'monospace';
+    margin: 5px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0,0,0,0.1);
+}
+
 .sidebar-container {
     width: 100%;
     margin-bottom: 10px;
@@ -187,6 +204,22 @@ hide scrollbar
     color: darkcyan;
     border-radius: 2px;
     margin-top: 5px;
+}
+
+.form-container select {
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid rgba(0,0,0,0.2);
+    color: darkcyan;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    cursor: pointer;
 }
 
 .form-container input[type="file"] {

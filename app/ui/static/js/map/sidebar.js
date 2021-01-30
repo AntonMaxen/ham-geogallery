@@ -212,11 +212,113 @@ let load_review_container = async (loc, amount) => {
 
 
 let load_sidebar_new_location_data = async(lat_lng) => {
-    let lat = lat_lng.lat();
-    let lng = lat_lng.lng();
-    console.log(lat, lng)
-    let location_information = await api.get_location_info_by_latlng(lat, lng)
-    console.log(location_information.results[0].locations)
+    let lat = Number(lat_lng.lat().toFixed(2));
+    let lng = Number(lat_lng.lng().toFixed(2));
+    console.log(lat, lng);
+    // let location_information = await api.get_location_info_by_latlng(lat, lng)
+    sidebar_cleanup();
+    let sidebar = document.querySelector('#sidebar');
+    let sidebar_container = create_sidebar_container(sidebar, 'newbox', 0);
+    let sidebar_header = create_sidebar_header(sidebar_container);
+    let header_text = document.createElement('h4');
+    header_text.innerText = `Selected Location`;
+    let header_extra_box = document.createElement('div');
+    header_extra_box.setAttribute('class', 'header-extra-info');
+    let header_lat_text = document.createElement('h6');
+    header_lat_text.innerText = `Lat: ${lat}`;
+    let header_lng_text = document.createElement('h6');
+    header_lng_text.innerText = `Lng: ${lng}`;
+    sidebar_header.appendChild(header_text);
+    header_extra_box.appendChild(header_lat_text);
+    header_extra_box.appendChild(header_lng_text);
+    sidebar_header.appendChild(header_extra_box);
+
+
+    let button_container = document.createElement('div');
+    button_container.setAttribute('class', 'button-container');
+    let button_one = document.createElement('button');
+    button_one.setAttribute('class', 'info-button');
+    button_one.innerText = 'Add Location';
+
+    button_one.addEventListener('click', async function() {
+        let sidebar_container = document.querySelector('.newbox');
+        remove_form(sidebar_container);
+
+        let form_container = create_form_container(sidebar_container);
+        let hidden_place = `<input type="hidden" name="place" value="${'5'}"/>`;
+        let shown_place = '<input type="text" name="place" placeholder="City/Town"/>';
+
+
+        let category_select = document.createElement('select');
+        let categories = await api.get_categories(10);
+        setAttributes(category_select, {
+            'name': 'category',
+            'id': 'category-select'
+        });
+
+        category_select.innerHTML = '<option selected disabled>Category</option>';
+
+        categories.forEach(category => {
+            let option = document.createElement('option');
+            setAttributes(option, {
+                'value': category.Name,
+                'data-category-id': category.Id
+            });
+            option.innerText = category.Name;
+            category_select.appendChild(option);
+        });
+
+        form_container.innerHTML = (
+            '<h5>Add Location</h5>' +
+            '<form action="#" enctype="multipart/form-data">' +
+            (false ? hidden_place: shown_place) +
+            '<input type="text" name="name" placeholder="Name for your place"/>' +
+            category_select.outerHTML +
+            '<button>Submit</button>' +
+            '</form>'
+        );
+
+        let form_footer = create_sidebar_header(sidebar_container);
+        form_footer.classList.add('form-footer');
+        let footer_text = document.createElement('h4');
+        footer_text.innerText = 'Close';
+        form_footer.appendChild(footer_text);
+        form_footer.addEventListener('click', function (){
+            let sidebar_container = document.querySelector('.newbox');
+            remove_form(sidebar_container);
+        });
+
+        let form = form_container.querySelector('form');
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            let sidebar_container = document.querySelector('.newbox');
+            let place = this.querySelector('input[name="place"]').value;
+            let name = this.querySelector('input[name="name"]').value;
+            let category = this.querySelector('#category-select');
+            let form_data = new FormData();
+
+            if (place != '' && name != '' && category.value != 'Category') {
+                let category_id = category.options[category.selectedIndex].getAttribute("data-category-id");
+                form_data.append('place', place);
+                form_data.append('longitude', lng);
+                form_data.append('latitude', lat);
+                form_data.append('name', name);
+                form_data.append('user_id', 1);
+                form_data.append('category_id', category_id);
+                fetch('http://localhost:5000/api/add/location', {
+                    method: 'POST',
+                    body: form_data
+                }).then(async response => {
+                   if (response.status == 200) {
+                       sidebar_cleanup();
+                   }
+                });
+            }
+        });
+    });
+
+    button_container.appendChild(button_one);
+    sidebar_container.appendChild(button_container);
 
 }
 
@@ -230,7 +332,6 @@ let remove_form = sidebar_container => {
 let load_sidebar_infobox = async(loc) => {
     let sidebar = document.querySelector('#sidebar');
     let sidebar_container = create_sidebar_container(sidebar, 'infobox', 0);
-    sidebar_container.classList.add('infobox');
     let sidebar_header = create_sidebar_header(sidebar_container);
     let header_text = document.createElement('h4');
     header_text.innerText = `${loc.Place}`;
@@ -425,4 +526,10 @@ let load_sidebar_data = async (loc, amount_pictures=3, amount_reviews=3) => {
             behavior: 'smooth'
         })
     });
+}
+
+let setAttributes = (el, attrs) => {
+    for(let key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
 }
