@@ -7,6 +7,15 @@ def get_all_pictures():
     return tf.get_all_rows(Picture)
 
 
+def get_pictures_by_colname_desc_id(location_id, col_name='Id'):
+    return tf.get_rows_by_column_order_by_desc(
+        Picture,
+        location_id,
+        col_name=col_name,
+        order_id='Id'
+    )
+
+
 def get_picture_by_id(row_id):
     if tf.validate_number(row_id):
         return tf.get_row_by_column(Picture, row_id)
@@ -39,5 +48,12 @@ def search_picture(col_name, value):
     return tf.get_rows_like_column_value(Picture, col_name, value)
 
 
+def get_most_recent_row():
+    return tf.get_highest_row(Picture)
+
+
 if __name__ == '__main__':
-    pass
+    p = get_pictures_by_colname_desc_id(1, col_name='LocationId')
+    print(p)
+    print(p[0].Id)
+    print(p[-1].Id)

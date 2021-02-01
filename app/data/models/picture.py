@@ -26,7 +26,7 @@ class Picture(Base):
         sa.ForeignKey('location.Id', ondelete='CASCADE'),
         nullable=False)
     FileName = sa.Column(
-        sa.String(45),
+        sa.String(255),
         nullable=False,
         unique=True)
 
