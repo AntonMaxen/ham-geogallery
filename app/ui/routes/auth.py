@@ -61,18 +61,12 @@ def signup_post():
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
     new_user = {
-        'FirstName':'name1',
-        'LastName':'Lars',
         'Email':email,
         'Username':username,
-        'Hash':generate_password_hash(password, method='sha256', salt_length=32),
-        'Salt':'1234',
-        'PhoneNumber': str(random.randint(1, 100000)),
-        'DateOfBirth':datetime.date.today(),
-        'JoinDate':datetime.date.today(),
-        'PermissionLevel':1
+        'Hash': generate_password_hash(password, method='sha256', salt_length=32),
+        'JoinDate': datetime.date.today(),
+        'PermissionLevel': 1
     }
-
 
     uc.add_user(new_user)
     return redirect('/login')
