@@ -48,13 +48,8 @@ def upgrade():
             sa.String(255),
             nullable=False),
         sa.Column(
-            'Salt',
-            sa.String(255),
-            nullable=False),
-        sa.Column(
             'PhoneNumber',
-            sa.String(45),
-            unique=True),
+            sa.String(45)),
         sa.Column(
             'DateOfBirth',
             sa.Date),
