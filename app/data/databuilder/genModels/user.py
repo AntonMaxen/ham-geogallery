@@ -1,4 +1,5 @@
 import app.data.databuilder.utils.generator as gen
+from werkzeug.security import generate_password_hash
 import random
 
 
@@ -9,9 +10,12 @@ class GenUser:
         self.Email = str(random.randint(1, 1000000)) + gen.get_random_email()
         self.Username = gen.get_random_username() + \
             str(random.randint(1, 1000000))
-        hash_salt = gen.get_hash_salt(gen.get_random_password())
-        self.Hash = hash_salt['hash']
-        self.Salt = hash_salt['salt']
+        hash_salt = generate_password_hash(
+            gen.get_random_password(),
+            method='sha256',
+            salt_length=32
+        )
+        self.Hash = hash_salt
         self.PhoneNumber = gen.get_random_phonenumber()
         self.DateOfBirth = gen.get_random_date()
         self.JoinDate = gen.get_random_date()

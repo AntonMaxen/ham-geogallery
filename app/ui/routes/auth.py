@@ -10,8 +10,7 @@ from flask import (
     flash
 )
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
-from app.data.models.user import User
+from flask_login import login_user, logout_user, login_required, current_user
 import app.bl.user_controller as uc
 
 bp = Blueprint('auth', __name__)
@@ -19,7 +18,11 @@ bp = Blueprint('auth', __name__)
 
 @bp.route('/login', methods=['GET'])
 def login():
-    return render_template('login.html')
+    print(current_user)
+    if current_user.is_authenticated:
+        return redirect('/map')
+    else:
+        return render_template('login.html')
 
 
 @bp.route('/login', methods=['POST'])
@@ -61,18 +64,12 @@ def signup_post():
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
     new_user = {
-        'FirstName':'name1',
-        'LastName':'Lars',
         'Email':email,
         'Username':username,
-        'Hash':generate_password_hash(password, method='sha256', salt_length=32),
-        'Salt':'1234',
-        'PhoneNumber': str(random.randint(1, 100000)),
-        'DateOfBirth':datetime.date.today(),
-        'JoinDate':datetime.date.today(),
-        'PermissionLevel':1
+        'Hash': generate_password_hash(password, method='sha256', salt_length=32),
+        'JoinDate': datetime.date.today(),
+        'PermissionLevel': 1
     }
-
 
     uc.add_user(new_user)
     return redirect('/login')
@@ -82,4 +79,5 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
+    flash('Logging out')
     return redirect('/map')

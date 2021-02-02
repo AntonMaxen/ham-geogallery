@@ -12,7 +12,7 @@
             <div class="scroll_left">
                 {% for loc in location %}
                 <div class="place_box">
-                    <div class="align_center"><a><b>{{loc.Place}}</b></a></div>
+                    <div class="align_center"><a href="../map?location_id={{ loc.Id }}"><b>{{loc.Place}}</b></a></div>
                 </div>
                 <div id="rev_box">
                     {% for r in loc.review %}
@@ -25,7 +25,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                    {% endfor %}
+                {% endfor %}
             </div>
 
             <div class="scroll_right">
@@ -34,12 +34,11 @@
                 <div class="align_center">
                     <div class="pic_box" style="margin-left: 5%; margin-right: 5%">
                     {% for p in loc.picture %}
-                        <a><img src="http://127.0.0.1:5000/api/static/image/{{p.ImageName}}.png" width="200" height="200"></a>
+                        <a><img src="http://127.0.0.1:5000/api/static/image/{{p.FileName}}" width="200" height="200"></a>
                     {% endfor %}
                     </div>
                 </div>
                 {% endfor %}
-                <div/>
             </div>
         </div>
     </div>

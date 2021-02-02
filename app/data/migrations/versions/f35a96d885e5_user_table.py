@@ -24,7 +24,8 @@ def upgrade():
             'Id',
             sa.Integer,
             primary_key=True,
-            autoincrement=True),
+            autoincrement=True
+        ),
         sa.Column(
             'FirstName',
             sa.String(45)
@@ -37,30 +38,37 @@ def upgrade():
             'Email',
             sa.String(45),
             nullable=False,
-            unique=True),
+            unique=True
+        ),
         sa.Column(
             'Username',
             sa.String(45),
             nullable=False,
-            unique=True),
+            unique=True
+        ),
         sa.Column(
             'Hash',
             sa.String(255),
-            nullable=False),
+            nullable=False
+        ),
         sa.Column(
             'PhoneNumber',
-            sa.String(45)),
+            sa.String(45)
+        ),
         sa.Column(
             'DateOfBirth',
-            sa.Date),
+            sa.Date
+        ),
         sa.Column(
             'JoinDate',
             sa.Date,
-            nullable=False),
+            nullable=False
+        ),
         sa.Column(
             'PermissionLevel',
             sa.Integer,
-            nullable=False)
+            nullable=False
+        )
     )
 
 

@@ -337,6 +337,9 @@ let load_sidebar_infobox = async(loc) => {
     let sidebar = document.querySelector('#sidebar');
     let sidebar_container = create_sidebar_container(sidebar, 'infobox', 0);
     let sidebar_header = create_sidebar_header(sidebar_container);
+    sidebar_header.addEventListener('click', function(){
+        location.replace(`http://localhost:5000/place/${loc.Place}`)
+    });
     let header_text = document.createElement('h4');
     header_text.innerText = `${loc.Place}`;
     sidebar_header.appendChild(header_text);
