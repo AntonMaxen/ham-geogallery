@@ -44,7 +44,7 @@ def populate_db(amount=100):
     add_rows(Rating, GenRating, amount)
     add_rows(VisitedLocation, GenVisitedLocation, amount)
     add_rows(Picture, GenPicture, amount)
-    add_rows(PictureLike, GenPictureLIke, amount)
+    add_rows(PictureLike, GenPictureLike, amount)
     add_rows(Review, GenReview, amount)
     add_rows(ReviewLike, GenReviewLike, amount)
     add_rows(Comment, GenComment, amount)
@@ -74,5 +74,5 @@ def populate_review_likes(amount=100):
 
 
 if __name__ == '__main__':
-    populate_db()
+    populate_db(amount=10)
 

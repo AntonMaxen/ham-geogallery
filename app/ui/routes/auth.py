@@ -10,8 +10,7 @@ from flask import (
     flash
 )
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
-from app.data.models.user import User
+from flask_login import login_user, logout_user, login_required, current_user
 import app.bl.user_controller as uc
 
 bp = Blueprint('auth', __name__)
@@ -19,7 +18,11 @@ bp = Blueprint('auth', __name__)
 
 @bp.route('/login', methods=['GET'])
 def login():
-    return render_template('login.html')
+    print(current_user)
+    if current_user.is_authenticated:
+        return redirect('/map')
+    else:
+        return render_template('login.html')
 
 
 @bp.route('/login', methods=['POST'])
@@ -76,4 +79,5 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
+    flash('Logging out')
     return redirect('/map')
