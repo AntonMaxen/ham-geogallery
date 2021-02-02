@@ -4,5 +4,8 @@ sqlacodegen
 alembic
 Flask
 requests
-Faker
+# Faker
 flask-cors
+flask_login
+flask_sqlalchemy
+werkzeug

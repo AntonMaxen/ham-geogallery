@@ -27,12 +27,12 @@ def upgrade():
             autoincrement=True),
         sa.Column(
             'FirstName',
-            sa.String(45),
-            nullable=False),
+            sa.String(45)
+        ),
         sa.Column(
             'LastName',
-            sa.String(45),
-            nullable=False),
+            sa.String(45)
+        ),
         sa.Column(
             'Email',
             sa.String(45),

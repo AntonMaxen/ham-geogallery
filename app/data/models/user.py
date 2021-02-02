@@ -1,48 +1,53 @@
 from app.data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
-class User(Base):
+class User(UserMixin, Base):
     __tablename__ = 'user'
 
-    id = sa.Column(
+    Id = sa.Column(
         sa.Integer,
         primary_key=True,
         autoincrement=True
     )
-    first_name = sa.Column(
+    FirstName = sa.Column(
         sa.String(45)
     )
-    last_name = sa.Column(
+    LastName = sa.Column(
         sa.String(45)
     )
-    email = sa.Column(
+    Email = sa.Column(
         sa.String(45),
         nullable=False,
         unique=True
     )
-    username = sa.Column(
+    Username = sa.Column(
         sa.String(45),
         nullable=False,
         unique=True
     )
-    hashed_password = sa.Column(
+    Hash = sa.Column(
         sa.String(255),
         nullable=False
     )
-    phone_number = sa.Column(
+    Salt = sa.Column(
+        sa.String(255),
+        nullable=False
+    )
+    PhoneNumber = sa.Column(
         sa.String(45),
         unique=True
     )
-    date_of_birth = sa.Column(
+    DateOfBirth = sa.Column(
         sa.Date
     )
-    date_created = sa.Column(
+    JoinDate = sa.Column(
         sa.Date,
         nullable=False
     )
-    permission_level = sa.Column(
+    PermissionLevel = sa.Column(
         sa.Integer,
         nullable=False
     )
@@ -96,6 +101,9 @@ class User(Base):
         'Location',
         back_populates='user'
     )
+
+    def get_id(self):
+        return self.Id
 
 
 if __name__ == '__main__':
