@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ground.css')}}" />
+    {% endblock %}
+</head>
+<body>
+    <div id="top-bar">
+        <a id="home" href="{{ url_for('map.index') }}">TH Geo-Gallery</a>
+        <div class="spacer">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="info {{ messages[0][0] }}">
+                        {{ messages[0][1] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <a class="top-bar-item" href="{{ url_for('place.place') }}a">Places</a>
+
+        {% if current_user.is_authenticated %}
+            <a class="top-bar-item" href="{{ url_for('profile.index') }}">Profile</a>
+            <a class="top-bar-item" href="{{ url_for('auth.logout') }}">logout</a>
+        {% else %}
+            <a class="top-bar-item" href="{{ url_for('auth.login') }}">Login</a>
+            <a class="top-bar-item" href="{{ url_for('auth.signup') }}">Sign Up</a>
+        {% endif %}
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

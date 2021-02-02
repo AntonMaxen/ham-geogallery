@@ -11,5 +11,5 @@ bp = Blueprint('profile', __name__, url_prefix='/profile')
 def index():
     user_dict = uc.row_to_dict(current_user)
     user_dict = make_dict_jsonable(user_dict)
-    return json.dumps(user_dict)
+    return render_template('profile.html', user=user_dict)
 

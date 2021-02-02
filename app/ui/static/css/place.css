@@ -6,14 +6,12 @@ body, html {
 body {
     background-color: mediumaquamarine;
 }
-#content {
-   height: 100%;
-}
 #top-bar {
     height: 50px;
     width: 100%;
     background-color: darkseagreen;
 }
+
 #container {
     background-color: darkcyan;
     width: 100%;

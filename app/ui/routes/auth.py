@@ -41,6 +41,7 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
+    flash(f'Logged in as {user.Username}', 'success')
     return redirect('/map')
 
 

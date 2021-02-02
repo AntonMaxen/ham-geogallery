@@ -1,0 +1,45 @@
+html {
+    overflow: hidden;
+}
+body {
+    background-color: darkcyan;
+}
+
+.column {
+    margin-top: 10%;
+}
+
+.title {
+    color: darkseagreen;
+}
+
+.box {
+    background-color: #BCD7BC;
+}
+
+.input.is-large {
+    background-color: #D0E3D0;
+    outline: none;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: none;
+    color: darkcyan;
+}
+
+.button.is-info {
+    background-color: darkcyan;
+    color: darkseagreen;
+}
+
+.button.is-info:hover {
+    background-color: darkcyan;
+    color: darkseagreen;
+}
+
+.label {
+    color: darkcyan;
+}
+
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}

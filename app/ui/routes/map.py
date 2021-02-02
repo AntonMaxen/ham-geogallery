@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, url_for, request
+from flask import Blueprint, render_template, url_for, request, flash
+from flask_login import current_user
 import app.bl.location_controller as lc
 import app.bl.utility_controller as uc
 import json
@@ -15,7 +16,7 @@ def index():
     location_id = location_id if location_id else None
     jinja_dict = {
         'locations': location_dicts,
-        'location_id': location_id
+        'location_id': location_id,
     }
 
     return render_template('map.html', **jinja_dict)
