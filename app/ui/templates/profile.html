@@ -2,7 +2,53 @@
 {% block head %}
     {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profile.css')}}" />
+    <script src="{{ url_for('static', filename='js/profile.js')}}"></script>
 {% endblock %}
 {% block content %}
+    <div id="content">
+        <div class="container">
+            <div class="header">Profile for {{ current_user.Username }}</div>
+            <div class="info-container">
+                <div class="left-infobox">
+                    <div class="box-header">User Information</div>
+                    <form id="user-form">
+                        <div class="general-box">
+                            <div class="general-box-left">
+                                <label>Firstname</label>
+                                <label>Lastname</label>
+                                <label>Email</label>
+                                <label>Username</label>
+                                <label>Phone</label>
+                                <label>Date of birth</label>
+                                <label>Join Date</label>
+                            </div>
+                            <div class="general-box-right">
+                                <input name="user_id" type="hidden" value="{{ current_user.Id }}"/>
+                                <input name="first_name" type="text" value="{{ current_user.FirstName }}"/>
+                                <input name="last_name" type="text" value="{{ current_user.LastName }}"/>
+                                <input name="email" type="email" value="{{ current_user.Email }}"/>
+                                <input name="username" type="text" value="{{ current_user.Username }}"/>
+                                <input name="phone" type="text" value="{{ current_user.PhoneNumber }}"/>
+                                <input name="date_of_birth" type="date" value="{{ current_user.DateOfBirth }}"/>
+                                <input type="date" disabled value="{{ current_user.JoinDate }}">
+                            </div>
+                        </div>
+                        <button>Submit changes</button>
+                    </form>
+                </div>
+                <div class="right-infobox">
+                    <div class="image-box">
+                        <div class="box-header">Badge</div>
 
+                    </div>
+                    <div class="stats-box">
+                        <div class="box-header">Stats</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

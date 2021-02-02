@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="top-bar">
-        <a id="home" href="{{ url_for('map.index') }}">TH Geo-Gallery</a>
+        <a id="home" href="{{ url_for('map.index') }}?location_id=1">TH Geo-Gallery</a>
         <div class="spacer">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -19,7 +19,7 @@
                 {% endif %}
             {% endwith %}
         </div>
-
+        <a class="top-bar-item" href="{{ url_for('map.index') }}?location_id=1">Map</a>
         <a class="top-bar-item" href="{{ url_for('place.place') }}a">Places</a>
 
         {% if current_user.is_authenticated %}
