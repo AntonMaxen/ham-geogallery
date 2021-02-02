@@ -1,4 +1,7 @@
+export {load_location, center_map_on_marker}
 import {config} from './config.js';
+import {load_sidebar_data, load_sidebar_new_location_data} from "./sidebar.js";
+
 let api_key = config.api_key;
 let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${api_key}&callback=initMap&libraries=&v=weekly`;
@@ -14,8 +17,12 @@ window.initMap = async () => {
 
 
     if (current_location) {
-        load_location_data(current_location.location);
+        load_sidebar_data(current_location.location, 9, 3);
     }
+
+    map.addListener('click', (mapsMouseEvent) => {
+        load_sidebar_new_location_data(mapsMouseEvent.latLng, map);
+    });
 }
 
 let create_map = async () => {
@@ -70,56 +77,42 @@ let center_map_on_geopos = async (map) => {
 
 let center_map_on_marker = (map, marker) => {
     let position = marker.getPosition();
-    map.setCenter(position);
+    map.panTo(position);
     return position;
-}
-
-
-let load_location_data = async (loc) => {
-    let container = document.querySelector('#sidebar-image-container');
-    if (container) {
-        container.parentNode.removeChild(container);
-    }
-    let response = await fetch(`http://localhost:5000/api/resource/location/${loc.Id}/picture/all`);
-    let images = await response.json();
-    let img_div = document.createElement('div');
-    img_div.setAttribute('id', 'sidebar-image-container');
-    let sidebar = document.querySelector('#sidebar');
-    sidebar.appendChild(img_div);
-    images.forEach(image => {
-        let image_element = document.createElement('img');
-        image_element.setAttribute('class', 'sidebar-image')
-        image_element.setAttribute('src', `http://localhost:5000/api/static/image/${image.FileName}`);
-        img_div.appendChild(image_element);
-    });
-
 }
 
 
 let load_locations = (map, locations) => {
     let location_objects = [];
     locations.forEach(loc => {
-        let location_object = {}
-        let title_text = `Id: ${loc.Id}\n` +
-            `Place: ${loc.Place}\n`+
-            `Name: ${loc.Name}\n` +
-            `Longitude: ${loc.Longitude}\n` +
-            `Latitude: ${loc.Latitude}\n`;
-
-        location_object.marker = new google.maps.Marker({
-            position: {lat: loc.Latitude, lng: loc.Longitude},
-            map: map,
-            title: title_text,
-            icon: '../static/images/Templatic-map-icons/meetups.png'
-        });
-        location_object.marker.addListener('click', () => {
-            load_location_data(loc);
-        });
-        location_object.location = loc;
+        let location_object = load_location(map, loc);
         location_objects.push(location_object);
     });
 
     return location_objects;
+}
+
+let load_location = (map, loc) => {
+    let location_object = {}
+    let title_text = `Id: ${loc.Id}\n` +
+        `Place: ${loc.Place}\n`+
+        `Name: ${loc.Name}\n` +
+        `Longitude: ${loc.Longitude}\n` +
+        `Latitude: ${loc.Latitude}\n`;
+
+    location_object.marker = new google.maps.Marker({
+        position: {lat: loc.Latitude, lng: loc.Longitude},
+        map: map,
+        title: title_text,
+        icon: '../static/images/Templatic-map-icons/meetups.png'
+    });
+    location_object.marker.addListener('click', function() {
+        load_sidebar_data(loc, 9, 3);
+        center_map_on_marker(map, this);
+    });
+    location_object.location = loc;
+
+    return location_object;
 }
 
 

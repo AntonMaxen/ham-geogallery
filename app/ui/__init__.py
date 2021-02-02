@@ -6,7 +6,8 @@ from app.data.db import session
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'abc123'
+
+    app.secret_key = 'awseome secret key '
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)

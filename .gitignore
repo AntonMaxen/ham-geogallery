@@ -3,4 +3,6 @@ venv/
 __pycache__/
 mapsdb.mwb.bak
 Photos
-app/ui/static/js/config.js
+app/ui/static/js/map/config.js
+app/ui/external/api/mapquest/__init__.py
+app/ui/external/api/mapbox/__init__.py
