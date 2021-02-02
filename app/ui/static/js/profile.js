@@ -1,7 +1,7 @@
 window.onload = async () => {
     let user_form = document.querySelector('#user-form');
     user_form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+        e.preventDefault()
         let user_id = this.querySelector('input[name="user_id"]').value;
         let first_name = this.querySelector('input[name="first_name"]').value;
         let last_name = this.querySelector('input[name="last_name"]').value;
@@ -23,9 +23,12 @@ window.onload = async () => {
         form_data.append('username', username);
         form_data.append('phone', phone);
         form_data.append('date_of_birth', date_of_birth);
-        await fetch("http://localhost:5000/api/update/user", {
+        let result = await fetch("http://localhost:5000/api/update/user", {
             method: "POST",
             body: form_data
         });
+
+        location.reload();
+
     });
 }
