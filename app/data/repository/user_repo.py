@@ -36,8 +36,3 @@ if __name__ == '__main__':
 
     dicts = tf.rows_to_dicts(search_user('FirstName', "Allison"))
     print_dicts(dicts)
-
-
-
-
-

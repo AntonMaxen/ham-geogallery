@@ -3,6 +3,8 @@ SQLAlchemy
 sqlacodegen
 alembic
 Flask
-requests
 Faker
+requests
 flask-cors
+flask_login
+werkzeug

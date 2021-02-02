@@ -1,9 +1,10 @@
 from app.data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
-class User(Base):
+class User(UserMixin, Base):
     __tablename__ = 'user'
 
     Id = sa.Column(
@@ -12,12 +13,10 @@ class User(Base):
         autoincrement=True
     )
     FirstName = sa.Column(
-        sa.String(45),
-        nullable=False
+        sa.String(45)
     )
     LastName = sa.Column(
-        sa.String(45),
-        nullable=False
+        sa.String(45)
     )
     Email = sa.Column(
         sa.String(45),
@@ -97,6 +96,9 @@ class User(Base):
         'Location',
         back_populates='user'
     )
+
+    def get_id(self):
+        return self.Id
 
 
 if __name__ == '__main__':

@@ -38,12 +38,19 @@ def add_row(model, gen_model):
 
 
 def populate_db(amount=100):
-
-    add_rows(ReviewLike, GenReviewLike, 1000)
-    add_rows(Comment, GenComment, 1000)
-    add_rows(CommentLike, GenCommentLike, 1000)
-    add_rows(Badge, GenBadge, 100)
-    add_rows(UserBadge, GenUserBadge, 1000)
+    add_rows(Category, GenCategory, amount)
+    add_rows(User, GenUser, amount)
+    add_rows(Location, GenLocation, amount)
+    add_rows(Rating, GenRating, amount)
+    add_rows(VisitedLocation, GenVisitedLocation, amount)
+    add_rows(Picture, GenPicture, amount)
+    add_rows(PictureLike, GenPictureLIke, amount)
+    add_rows(Review, GenReview, amount)
+    add_rows(ReviewLike, GenReviewLike, amount)
+    add_rows(Comment, GenComment, amount)
+    add_rows(CommentLike, GenCommentLike, amount)
+    add_rows(Badge, GenBadge, amount)
+    add_rows(UserBadge, GenUserBadge, amount)
 
 
 def populate_pictures(amount=100):
