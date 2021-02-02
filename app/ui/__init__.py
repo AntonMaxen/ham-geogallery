@@ -34,9 +34,6 @@ def create_app():
     from app.ui.routes import auth
     app.register_blueprint(auth.bp)
 
-    from app.ui.routes import main
-    app.register_blueprint(main.bp)
-
     app.add_url_rule('/', endpoint='index')
 
     return app
