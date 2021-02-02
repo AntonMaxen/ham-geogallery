@@ -33,14 +33,8 @@ class User(Base):
         sa.String(255),
         nullable=False
     )
-    Salt = sa.Column(
-        sa.String(255),
-        nullable=False
-    )
     PhoneNumber = sa.Column(
-        sa.String(45),
-        nullable=False,
-        unique=True
+        sa.String(45)
     )
     DateOfBirth = sa.Column(
         sa.Date
