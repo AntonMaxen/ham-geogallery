@@ -3,6 +3,7 @@ SQLAlchemy
 sqlacodegen
 alembic
 Flask
+Faker
 requests
 flask-cors
 flask_login
