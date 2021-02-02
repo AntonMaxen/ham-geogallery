@@ -402,7 +402,34 @@ Möteshållare: Henrik Liman
  - Fixa klart login m.m ikväll
  
 * Bestämma nästa möte och nästa ordförand
-- nästa möte kl09:00 2/2-21 Matias
+- nästa möte kl09:00 2/2-21 Mattias
+
+
+Datum: 21-02-02 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Inget nytt
+ 
+* Granska PR
+ - Gick igenom login och mergade den
+ 
+* Lägga till nya kort/issues
+ - Inget nytt
+ 
+* Fördela kort/issues
+ - Inget att fördela
+ 
+* Övriga kommentarer
+ - Gick igenom kod gemensamt. Kollade att auth(signup och login mm) funkar.
+ - Förbereda för att göra tester imorgon onsdag.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte 210203 klockan 9:00
+ - Anton håller nästa möte
+
 
 ***Mall:***
  
