@@ -430,6 +430,34 @@ Möteshållare: Mattias Barth
  - Nästa möte 210203 klockan 9:00
  - Anton håller nästa möte
 
+Datum: 2021-02-03
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - 
+
+* Granska PR
+ - Antons Profile / ihoplänkning granskades och inloggningscheckar,  mergades med dev
+ - Henrik fixade place route så att du kan få all resultat som default, mergad och inne
+
+* Lägga till nya kort/issues
+ - TESTING
+ - Skapa kort för varje view, kort tages för den view man har gjort
+
+* Fördela kort/issues
+ - Anton map testing
+ - Henrik Place testing
+ - Mattias Auth testing
+ 
+* Övriga kommentarer
+ - Kolla över projekt todo
+ - Preliminärt projektnam HAM - GeoGallery
+ - Fixa titeln och visningssidan någon gång till projektnamnet.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Torsdag 2021-02-04 09:00 - Henrik
 
 ***Mall:***
  
