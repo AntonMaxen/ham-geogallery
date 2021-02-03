@@ -2,7 +2,8 @@
 {% block head %}
     {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profile.css')}}" />
-    <script src="{{ url_for('static', filename='js/profile.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/functions.js')}}" type="module"></script>
+    <script src="{{ url_for('static', filename='js/profile.js')}}" type="module"></script>
 {% endblock %}
 {% block content %}
     <div id="content">
@@ -24,13 +25,14 @@
                             </div>
                             <div class="general-box-right">
                                 <input name="user_id" type="hidden" value="{{ current_user.Id }}"/>
+                                <input name="token" type="hidden" value="{{ current_user.Token }}"/>
                                 <input name="first_name" type="text" value="{{ current_user.FirstName }}"/>
                                 <input name="last_name" type="text" value="{{ current_user.LastName }}"/>
                                 <input name="email" type="email" value="{{ current_user.Email }}"/>
                                 <input name="username" type="text" value="{{ current_user.Username }}"/>
                                 <input name="phone" type="text" value="{{ current_user.PhoneNumber }}"/>
                                 <input name="date_of_birth" type="date" value="{{ current_user.DateOfBirth }}"/>
-                                <input type="date" disabled value="{{ current_user.JoinDate }}">
+                                <input type="date" disabled value="{{ current_user.JoinDate }}"/>
                             </div>
                         </div>
                         <button>Submit changes</button>
