@@ -6,7 +6,8 @@
     bottom: 0;
     box-sizing: border-box;
     border-right: rgba(0, 0, 0, 0.1) solid 1px;
-    background-color: rgba(0, 139, 139, 0.8);
+    /*background-color: rgba(0, 139, 139, 0.8);*/
+    background-color: darkcyan;
     padding: 20px;
     scrollbar-color: darkseagreen rgba(0, 139, 139, 0.5);
 }

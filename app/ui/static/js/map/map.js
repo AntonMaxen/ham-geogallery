@@ -13,11 +13,11 @@ window.initMap = async () => {
     place_current_location_marker(map, home)
     let location_objects = load_locations(map, locations);
     let focused_location = init_center_map(map, location_objects);
-    let current_location = get_location_obj(location_objects, location_id);
+    let start_location = get_location_obj(location_objects, location_id);
 
 
-    if (current_location) {
-        load_sidebar_data(current_location.location, 9, 3);
+    if (start_location) {
+        load_sidebar_data(start_location.location, 9, 3);
     }
 
     map.addListener('click', (mapsMouseEvent) => {
@@ -26,7 +26,8 @@ window.initMap = async () => {
 }
 
 let create_map = async () => {
-    let center_lat_lng = new google.maps.LatLng(0, 0);
+    let center_lat_lng = new google.maps.LatLng('57.72', '12.02');
+    /*
     let position = await current_position()
     if (position) {
         center_lat_lng = new google.maps.LatLng(
@@ -34,6 +35,7 @@ let create_map = async () => {
             position.coords.longitude
         );
     }
+    */
     return new google.maps.Map(document.getElementById("map"), {
         zoom: 11,
         center: center_lat_lng

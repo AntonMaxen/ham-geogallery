@@ -1,40 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map/main.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map/sidebar.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map/map.css')}}">
-    <script src="https://kit.fontawesome.com/97cec024a4.js" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/map/utils.js')}}" type="module"></script>
-    <script src="{{ url_for('static', filename='js/map/config.js')}}" type="module"></script>
-    <script src="{{ url_for('static', filename='js/map/api.js')}}" type="module"></script>
-    <script src="{{ url_for('static', filename='js/map/sidebar.js')}}" type="module"></script>
-    <script>
-        let locations = {{ locations | tojson }};
-        let location_id = null
-        {% if location_id is not none %}
-            location_id = {{ location_id }}
-        {% endif %}
-    </script>
-    <script src="{{ url_for('static', filename='js/map/map.js') }}" type="module"></script>
-</head>
-<body>
-    <div id="content">
-        <div id="top-bar">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div>
-                        {{ messages[0] }}
-                    </div>
-                {% endif %}
-            {% endwith %}
-        </div>
-        <div id="container">
-            <div id="sidebar"></div>
-            <div id="map"></div>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "ground.html" %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map/main.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map/sidebar.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map/map.css')}}">
+<script src="https://kit.fontawesome.com/97cec024a4.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/map/utils.js')}}" type="module"></script>
+<script src="{{ url_for('static', filename='js/map/config.js')}}" type="module"></script>
+<script src="{{ url_for('static', filename='js/map/api.js')}}" type="module"></script>
+<script src="{{ url_for('static', filename='js/map/sidebar.js')}}" type="module"></script>
+<script>
+    let locations = {{ locations | tojson }};
+    let location_id = null
+    {% if location_id is not none %}
+        location_id = {{ location_id }}
+    {% endif %}
+</script>
+<script src="{{ url_for('static', filename='js/map/map.js') }}" type="module"></script>
+{% endblock %}
+
+{% block content %}
+<div id="container">
+    <div id="sidebar"></div>
+    <div id="map"></div>
+</div>
+{% endblock %}

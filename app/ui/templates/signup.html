@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends "ground.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css' )}}" />
+{% endblock %}
 
 {% block content %}
 <div class="column is-4 is-offset-4">
@@ -31,15 +36,7 @@
                     <label class="label">Password
                         <input class="input is-large" type="password" name="Password" placeholder="Your Password">
                     </label>
-                    <p class="help" style="font-weight: 400">Password instructions here, you curmudgeon.</p>
                 </div>
-            </div>
-
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox">
-                    Remember me
-                </label>
             </div>
             <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
         </form>

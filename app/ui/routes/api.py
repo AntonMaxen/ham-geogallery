@@ -1,6 +1,7 @@
 from flask import (
     Blueprint, render_template, url_for, request, send_file, flash, redirect
 )
+from flask_login import current_user, login_required
 import os
 import datetime
 from werkzeug.utils import secure_filename
@@ -12,6 +13,7 @@ import app.bl.picture_like_controller as plc
 import app.bl.review_like_controller as rlc
 import app.bl.review_controller as rc
 import app.bl.category_controller as cc
+import app.bl.user_controller as user_c
 from app.utils import (
     make_list_of_dicts_jsonable,
     make_dict_jsonable,
@@ -226,6 +228,30 @@ def add_location():
     location_dict = make_dict_jsonable(location_dict)
 
     return json.dumps(location_dict)
+
+
+@bp.route('/update/user', methods=['POST'])
+def update_user():
+    user_id = request.form.get('user_id')
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+    email = request.form.get('email')
+    username = request.form.get('username')
+    phone = request.form.get('phone')
+    date_of_birth = request.form.get('date_of_birth')
+    columns_to_update = {
+        "FirstName": first_name,
+        "LastName": last_name,
+        "Email": email,
+        "Username": username,
+        "PhoneNumber": phone,
+    }
+    if date_of_birth:
+        columns_to_update['DateOfBirth'] = datetime.date.fromisoformat(
+            date_of_birth)
+    user = user_c.get_user_by_id(int(user_id))
+    user_c.update_user_columns(user, columns_to_update)
+    return redirect('/profile')
 
 
 def allowed_file(filename):

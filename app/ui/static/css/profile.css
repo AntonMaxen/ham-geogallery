@@ -1,0 +1,124 @@
+#content {
+    height: calc(100% - 50px);
+    background-color: darkcyan;
+    padding-top: 50px;
+    font-family: monospace;
+}
+
+.container {
+    width: 600px;
+    min-height: 400px;
+    margin: 0 auto;
+    background-color: darkseagreen;
+    border-radius: 5px;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0.05);
+    text-align: center;
+    color: darkcyan;
+}
+
+.box-header {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    background-color: rgba(136, 178, 138, 0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: center;
+    color: darkcyan;
+}
+
+.info-container {
+    display: flex;
+}
+
+.left-infobox {
+    flex: 1;
+    height: 600px;
+    margin: 20px 10px 20px 20px;
+    background-color: #BCD7BC;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+
+.right-infobox {
+    flex: 1;
+    height: 600px;
+    margin: 20px 20px 20px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.general-box {
+    padding: 10px;
+    display:flex;
+
+}
+
+.general-box-left {
+    flex: 1;
+}
+
+.general-box-right {
+    flex: 1;
+}
+
+.general-box input {
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 25px;
+    margin-bottom: 10px;
+    outline: none;
+    color: darkcyan;
+    padding: 5px;
+}
+
+.general-box label {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 10px;
+    display: block;
+    color: darkcyan;
+}
+
+.image-box {
+    height: 200px;
+    background-color: #BCD7BC;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+.stats-box {
+    flex: 1;
+    background-color: #BCD7BC;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+
+#user-form button {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: darkcyan;
+    color: darkseagreen;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+}
