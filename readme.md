@@ -25,3 +25,4 @@
  - [x] Integrate visual map (google maps api)
  - [x] UI Layer styling
  - [ ] Make unit test
+ - [ ] Finsih Readme
