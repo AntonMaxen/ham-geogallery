@@ -234,9 +234,217 @@ let load_sidebar_new_location_data = async(lat_lng, map) => {
     header_extra_box.appendChild(header_lng_text);
     sidebar_header.appendChild(header_extra_box);
 
+    if (user != null) {
+        let button_container = document.createElement('div');
+        button_container.setAttribute('class', 'button-container');
 
-    let button_container = document.createElement('div');
-    button_container.setAttribute('class', 'button-container');
+        let button_one = await load_new_location_button_container(map, lat, lng);
+
+        button_container.appendChild(button_one);
+        sidebar_container.appendChild(button_container);
+    }
+
+}
+
+
+let remove_form = sidebar_container => {
+    let form_containers = sidebar_container.querySelectorAll('.form-container');
+    let footer_containers = sidebar_container.querySelectorAll('.form-footer')
+    form_containers.forEach(c => c.parentNode.removeChild(c));
+    footer_containers.forEach(f => f.parentNode.removeChild(f));
+}
+
+let load_sidebar_infobox = async (loc) => {
+    let sidebar = document.querySelector('#sidebar');
+    let sidebar_container = create_sidebar_container(sidebar, 'infobox', 0);
+    let sidebar_header = create_sidebar_header(sidebar_container);
+    sidebar_header.addEventListener('click', function(){
+        location.replace(`http://localhost:5000/place/${loc.Place}`)
+    });
+    let header_text = document.createElement('h4');
+    header_text.innerText = `${loc.Place}`;
+    sidebar_header.appendChild(header_text);
+    if (user != null) {
+        let button_container = document.createElement('div');
+        button_container.setAttribute('class', 'button-container');
+
+        let button_one = await load_image_button_container(loc);
+        let button_two = await load_review_button_container(loc);
+
+        button_container.appendChild(button_one);
+        button_container.appendChild(button_two);
+        sidebar_container.appendChild(button_container);
+    }
+}
+
+let load_image_button_container = async (loc) => {
+    let button_one = document.createElement('button');
+    button_one.setAttribute('class', 'info-button');
+    button_one.innerText = 'Add Image';
+
+    button_one.addEventListener('click', async function() {
+        let sidebar_container = document.querySelector('.infobox');
+        remove_form(sidebar_container);
+
+        let form_container = create_form_container(sidebar_container);
+        form_container.innerHTML = (
+            '<h5>Add Image</h5>' +
+            '<form action="#" enctype="multipart/form-data">' +
+            '<input type="text" name="image_name" placeholder="Image Name">' +
+            '<label for="image-browse">Choose file</label>' +
+            '<input type="file" id="image-browse" name="image" accept="image/png, image/jpeg">' +
+            '<button>Submit</button>' +
+            '</form>'
+        );
+
+        let form_footer = create_sidebar_header(sidebar_container);
+        form_footer.classList.add('form-footer');
+        let footer_text = document.createElement('h4');
+        footer_text.innerText = 'Close';
+        form_footer.appendChild(footer_text);
+        form_footer.addEventListener('click', function (){
+            let sidebar_container = document.querySelector('.infobox');
+            remove_form(sidebar_container);
+        });
+
+
+        let input = document.querySelector('input[type="file"]');
+        input.addEventListener('change', function() {
+            let textbox = document.querySelector('label[for="image-browse"]');
+            let file_list = input.files;
+            if (file_list.length > 0) {
+                let current_file = file_list[0];
+                if (["image/png", "image/jpeg"].includes(current_file.type)) {
+                    textbox.innerText = `${current_file.name}`;
+                    console.log(URL.createObjectURL(current_file))
+                } else {
+                    textbox.innerText = `Filename ${current_file.name} is not a valid filetype.`;
+                }
+            }
+            else {
+                textbox.innerText = 'No files Selected';
+            }
+        });
+
+        let form = form_container.querySelector('form');
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            let sidebar_container = document.querySelector('.infobox');
+            let image_name = this.querySelector('input[type="text"]').value;
+            let files = this.querySelector('input[type="file"]').files;
+            let form_data = new FormData();
+
+            if (files.length > 0 && image_name.length) {
+                console.log(files[0])
+                form_data.append('user_id', user.Id)
+                form_data.append('location_id', loc.Id)
+                form_data.append('image', files[0]);
+                form_data.append('image_name', image_name);
+
+                fetch('http://localhost:5000/api/add/image', {
+                    method: 'POST',
+                    body: form_data
+                }).then(async response => {
+                    if (response.status == 200) {
+                        let image_box = document.querySelector('.imagebox');
+                        let images = image_box.querySelectorAll('.sidebar-image-container');
+                        image_box.parentNode.removeChild(image_box);
+                        await load_image_container(loc, images.length + 1);
+                        remove_form(sidebar_container)
+                    }
+                });
+            }
+            console.log(files);
+            console.log(image_name);
+
+        });
+
+    });
+
+    return button_one;
+}
+
+
+let load_review_button_container = async (loc) => {
+    let button_two = document.createElement('button');
+    button_two.setAttribute('class', 'info-button');
+    button_two.innerText = 'Add Review';
+
+    button_two.addEventListener('click', async function(){
+        let sidebar_container = document.querySelector('.infobox');
+        remove_form(sidebar_container);
+
+        let form_container = create_form_container(sidebar_container);
+        form_container.innerHTML = (
+            '<h5>Add Review</h5>' +
+            '<form action="#" enctype="multipart/form-data">' +
+            '<input type="text" name="title" placeholder="Title"/>' +
+            '<textarea name="review_text" placeholder="Review Text"></textarea>' +
+            '<input type="text" name="show_score" placeholder="Score" readonly/>' +
+            '<input type="range" name="score" min="0" max="9.9" value="5" step="0.1"/>' +
+            '<button>Submit</button>' +
+            '</form>'
+        );
+
+
+        let form_footer = create_sidebar_header(sidebar_container);
+        form_footer.classList.add('form-footer');
+        let footer_text = document.createElement('h4');
+        footer_text.innerText = 'Close';
+        form_footer.appendChild(footer_text);
+        form_footer.addEventListener('click', function (){
+            let sidebar_container = document.querySelector('.infobox');
+            remove_form(sidebar_container);
+        });
+
+        let slider = sidebar_container.querySelector('input[type="range"]');
+        let show_score = sidebar_container.querySelector('input[name="show_score"]');
+        show_score.value = slider.value;
+
+        slider.addEventListener('change', function(){
+            let sidebar_container = document.querySelector('.infobox');
+            let show_score = sidebar_container.querySelector('input[name="show_score"]');
+            show_score.value = this.value;
+        });
+
+        slider.addEventListener('input', function(){
+            let sidebar_container = document.querySelector('.infobox');
+            let show_score = sidebar_container.querySelector('input[name="show_score"]');
+            show_score.value = this.value;
+        });
+
+        let form = form_container.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let title = this.querySelector('input[name="title"]').value;
+            let review_text = this.querySelector('textarea[name="review_text"]').value;
+            let score = this.querySelector('input[name="score"]').value;
+            let form_data = new FormData()
+            form_data.append('title', title);
+            form_data.append('review_text', review_text);
+            form_data.append('score', score);
+            form_data.append('user_id', user.Id);
+            form_data.append('location_id', loc.Id);
+
+            if (title != '' && review_text != '') {
+                fetch('http://localhost:5000/api/add/review', {
+                    method: 'POST',
+                    body: form_data
+                }).then(async response => {
+                    let sidebar_container = document.querySelector('.infobox');
+                    let review_box = document.querySelector('.reviewbox');
+                    let reviews = review_box.querySelectorAll('.sidebar-review');
+                    review_box.parentNode.removeChild(review_box);
+                    await load_review_container(loc, reviews.length + 1);
+                    remove_form(sidebar_container);
+                });
+            }
+        });
+    });
+    return button_two;
+}
+
+let load_new_location_button_container = async (map, lat, lng) => {
     let button_one = document.createElement('button');
     button_one.setAttribute('class', 'info-button');
     button_one.innerText = 'Add Location';
@@ -304,7 +512,7 @@ let load_sidebar_new_location_data = async(lat_lng, map) => {
                 form_data.append('longitude', lng);
                 form_data.append('latitude', lat);
                 form_data.append('name', name);
-                form_data.append('user_id', 1);
+                form_data.append('user_id', user.Id);
                 form_data.append('category_id', category_id);
 
                 let response = await fetch('http://localhost:5000/api/add/location', {
@@ -321,197 +529,8 @@ let load_sidebar_new_location_data = async(lat_lng, map) => {
         });
     });
 
-    button_container.appendChild(button_one);
-    sidebar_container.appendChild(button_container);
-
+    return button_one;
 }
-
-let remove_form = sidebar_container => {
-    let form_containers = sidebar_container.querySelectorAll('.form-container');
-    let footer_containers = sidebar_container.querySelectorAll('.form-footer')
-    form_containers.forEach(c => c.parentNode.removeChild(c));
-    footer_containers.forEach(f => f.parentNode.removeChild(f));
-}
-
-let load_sidebar_infobox = async(loc) => {
-    let sidebar = document.querySelector('#sidebar');
-    let sidebar_container = create_sidebar_container(sidebar, 'infobox', 0);
-    let sidebar_header = create_sidebar_header(sidebar_container);
-    sidebar_header.addEventListener('click', function(){
-        location.replace(`http://localhost:5000/place/${loc.Place}`)
-    });
-    let header_text = document.createElement('h4');
-    header_text.innerText = `${loc.Place}`;
-    sidebar_header.appendChild(header_text);
-
-    let button_container = document.createElement('div');
-    button_container.setAttribute('class', 'button-container');
-    let button_one = document.createElement('button');
-    button_one.setAttribute('class', 'info-button');
-    button_one.innerText = 'Add Image';
-
-    button_one.addEventListener('click', async function() {
-        let sidebar_container = document.querySelector('.infobox');
-        remove_form(sidebar_container);
-
-        let form_container = create_form_container(sidebar_container);
-        form_container.innerHTML = (
-            '<h5>Add Image</h5>' +
-            '<form action="#" enctype="multipart/form-data">' +
-            '<input type="text" name="image_name" placeholder="Image Name">' +
-            '<label for="image-browse">Choose file</label>' +
-            '<input type="file" id="image-browse" name="image" accept="image/png, image/jpeg">' +
-            '<button>Submit</button>' +
-            '</form>'
-        );
-
-        let form_footer = create_sidebar_header(sidebar_container);
-        form_footer.classList.add('form-footer');
-        let footer_text = document.createElement('h4');
-        footer_text.innerText = 'Close';
-        form_footer.appendChild(footer_text);
-        form_footer.addEventListener('click', function (){
-            let sidebar_container = document.querySelector('.infobox');
-            remove_form(sidebar_container);
-        });
-
-
-        let input = document.querySelector('input[type="file"]');
-        input.addEventListener('change', function() {
-            let textbox = document.querySelector('label[for="image-browse"]');
-            let file_list = input.files;
-            if (file_list.length > 0) {
-                let current_file = file_list[0];
-                if (["image/png", "image/jpeg"].includes(current_file.type)) {
-                    textbox.innerText = `${current_file.name}`;
-                    console.log(URL.createObjectURL(current_file))
-                } else {
-                    textbox.innerText = `Filename ${current_file.name} is not a valid filetype.`;
-                }
-            }
-            else {
-                textbox.innerText = 'No files Selected';
-            }
-        });
-
-       let form = form_container.querySelector('form');
-       form.addEventListener('submit', function(e){
-           e.preventDefault();
-           let sidebar_container = document.querySelector('.infobox');
-           let image_name = this.querySelector('input[type="text"]').value;
-           let files = this.querySelector('input[type="file"]').files;
-           let form_data = new FormData();
-
-           if (files.length > 0 && image_name.length) {
-               console.log(files[0])
-               form_data.append('user_id', 1)
-               form_data.append('location_id', loc.Id)
-               form_data.append('image', files[0]);
-               form_data.append('image_name', image_name);
-
-               fetch('http://localhost:5000/api/add/image', {
-                   method: 'POST',
-                   body: form_data
-               }).then(async response => {
-                  if (response.status == 200) {
-                      let image_box = document.querySelector('.imagebox');
-                      let images = image_box.querySelectorAll('.sidebar-image-container');
-                      image_box.parentNode.removeChild(image_box);
-                      await load_image_container(loc, images.length + 1);
-                      remove_form(sidebar_container)
-                  }
-               });
-           }
-           console.log(files);
-           console.log(image_name);
-
-       });
-
-    });
-
-    let button_two = document.createElement('button');
-    button_two.setAttribute('class', 'info-button');
-    button_two.innerText = 'Add Review';
-
-    button_two.addEventListener('click', async function(){
-        let sidebar_container = document.querySelector('.infobox');
-        remove_form(sidebar_container);
-
-        let form_container = create_form_container(sidebar_container);
-        form_container.innerHTML = (
-            '<h5>Add Review</h5>' +
-            '<form action="#" enctype="multipart/form-data">' +
-            '<input type="text" name="title" placeholder="Title"/>' +
-            '<textarea name="review_text" placeholder="Review Text"></textarea>' +
-            '<input type="text" name="show_score" placeholder="Score" readonly/>' +
-            '<input type="range" name="score" min="0" max="9.9" value="5" step="0.1"/>' +
-            '<button>Submit</button>' +
-            '</form>'
-        );
-
-
-        let form_footer = create_sidebar_header(sidebar_container);
-        form_footer.classList.add('form-footer');
-        let footer_text = document.createElement('h4');
-        footer_text.innerText = 'Close';
-        form_footer.appendChild(footer_text);
-        form_footer.addEventListener('click', function (){
-            let sidebar_container = document.querySelector('.infobox');
-            remove_form(sidebar_container);
-        });
-
-        let slider = sidebar_container.querySelector('input[type="range"]');
-        let show_score = sidebar_container.querySelector('input[name="show_score"]');
-        show_score.value = slider.value;
-
-        slider.addEventListener('change', function(){
-            let sidebar_container = document.querySelector('.infobox');
-            let show_score = sidebar_container.querySelector('input[name="show_score"]');
-            show_score.value = this.value;
-        });
-
-        slider.addEventListener('input', function(){
-            let sidebar_container = document.querySelector('.infobox');
-            let show_score = sidebar_container.querySelector('input[name="show_score"]');
-            show_score.value = this.value;
-        });
-
-        let form = form_container.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            let title = this.querySelector('input[name="title"]').value;
-            let review_text = this.querySelector('textarea[name="review_text"]').value;
-            let score = this.querySelector('input[name="score"]').value;
-            let form_data = new FormData()
-            form_data.append('title', title);
-            form_data.append('review_text', review_text);
-            form_data.append('score', score);
-            form_data.append('user_id', 1);
-            form_data.append('location_id', loc.Id);
-
-            if (title != '' && review_text != '') {
-                fetch('http://localhost:5000/api/add/review', {
-                    method: 'POST',
-                    body: form_data
-                }).then(async response => {
-                    let sidebar_container = document.querySelector('.infobox');
-                    let review_box = document.querySelector('.reviewbox');
-                    let reviews = review_box.querySelectorAll('.sidebar-review');
-                    review_box.parentNode.removeChild(review_box);
-                    await load_review_container(loc, reviews.length + 1);
-                    remove_form(sidebar_container);
-                });
-            }
-
-        });
-
-    });
-
-    button_container.appendChild(button_one);
-    button_container.appendChild(button_two);
-    sidebar_container.appendChild(button_container);
-}
-
 
 let load_sidebar_data = async (loc, amount_pictures=3, amount_reviews=3) => {
     sidebar_cleanup();

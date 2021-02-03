@@ -28,7 +28,6 @@ window.onload = async () => {
         });
 
         let data = await result.json();
-        console.log(data);
         if (data.status == 200) {
             let user = data.user;
             first_name.value = user.FirstName;

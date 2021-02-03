@@ -11,7 +11,11 @@
 <script src="{{ url_for('static', filename='js/map/sidebar.js')}}" type="module"></script>
 <script>
     let locations = {{ locations | tojson }};
-    let location_id = null
+    let user = null;
+    {% if user is defined %}
+        user = {{ user | tojson }};
+    {% endif %}
+    let location_id = null;
     {% if location_id is not none %}
         location_id = {{ location_id }}
     {% endif %}
