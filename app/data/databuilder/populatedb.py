@@ -74,5 +74,5 @@ def populate_review_likes(amount=100):
 
 
 if __name__ == '__main__':
-    populate_db(amount=10)
+    populate_pictures(amount=1000)
 
