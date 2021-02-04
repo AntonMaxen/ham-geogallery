@@ -9,8 +9,20 @@ def get_user_by_email(email):
         return None
 
 
+def add_user_token(user_row):
+    return ur.add_user_token(user_row)
+
+
+def remove_user_token(user_row):
+    return ur.remove_user_token(user_row)
+
+
+def get_user_by_token(token):
+    return ur.get_user_by_token(token)
+
+
 def get_user_by_id(user_id):
-    return ur.get_user_by_id(user_id);
+    return ur.get_user_by_id(user_id)
 
 
 def add_user(row_dict):
@@ -26,3 +38,5 @@ def update_user_columns(user, update_dict):
         update_user_column(user, k, v)
 
 
+if __name__ == '__main__':
+    pass

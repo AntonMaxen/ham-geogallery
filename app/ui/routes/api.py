@@ -233,6 +233,15 @@ def add_location():
 @bp.route('/update/user', methods=['POST'])
 def update_user():
     user_id = request.form.get('user_id')
+    token = request.form.get('token')
+    if not request_ok(user_id, token):
+        return json.dumps({
+            'status': 401,
+            'category': 'error',
+            'message': "You are not authorized"
+        })
+
+
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     email = request.form.get('email')
@@ -249,9 +258,23 @@ def update_user():
     if date_of_birth:
         columns_to_update['DateOfBirth'] = datetime.date.fromisoformat(
             date_of_birth)
+
     user = user_c.get_user_by_id(int(user_id))
     user_c.update_user_columns(user, columns_to_update)
-    return redirect('/profile')
+    user_dict = uc.row_to_dict(user)
+    user_dict = make_dict_jsonable(user_dict)
+
+    return json.dumps({
+        'status': 200,
+        'category': 'success',
+        'message': 'Profile Updated',
+        'user': user_dict
+    })
+
+
+def request_ok(user_id, token):
+    db_user = user_c.get_user_by_token(token)
+    return db_user and db_user.Id == int(user_id)
 
 
 def allowed_file(filename):

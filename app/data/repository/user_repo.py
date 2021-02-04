@@ -1,6 +1,9 @@
 import app.data.repository.table_functions as tf
 from app.data.models.model_imports import *
+from sqlalchemy import exc
+from app.data.db import session
 from app.utils import print_dict, print_dicts
+import secrets
 
 
 def get_all_users():
@@ -29,10 +32,41 @@ def search_user(col_name, value):
     return tf.get_rows_like_column_value(User, col_name, value)
 
 
-if __name__ == '__main__':
-    for u in [tf.row_to_dict(user) for user in get_all_users()]:
-        pass
-        # print_dict(u)
+def add_user_token(user_row):
+    token = generate_hex_token()
+    result = search_user('Token', token)
+    if len(result) <= 0:
+        try:
+            user_row.Token = token
+            session.commit()
+        except exc.SQLAlchemyError:
+            session.rollback()
+            return None
 
-    dicts = tf.rows_to_dicts(search_user('FirstName', "Allison"))
-    print_dicts(dicts)
+    return user_row
+
+
+def get_user_by_token(token):
+    return tf.get_row_by_column(User, token, col_name='Token')
+
+
+def remove_user_token(user_row):
+    try:
+        user_row.Token = None
+        session.commit()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        return None
+
+    return user_row
+
+
+def generate_hex_token(size=16):
+    return secrets.token_hex(16)
+
+
+if __name__ == '__main__':
+    user = get_user_by_id(1)
+    add_user_token(user)
+    print(user.Token)
+    print(user.Token)
