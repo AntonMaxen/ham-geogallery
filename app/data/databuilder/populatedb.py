@@ -73,6 +73,10 @@ def populate_review_likes(amount=100):
     add_rows(ReviewLike, GenReviewLike, amount)
 
 
+def populate_locations(amount=100):
+    add_rows(Location, GenLocation, amount)
+
+
 if __name__ == '__main__':
-    populate_pictures(amount=1000)
+    populate_locations(1000)
 

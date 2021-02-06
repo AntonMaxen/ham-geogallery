@@ -13,6 +13,10 @@ def get_all_locations():
     return lr.get_all_locations()
 
 
+def remove_locations_by_place_name(place_name):
+    return lr.remove_locations_by_place_name(place_name)
+
+
 def add_location(row_dict):
     return lr.add_location(row_dict)
 
