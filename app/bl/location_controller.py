@@ -2,7 +2,8 @@ import app.data.repository.location_repo as lr
 
 
 def get_location_by_place_name(place_name):
-    return lr.search_location('Place', place_name)
+    locations = lr.search_location('Place', place_name)
+    return locations[0] if len(locations) > 0 else None
 
 
 def get_location_by_id(location_id):
