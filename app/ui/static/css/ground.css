@@ -48,6 +48,7 @@ html, body {
     margin: 7px auto 5px;
     border-radius: 5px;
     padding: 10px;
+    font-size: 10px;
 }
 
 .error {
