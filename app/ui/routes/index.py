@@ -5,4 +5,4 @@ bp = Blueprint('index', __name__)
 
 @bp.route('/')
 def index():
-    return redirect('/map/?location_id=1')
+    return redirect('/map')

@@ -3,13 +3,13 @@
 <head>
     {% block head %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>GeoGallery</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ground.css')}}" />
     {% endblock %}
 </head>
 <body>
     <div id="top-bar">
-        <a id="home" href="{{ url_for('map.index') }}?location_id=1">TH Geo-Gallery</a>
+        <a id="home" href="{{ url_for('map.index') }}">HAM GeoGallery</a>
         <div class="spacer">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages and request.endpoint not in ('auth.login', 'auth.signup') %}
@@ -19,7 +19,7 @@
                 {% endif %}
             {% endwith %}
         </div>
-        <a class="top-bar-item" href="{{ url_for('map.index') }}?location_id=1">Map</a>
+        <a class="top-bar-item" href="{{ url_for('map.index') }}">Map</a>
         <a class="top-bar-item" href="{{ url_for('place.place') }}">Places</a>
 
         {% if current_user.is_authenticated %}

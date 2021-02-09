@@ -37,7 +37,7 @@ let create_map = async () => {
     }
     */
     return new google.maps.Map(document.getElementById("map"), {
-        zoom: 11,
+        zoom: 6,
         center: center_lat_lng
     });
 }
