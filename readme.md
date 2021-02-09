@@ -16,10 +16,12 @@
 <!--te-->
 
 ## Background ##
+We started this project as a schoolassignment to create a webapplication with a databaseconnection. In the planning process, we got inspired by a orienteering website where you check in to checkpoints via googlemaps. We took that idea with a spin-off where a user can upload their own places on the map and upload photos on that location. The geogallery was born.
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+ham-geogallery is a flask-webapplication with a googlemaps integration, you can add places, reviews, images as a logged in user. Its a good way to explore the world via the integrated map-gallery.
 
 
 ### Built With
@@ -63,7 +65,7 @@ alembic upgrade head
 ## Roadmap
 
 ### Planning TODO
- - [ ] Deadline is February 8th
+ - [x] Deadline is February 8th
  - [x] Choose database manager
  - [x] Chose Migration tool
  - [x] Plan UI
@@ -87,8 +89,8 @@ alembic upgrade head
  - [x] Create UI Layer
  - [x] Integrate visual map (google maps api)
  - [x] UI Layer styling
- - [ ] Make unit test
- - [ ] Finsih Readme
+ - [x] Make unit test
+ - [x] Finsih Readme
 
 
 ## Made by
