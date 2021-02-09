@@ -77,7 +77,3 @@ def create_test_data():
         'badge': {'data': test_badge},
         'user_badge': {'data': test_user_badge}
     }
-
-
-if __name__ == '__main__':
-    pass

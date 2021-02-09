@@ -22,8 +22,3 @@ class ReviewLike(Base):
 
     user = relationship('User', back_populates='review_like')
     review = relationship('Review', back_populates='review_like')
-
-
-if __name__ == "__main__":
-    review_like = ReviewLike()
-    print(review_like)

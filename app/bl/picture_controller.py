@@ -18,7 +18,3 @@ def get_pictures_by_location_ordered_by_id_desc(location_id):
 
 def add_picture(row_dict):
     return pr.add_picture(row_dict)
-
-
-if __name__ == '__main__':
-    pass

@@ -1,6 +1,7 @@
 html {
     overflow: hidden;
 }
+
 body {
     background-color: darkcyan;
 }
@@ -38,7 +39,6 @@ body {
 .label {
     color: darkcyan;
 }
-
 
 input:focus, textarea:focus, select:focus{
     outline: none;

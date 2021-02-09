@@ -18,7 +18,3 @@ class Category(Base):
         sa.ForeignKey('category.Id', ondelete='CASCADE'))
 
     location = relationship('Location', back_populates='category')
-
-
-if __name__ == "__main__":
-    category = Category()

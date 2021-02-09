@@ -7,7 +7,3 @@ def get_amount_of_likes_by_picture_id(picture_id):
         return {
             'likes': len([l for l in picture_likes if l.Liked])
         }
-
-
-if __name__ == '__main__':
-    print(get_amount_of_likes_by_picture_id(3))

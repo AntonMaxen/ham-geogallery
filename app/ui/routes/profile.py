@@ -1,9 +1,6 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 import app.bl.utility_controller as uc
-import json
-import datetime
-import app.bl.user_controller as user_c
 from app.utils import make_dict_jsonable
 bp = Blueprint('profile', __name__, url_prefix='/profile')
 

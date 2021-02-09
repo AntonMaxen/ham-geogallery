@@ -33,8 +33,3 @@ def get_geoinformation_by_latlng(lat, lng, **kwargs):
     else:
         print(result.content)
         return {'status': 404}
-
-
-if __name__ == '__main__':
-    get_geoinformation_by_latlng(30.333472, -81.470448)
-    pass

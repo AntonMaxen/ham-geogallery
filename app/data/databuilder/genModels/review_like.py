@@ -10,8 +10,3 @@ class GenReviewLike:
         random_user = tf.get_random_row(User)
         self.UserId = getattr(random_user, 'Id', None)
         self.Liked = gen.get_random_number(0, 1)
-
-
-if __name__ == '__main__':
-    gen_review_like = GenReviewLike()
-    print(gen_review_like.__dict__)

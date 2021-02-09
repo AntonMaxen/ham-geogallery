@@ -19,8 +19,3 @@ class VisitedLocation(Base):
 
     location = relationship('Location', back_populates='visited_location')
     user = relationship('User', back_populates='visited_location')
-
-
-if __name__ == '__main__':
-    visited_location = VisitedLocation()
-    print(visited_location)

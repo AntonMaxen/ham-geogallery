@@ -113,4 +113,4 @@ def add_user_badges(amount=100):
 
 
 if __name__ == '__main__':
-    users = add_rows(User, GenUser, 10)
+    populate_db(amount=10)

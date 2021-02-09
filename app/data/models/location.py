@@ -1,4 +1,3 @@
-from sqlalchemy.orm import relationship
 from app.data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
@@ -53,7 +52,3 @@ class Location(Base):
         back_populates='location',
         passive_deletes=True
     )
-
-
-if __name__ == '__main__':
-    location = Location()

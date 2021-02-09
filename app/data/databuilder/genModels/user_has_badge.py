@@ -10,8 +10,3 @@ class GenUserBadge:
         random_badge = tf.get_random_row(Badge)
         self.BadgeId = getattr(random_badge, 'Id', None)
         self.DateAcquired = gen.get_random_date()
-
-
-if __name__ == '__main__':
-    gen_user_has_badge = GenUserBadge()
-    print(gen_user_has_badge.__dict__)

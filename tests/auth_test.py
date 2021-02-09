@@ -2,12 +2,9 @@ import time
 import unittest
 import app.bl.user_controller as uc
 from selenium import webdriver
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
 
 name = 'ab'
+
 
 class AuthTestCase(unittest.TestCase):
 
@@ -30,7 +27,6 @@ class AuthTestCase(unittest.TestCase):
         current_url = self.driver.current_url
         self.assertEqual(current_url, 'http://127.0.0.1:5000/login')
 
-
     def test_b_login(self):
         self.driver.get('http://127.0.0.1:5000/login')
         email_field = self.driver.find_element_by_name('email')
@@ -45,19 +41,10 @@ class AuthTestCase(unittest.TestCase):
         current_url = self.driver.current_url
         self.assertEqual(current_url, 'http://127.0.0.1:5000/map/')
 
-    def test_c_logout(self):
-        pass
-        # self.driver.get('http://127.0.0.1:5000/map/')
-        #
-        #
-        # logout_link = self.driver.find_element_by_css_selector(
-        #     f"a[href^='/logout']")
-
-
-
     def tearDown(self):
-        # uc.remove_user_by_email(f'{name}@mail.com')
+        uc.remove_user_by_email(f'{name}@mail.com')
         self.driver.close()
+
 
 if __name__ == "__main__":
     unittest.main()

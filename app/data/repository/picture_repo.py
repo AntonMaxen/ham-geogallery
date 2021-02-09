@@ -1,6 +1,5 @@
 import app.data.repository.table_functions as tf
 from app.data.models.model_imports import *
-from app.utils import print_dict, print_dicts
 
 
 def get_all_pictures():
@@ -50,10 +49,3 @@ def search_picture(col_name, value):
 
 def get_most_recent_row():
     return tf.get_highest_row(Picture)
-
-
-if __name__ == '__main__':
-    p = get_pictures_by_colname_desc_id(1, col_name='LocationId')
-    print(p)
-    print(p[0].Id)
-    print(p[-1].Id)

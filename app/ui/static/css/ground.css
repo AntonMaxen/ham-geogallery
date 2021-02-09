@@ -51,6 +51,11 @@ html, body {
     font-size: 10px;
 }
 
+.danger {
+    background-color: #DC3545;
+    color: white;
+}
+
 .error {
     background-color: #DC3545;
     color: white;
@@ -58,6 +63,11 @@ html, body {
 
 .success {
     background-color: #28A745;
+    color: white;
+}
+
+.neutral  {
+    background-color: #007BFF;
     color: white;
 }
 

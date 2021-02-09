@@ -1,5 +1,3 @@
-from sqlalchemy.sql.expression import func
-from app.data.db import session
 import random
 import os
 import hashlib
@@ -77,7 +75,7 @@ def get_random_image_data():
 
 def get_hash_salt(password):
     salt = os.urandom(32)
-    hash = hashlib.pbkdf2_hmac(
+    my_hash = hashlib.pbkdf2_hmac(
         'sha256',
         password.encode('utf-8'),
         salt,
@@ -85,12 +83,5 @@ def get_hash_salt(password):
     )
     return {
         "salt": salt.hex(),
-        "hash": hash.hex()
+        "hash": my_hash.hex()
     }
-
-
-if __name__ == '__main__':
-    print(get_random_decimal(2, 1))
-    print(get_random_words(amount=5, unique=False))
-    get_random_image_data()
-

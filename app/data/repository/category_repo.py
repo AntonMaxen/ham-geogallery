@@ -44,12 +44,3 @@ def get_parent_categories(category_row):
             got_parent = False
 
     return categories
-
-
-if __name__ == '__main__':
-    for row in get_all_categories():
-        result = {col: getattr(row, col) for col in tf.get_columns(row)}
-        print(result)
-
-
-

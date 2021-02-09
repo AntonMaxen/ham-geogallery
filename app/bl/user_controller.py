@@ -52,7 +52,3 @@ def update_user_columns(user, update_dict):
         
 def remove_user_by_email(email):
     return ur.remove_user_by_email(email)
-
-  
-if __name__ == '__main__':
-    pass

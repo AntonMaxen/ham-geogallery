@@ -13,7 +13,3 @@ def find_element_by_css_selector(root, selector, delay=10):
         element = None
 
     return element
-
-
-if __name__ == '__main__':
-    pass

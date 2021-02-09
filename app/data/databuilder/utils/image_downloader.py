@@ -26,7 +26,3 @@ def download_image(image_url, suffix='.png'):
         return file_path
     else:
         print(f'request error: {r.status_code}')
-
-
-if __name__ == '__main__':
-    download_image('https://picsum.photos/200')

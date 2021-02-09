@@ -20,8 +20,3 @@ class GenUser:
         self.DateOfBirth = gen.get_random_date()
         self.JoinDate = gen.get_random_date()
         self.PermissionLevel = gen.get_random_number(0, 255)
-
-
-if __name__ == '__main__':
-    user = GenUser()
-    print(user.__dict__)

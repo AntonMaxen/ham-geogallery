@@ -7,7 +7,3 @@ def get_amount_of_likes_by_review_id(review_id):
         return {
             'likes': len([l for l in review_likes if l.Liked])
         }
-
-
-if __name__ == '__main__':
-    print(get_amount_of_likes_by_review_id(7))

@@ -24,7 +24,3 @@ def add_location(row_dict):
 
 def get_location(place_name):
     return lr.get_locations(place_name)
-
-
-if __name__ == '__main__':
-    pass

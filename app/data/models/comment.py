@@ -30,8 +30,3 @@ class Comment(Base):
         back_populates='comment',
         passive_deletes=True
     )
-
-
-if __name__ == "__main__":
-    comment = Comment()
-    print('comment')

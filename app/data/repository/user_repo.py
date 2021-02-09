@@ -2,7 +2,6 @@ import app.data.repository.table_functions as tf
 from app.data.models.model_imports import *
 from sqlalchemy import exc
 from app.data.db import session
-from app.utils import print_dict, print_dicts
 import secrets
 
 
@@ -22,6 +21,7 @@ def remove_user_by_id(row_id):
 
 def remove_user_by_email(row_id):
     return tf.remove_row_by_id(User, row_id, col_name='Email')
+
 
 def remove_user_by_username(username):
     return tf.remove_row_by_id(User, username, col_name='Username')
@@ -73,11 +73,4 @@ def remove_user_token(user_row):
 
 
 def generate_hex_token(size=16):
-    return secrets.token_hex(16)
-
-
-if __name__ == '__main__':
-    user = get_user_by_id(1)
-    add_user_token(user)
-    print(user.Token)
-    print(user.Token)
+    return secrets.token_hex(size)

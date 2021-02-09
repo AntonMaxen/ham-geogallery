@@ -1,11 +1,12 @@
+# external imports
 from flask import (
-    Blueprint, render_template, url_for, request, send_file, flash, redirect
+    Blueprint, request, send_file, flash, redirect
 )
-from flask_login import current_user, login_required
-import os
 import datetime
 from werkzeug.utils import secure_filename
-
+import os
+import json
+# internal imports
 import app.bl.location_controller as lc
 import app.bl.utility_controller as uc
 import app.bl.picture_controller as pc
@@ -19,10 +20,8 @@ from app.utils import (
     make_dict_jsonable,
     get_project_root
 )
-
 import app.ui.external.api.mapquest.geocoding as geocoding
-import os
-import json
+
 bp = Blueprint('api', __name__, url_prefix='/api')
 
 
@@ -153,19 +152,19 @@ def add_image():
     user_id = request.form.get('user_id')
     location_id = request.form.get('location_id')
     if 'image' not in request.files:
-        flash('No files')
+        flash('No files', 'error')
         return redirect('/map')
 
     image = request.files.get('image')
 
     if image.filename == '':
-        flash('No selected file')
+        flash('No selected file', 'error')
         return redirect('/map')
 
     if image and allowed_file(image.filename):
         recent_row = pc.get_most_recent_row()
         highest_id = recent_row.Id
-        flash('success')
+        flash('success', 'success')
 
         photo_dir = os.path.join(get_project_root(), 'Photos')
         fixed_filename = secure_filename(image.filename)
@@ -182,8 +181,7 @@ def add_image():
         })
         return redirect('/map')
     else:
-        print('error')
-        flash('not allowed file ending')
+        flash('not allowed file ending', 'error')
         return redirect('/map')
 
 
@@ -241,7 +239,6 @@ def update_user():
             'message': "You are not authorized"
         })
 
-
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     email = request.form.get('email')
@@ -280,9 +277,3 @@ def request_ok(user_id, token):
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ['png', 'jpg', 'jpeg', 'gif']
-
-
-if __name__ == '__main__':
-    rows = pc.get_pictures_by_location_ordered_by_id_desc(1)
-    print(rows[0].Id)
-    print(rows[-1].Id)

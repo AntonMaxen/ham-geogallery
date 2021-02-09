@@ -14,8 +14,3 @@ class GenLocation:
         self.UserId = getattr(random_user, "Id", None)
         random_category = tf.get_random_row(Category)
         self.CategoryId = getattr(random_category, "Id", None)
-
-
-if __name__ == '__main__':
-    loc = GenLocation()
-    print(loc.__dict__)

@@ -17,8 +17,3 @@ class GenReview:
         self.UserId = getattr(random_user, 'Id', None)
         random_location = tf.get_random_row(Location)
         self.LocationId = getattr(random_location, 'Id', None)
-
-
-if __name__ == '__main__':
-    gen_review = GenReview()
-    print(gen_review.__dict__)

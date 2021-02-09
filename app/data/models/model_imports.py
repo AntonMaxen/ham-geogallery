@@ -11,5 +11,3 @@ from app.data.models.comment import Comment
 from app.data.models.comment_like import CommentLike
 from app.data.models.badge import Badge
 from app.data.models.user_badge import UserBadge
-
-

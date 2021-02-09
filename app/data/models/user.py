@@ -102,7 +102,3 @@ class User(UserMixin, Base):
 
     def get_id(self):
         return self.Id
-
-
-if __name__ == '__main__':
-    user = User()
