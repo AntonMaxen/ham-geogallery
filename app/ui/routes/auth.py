@@ -1,5 +1,4 @@
 import datetime
-import random
 
 from flask import (
     Blueprint,
@@ -33,13 +32,10 @@ def login_post():
 
     user = uc.get_user_by_email(email)
 
-    # check if the user actually exists
-    # take the user-supplied password, hash it, and compare it to the hashed password in the database
     if not user or not check_password_hash(user.Hash, password):
-        flash('Please check your login details and try again.')
-        return redirect(url_for('auth.login'))  # if the user doesn't exist or password is wrong, reload the page
+        flash('Please check your login details and try again.', 'danger')
+        return redirect(url_for('auth.login'))
 
-    # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
     flash(f'Logged in as {user.Username}', 'success')
     return redirect('/map')
@@ -59,11 +55,10 @@ def signup_post():
 
     user = uc.get_user_by_email(email)
 
-    if user:  # if a user is found, we want to redirect back to signup page so user can try again
-        flash('Email address already exists.')
+    if user:
+        flash('Email address already exists.', 'danger')
         return redirect(url_for('auth.signup'))
 
-    # create a new user with the form data. Hash the password so the plaintext version isn't saved.
     new_user = {
         'Email':email,
         'Username':username,
@@ -71,6 +66,7 @@ def signup_post():
         'JoinDate': datetime.date.today(),
         'PermissionLevel': 1
     }
+    flash('Signup successfull', 'success')
 
     uc.add_user(new_user)
     return redirect('/login')
@@ -80,5 +76,5 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
-    flash('Logging out')
+    flash('Logging out', 'info')
     return redirect('/map')

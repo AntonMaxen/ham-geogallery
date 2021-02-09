@@ -10,7 +10,7 @@ def get_user_by_email(email):
 
 
 def get_user_by_id(user_id):
-    return ur.get_user_by_id(user_id);
+    return ur.get_user_by_id(user_id)
 
 
 def add_user(row_dict):
@@ -24,5 +24,10 @@ def update_user_column(user, col_name, new_value):
 def update_user_columns(user, update_dict):
     for k, v in update_dict.items():
         update_user_column(user, k, v)
+
+
+def remove_user_by_email(email):
+    return ur.remove_user_by_email(email)
+
 
 

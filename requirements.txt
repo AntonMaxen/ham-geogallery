@@ -8,3 +8,4 @@ requests
 flask-cors
 flask_login
 werkzeug
+selenium

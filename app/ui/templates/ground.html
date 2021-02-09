@@ -11,9 +11,9 @@
     <div id="top-bar">
         <a id="home" href="{{ url_for('map.index') }}?location_id=1">TH Geo-Gallery</a>
         <div class="spacer">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <div class="info {{ messages[0][0] }}">
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages and request.endpoint not in ('auth.login', 'auth.signup') %}
+                    <div class="info is-{{ messages[0][0] }}">
                         {{ messages[0][1] }}
                     </div>
                 {% endif %}

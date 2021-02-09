@@ -1,6 +1,7 @@
 venv/
 .idea/
 __pycache__/
+tests/chromedriver.exe
 mapsdb.mwb.bak
 Photos
 app/ui/static/js/config.js
