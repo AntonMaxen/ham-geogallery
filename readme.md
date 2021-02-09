@@ -11,7 +11,7 @@
  
  
  ### Project TODO
- - [ ] Define how to use Googlemaps api (library/framework)
+ - [x] Define how to use Googlemaps api (library/framework)
  - [x] Database Modeling + Figure out how cascading will work (delete comments on a review that is deleted)
  - [x] Define db naming conventions
  - [x] (Fixa docker)
@@ -19,9 +19,10 @@
  - [x] Create SQLAlchemy Models
  - [x] Make Cascading work
  - [x] Create DB Repository (Figure out how the querys should work, what info do we want to get/add)
- - [ ] Create Business Layer
- - [ ] Create Flask Application
- - [ ] Create UI Layer
- - [ ] Integrate visual map (google maps api)
- - [ ] UI Layer styling
-
+ - [x] Create Business Layer
+ - [x] Create Flask Application
+ - [x] Create UI Layer
+ - [x] Integrate visual map (google maps api)
+ - [x] UI Layer styling
+ - [ ] Make unit test
+ - [ ] Finsih Readme
