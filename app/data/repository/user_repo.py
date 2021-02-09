@@ -20,6 +20,9 @@ def remove_user_by_id(row_id):
         return tf.remove_row_by_id(User, row_id)
 
 
+def remove_user_by_email(row_id):
+    return tf.remove_row_by_id(User, row_id, col_name='Email')
+
 def remove_user_by_username(username):
     return tf.remove_row_by_id(User, username, col_name='Username')
 

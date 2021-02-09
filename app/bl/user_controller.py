@@ -49,6 +49,10 @@ def update_user_columns(user, update_dict):
     for k, v in update_dict.items():
         update_user_column(user, k, v)
 
+        
+def remove_user_by_email(email):
+    return ur.remove_user_by_email(email)
 
+  
 if __name__ == '__main__':
     pass
