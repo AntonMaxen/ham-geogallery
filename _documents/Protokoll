@@ -1,0 +1,579 @@
+2021-01-05
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+  * Lägg till nya kort/issues ifall dom finns.
+    - Vi har 11 Issues för tillfället inga nya innan dessa är gjorda
+  * Gå igenom aktuella plockade kort
+    - Alla är klara med sina kort
+  * Granska PR
+    - Inga PR för tillfället
+  * Fördela kort/issues
+    - Alla Issues är uppdelade.
+  * Övriga kommentarer
+    - Igenting på Onsdag, ledigt, göra klart issues idag och vara lediga tills på torsdag.
+    - Migrations skall vara klara idag
+    - SQLAlchemy börjas på på Torsdag. 
+  * Bestämma nästa möte och nästa Ordförande
+    - Henrik håller i nästa möte på Torsdag.
+    - Mötet när vi får tid, förmodligen efter lunch, meddela varandra om tid, Discord/telefon.
+
+
+2021-01-08
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+  * Lägg till nya kort/issues ifall dom finns.
+   - Anton fyller på med sqlalchemy kort
+   
+  * Gå igenom aktuella plockade kort
+   - inga kort är plockade för tillfället
+   
+  * Granska PR
+   - Alla PR granskade och godkända
+   
+  * Fördela kort/issues
+   - Fördelning sker senare under dagen eller vid nästa tillfälle
+   
+  * Övriga kommentarer
+   - Ändra så att avändarnamn,email och Filename ska vara ett unikt värde i databasen
+   - Istället för Password har vi Salt och Hash
+   
+
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - 
+
+* Granska PR
+
+* Lägga till nya kort/issues
+
+* Fördela kort/issues
+ 
+* Övriga kommentarer
+ 
+* Bestämma nästa möte och nästa ordförande
+   - Deadline på att vara klara med sqlalchemy och fungerande cascading är onsdagen den 13 januari
+   
+  * Bestämma nästa möte och nästa ordförande
+   - Nästa möte måndag om tid finns.
+   - Anton håller i nästa möte på måndag om Mattias inte kan.
+   
+   
+2021-01-11
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+ 
+ * Gå igenom aktuella plockade kort
+   - inga kort är plockade för tillfället
+   
+ * Granska PR
+  - Alla PR granskade och godkända
+ 
+ * Lägga till nya kort/issues
+  - lägger till relationship och cascade
+ 
+ * Övriga kommentarer
+  - Alla läser på om relationships och cascade
+ 
+ * Bestämma nästa möte och nästa ordförande
+ - Nästa möte tisdag 12/1 kl 9:00
+ - Anton håller nästa möte
+ 
+ 
+Datum: 2021-01-12
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Inga sittande kort
+
+* Granska PR
+ - Cascading i alembic och omformattering enligt pep 8 gick igenom
+
+* Lägga till nya kort/issues
+ - Inga nya issues vi fortsätter på dom gamla
+ 
+* Fördela kort/issues
+ - SQLA Modellerna delas ut jämnt i gruppen
+ 
+* Övriga kommentarer
+ - Vara färdiga med PR kl 13 idag, eget arbete från 10:00 - 13:00
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Henrik kör som nästa orförande, på mötet onsdag den 13:e under föreläsning,
+ - Tid obestämt men förmodligen runt lunch.
+ 
+ 
+Datum: 2021-01-13
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare:
+
+* Gå igenom aktuella plockade kort
+ - Inga sittande kort
+* Granska PR
+ - Inga aktuella PR
+* Lägga till nya kort/issues
+ - skapa en generellt repofil
+ - repo filer
+* Fördela kort/issues
+  - generellt repofil görs tillsamans
+  - kort fördelas efter skapandet 
+* Övriga kommentarer
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte Torsdagen 14/1 förmodligen runt lunch
+ - Mattias håller i nästa möte
+ 
+ 
+Datum: 21-01-14
+ Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias
+
+* Gå igenom aktuella plockade kort
+ - Inga aktuella kort
+* Granska PR
+ - Table functions, la till kommentarer och några hjälpfunktioner
+* Lägga till nya kort/issues
+ - inga nya kort
+* Fördela kort/issues
+ - 13 kort fördelade,
+* Övriga kommentarer
+ - Vi gör Repo category gemensamt
+ - Mer ingående planering nästa vecka
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte på fredag 15/1 kl 13
+ - Anton håller nästa möte 
+
+
+Datum: 21-01-15
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Anton och Mattias sitter fortfarande med sina kort, färdiga på måndag. Databuilder uppkommit
+* Granska PR
+ - Alla PR är mergade
+* Lägga till nya kort/issues
+ - Inga nya kort/issues
+* Fördela kort/issues
+ - Inga nya fördelningar
+* Övriga kommentarer
+ - Inga övriga kommentarer, flyter på bra.
+* Bestämma nästa möte och nästa ordförande
+ - 18-01-2021 Måndag, någon gång under föreläsning typ lunch
+
+
+
+Datum: 21-01-18 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+
+* Gå igenom aktuella plockade kort
+ - Mattias ska jobbar klart med sina kort
+* Granska PR
+ - Nu är alla PR grasnskade 
+* Lägga till nya kort/issues
+ - Fixa en flask aplication
+* Fördela kort/issues
+ - Inga aktiva kort
+* Övriga kommentarer
+ - Vi hoppar över bisnis layer och börjar med flask aplicationen 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte tisdagen 19/1 kl 09:00
+ - Mattias håller i nästa möte
+ 
+
+
+Datum: 21-01-19
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Inga att gå igenom
+
+* Granska PR
+ - Inga att gå igenom
+ 
+* Lägga till nya kort/issues
+ - La till 4 "views"
+
+* Fördela kort/issues
+ - Henrik och Anton tog varsit kort
+ - Mattias väntar på issue från Henrik/Anton
+ 
+* Övriga kommentarer
+ - Anton tog upp hur vi skall fördela arbetet med views.
+ Kom fram till att Anton och Henrik tar huvudansvaret 
+ för varsin del och att Mattias plockar issues som Anton
+ och Henrik fördelar.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte den 20/1 kl 9:00 
+ - Anton håller mötet
+
+Datum: 21-01-20
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+    - Platsview henrik, det går frammåt men lite svårigheter med js och css. Lite funderingar på hur datan ska grupperas.
+    - Mapview anton, kollat mer på maps apit för att planera strategin och UI, lite funderingar på hur UI ska se ut, för att göra det så enkelt som möjligt till att börja med
+    - Loginview, Mattias kollar hur vi ska vi authentication på våran hemsida, https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login
+* Granska PR
+    - Inga pr.
+* Lägga till nya kort/issues
+    - Inga ny kort / issues
+* Fördela kort/issues
+    - allt är fördelat
+* Övriga kommentarer
+    - Inga övriga kommentarer.
+* Bestämma nästa möte och nästa ordförande
+    - 2020-01-20 09:00
+    - Möteshållare Henrik Liman
+
+
+Datum: 21-01-21
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare:Henrik Liman
+
+* Gå igenom aktuella plockade kort
+ - inga stora framsterg från igår
+* Granska PR
+ -inga aktuela pr
+* Lägga till nya kort/issues
+ - Inga ny kort / issues
+* Fördela kort/issues
+ - allt är fördelat
+* Övriga kommentarer
+ - Inga övriga kommentarer.
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte Fredag 22/1 kl 13:00
+ - Mattias håller i nästa möte
+ 
+ 
+ 
+Datum: 21-01-22 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Inget att rapportera
+* Granska PR
+ - Gick igenom Map view samt api.route och godkände
+* Lägga till nya kort/issues
+ - Inget nytt
+* Fördela kort/issues
+ - Inget att fördela
+* Övriga kommentarer
+ - Gick igenom vad Anton gjort. Främst kollade vi map view.
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte 210125
+ - Anton håller nästa möte kl 8:30, eller när ev föreläsning slutat
+
+ 
+Datum: 21-01-25
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Mattias: Ska börja att implementera login efter lite research, signup, login sidor.
+ - Henrik: Ska få in bilder i places som man letar efter och lite styling. Visat status hur det ser ut.
+ - Anton: Lägga till funktionalitet när man klickar på kartan så att man får möjlighet till att lägga till en plats, samt begränsa hur måga bilder / reviews som visas när en plats laddas.
+
+* Granska PR
+ - mapsview-v2 är mergas, med lite nya api routes
+
+* Lägga till nya kort/issues
+ - inget nytt slutspurt göra det som vi hinner med.
+
+* Fördela kort/issues
+ - inget nytt att fördela
+ 
+* Övriga kommentarer
+ - Jobba på!
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Henrik tar rodret, 2021-01-26 Imorgon Tisdag kl 09:00 på pricken!!!
+
+
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+
+* Gå igenom aktuella plockade kort
+ - Mattias: kämpar på. Börja närma sig att kunna skapa en användrae
+ - Anton: jobbar vidare med att lägga till funktionalitet när man klickar på kartan så att man får möjlighet till att lägga till en plats.
+ - Henrik: ska jobba med komentar med review och styla
+ 
+* Granska PR
+- inga pr
+
+* Lägga till nya kort/issues
+ - inget nytt slutspurt göra det som vi hinner med.
+
+* Fördela kort/issues
+ - inget nytt att fördela
+
+* Övriga kommentarer
+ - nej
+* Bestämma nästa möte och nästa ordförande
+ - möte i morgon onsdag 26/1-21 vid lektins tid
+ - Mattias håller i mötet
+
+Datum: 21-01-27
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias
+
+* Gå igenom aktuella plockade kort
+ - Kollade på Login. Mattias fick lite input på vad som behövde göras
+* Granska PR
+ - Gick igenom Mapview v2 och Place Name och mergeade dem
+ - Mattias är inte klar med Login, jobbar vidare
+* Lägga till nya kort/issues
+ - Inget att lägga till
+* Fördela kort/issues
+  - Inget att fördela
+* Övriga kommentarer
+  - Mattias jobbar på med Login, får hjälp på torsdag om det behövs
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte kl. 13:00 21-01-28
+ - Anton håller nästa möte
+
+Datum: 2021-01-29
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Henrik: samma som senast.
+ - Mattias: Inte klar ännu, men det går framåt!
+ - Anton: Lagt till ett sätt att lägga till bilder till platser, härnest ska reviews och platser kunna läggas till
+
+* Granska PR
+ - Inga PR
+
+* Lägga till nya kort/issues
+ - Inga nya kort/issues
+
+* Fördela kort/issues
+ - Inget att fördela
+ 
+* Övriga kommentarer
+ - Göra ihoplänkningen när alla viewsen är klara, måndag.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Måndag 2021-02-01 kl 08:30 Någon gång under lektionstimmarna.
+ 
+ 
+  
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+
+* Gå igenom aktuella plockade kort
+- jobba på med samma som tidigare
+
+* Granska PR
+- Antons mapveiw 3.0 granska och mergeas
+
+* Lägga till nya kort/issues
+ - Inga nya kort/issues
+
+* Fördela kort/issues
+ - Inget att fördela
+ 
+* Övriga kommentarer
+ - Fixa klart login m.m ikväll
+ 
+* Bestämma nästa möte och nästa ordförand
+- nästa möte kl09:00 2/2-21 Mattias
+
+
+Datum: 21-02-02 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Inget nytt
+ 
+* Granska PR
+ - Gick igenom login och mergade den
+ 
+* Lägga till nya kort/issues
+ - Inget nytt
+ 
+* Fördela kort/issues
+ - Inget att fördela
+ 
+* Övriga kommentarer
+ - Gick igenom kod gemensamt. Kollade att auth(signup och login mm) funkar.
+ - Förbereda för att göra tester imorgon onsdag.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte 210203 klockan 9:00
+ - Anton håller nästa möte
+
+Datum: 2021-02-03
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - 
+
+* Granska PR
+ - Antons Profile / ihoplänkning granskades och inloggningscheckar,  mergades med dev
+ - Henrik fixade place route så att du kan få all resultat som default, mergad och inne
+
+* Lägga till nya kort/issues
+ - TESTING
+ - Skapa kort för varje view, kort tages för den view man har gjort
+
+* Fördela kort/issues
+ - Anton map testing
+ - Henrik Place testing
+ - Mattias Auth testing
+ 
+* Övriga kommentarer
+ - Kolla över projekt todo
+ - Preliminärt projektnam HAM - GeoGallery
+ - Fixa titeln och visningssidan någon gång till projektnamnet.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Torsdag 2021-02-04 09:00 - Henrik
+
+
+Datum: 2021-02-04
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+
+* Gå igenom aktuella plockade kort
+ - alla jobbar på med att testa sina delar
+
+* Granska PR
+- Anton fixade login checkar
+
+* Lägga till nya kort/issues
+- -
+
+* Fördela kort/issues
+- inga ny kort att fördela
+ 
+* Övriga kommentarer
+- 
+
+* Bestämma nästa möte och nästa ordförande
+- Fredag 2021-02-05 09:00 - Mattias
+
+
+Datum: 21-02-05
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Henrik testar place och det framåt
+ - Anton testar map och det går framåt och har en god plan för vidare tester
+ - Mattias testar auth och det framåt
+
+* Granska PR
+ - Inga att kolla
+ 
+* Lägga till nya kort/issues
+ - Inga nya kort
+
+* Fördela kort/issues
+ - Inget att fördela
+ 
+* Övriga kommentarer
+ - Fick svar från Joakim angående när och hur redovisning/demo är.
+ - Projektet skall lämnas in under vecka 6, om det på fredag eller söndag vet vi inte.
+ - Mål att vara klara med allt tills på onsdag, ev justeringar efter demo och redovisning.
+ - Dokumentation görs på torsdag. 
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Näste möte efter föreläsningen
+ - Nästa ordförande är Anton
+ 
+Datum: 2021-02-08
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Mattias fortfarande på login tester
+ - Henrik fortfarande igång med plats tester
+ - Anton forfarande igång med map tester
+
+* Granska PR
+ - inga pr
+
+* Lägga till nya kort/issues
+ - inga nya kort / issues
+
+* Fördela kort/issues
+ - inga nya kort/issues att fördela
+ 
+* Övriga kommentarer
+ - Vi har fått en absolut deadline, onsdag.
+ - Vi pushar in branches på mötet imorgon, oavsett hur färdiga dom är,
+ - och gör final touches + dokumentation.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte 09:00 2021-02-09 sista mötet
+
+
+Datum: 2021-02-08
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+
+* Gå igenom aktuella plockade kort
+ - Allat klart
+* Granska PR
+ - Alla test pr granskade
+* Lägga till nya kort/issues
+- nej
+* Fördela kort/issues
+ -nej
+* Övriga kommentarer
+ - Bra jobbat!
+* Bestämma nästa möte och nästa ordförande
+- sista mötet
+
+
+***Mall:***
+ 
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare:
+
+* Gå igenom aktuella plockade kort
+
+* Granska PR
+
+* Lägga till nya kort/issues
+
+* Fördela kort/issues
+ 
+* Övriga kommentarer
+ 
+* Bestämma nästa möte och nästa ordförande

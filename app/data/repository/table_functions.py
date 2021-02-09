@@ -1,0 +1,207 @@
+from app.data.db import session
+from sqlalchemy.sql.expression import func
+from sqlalchemy import exc
+force_check = True
+
+
+def get_all_rows(model):
+    # Return all rows in given table
+    try:
+        if force_check:
+            session.commit()
+
+        result = session.query(model).all()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        result = []
+
+    return result
+
+
+def get_row_by_column(model, row_id, col_name='Id'):
+    # Returns First row that matches model.col_name == row_id
+    try:
+        if force_check:
+            session.commit()
+
+        result = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .one()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        result = None
+
+    return result
+
+
+def get_rows_by_column(model, row_id, col_name='Id'):
+    try:
+        if force_check:
+            session.commit()
+
+        result = session.query(model) \
+            .filter(getattr(model, col_name) == row_id).all()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        result = []
+
+    return result
+
+
+def get_rows_by_column_order_by_desc(model, row_id,
+                                     col_name='Id', order_id='Id'):
+    try:
+        if force_check:
+            session.commit()
+
+        result = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .order_by(getattr(model, order_id).desc()).all()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        result = []
+
+    return result
+
+
+def get_rows_like_column_value(model, col_name, value):
+    """Return all rows that contains model.col_name LIKE value
+    Good way to search database. """
+    try:
+        if force_check:
+            session.commit()
+
+        result = session.query(model) \
+            .filter(getattr(model, col_name).ilike(f'%{value}%')) \
+            .all()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        result = []
+
+    return result
+
+
+def validate_number(number):
+    if isinstance(number, int):
+        return True
+
+    if isinstance(number, str) and number.isdigit():
+        return True
+
+    return False
+
+
+def add_row(model, new_row):
+    """ Adds row to database table with a new_row dictionary
+    Make a dict that matches column names in given table."""
+    try:
+        row = model(**new_row)
+        session.add(row)
+        session.commit()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        return None
+
+    return row
+
+
+def update_row_column(model_obj, col_name, new_value):
+    # updates a column (col_name) in a given row (model_obj) with (new_value)
+    try:
+        setattr(model_obj, col_name, new_value)
+        session.commit()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        return None
+
+    return model_obj
+
+
+def remove_row_by_id(model, row_id, col_name='Id'):
+    # Removes row from table (model) that matches (model.col_name) == (row_id)
+    try:
+        obj = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .one()
+
+        session.delete(obj)
+        session.commit()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        return None
+
+    return obj
+
+
+def remove_rows_by_column_name(model, row_id, col_name='Id'):
+    try:
+        obj = session.query(model) \
+            .filter(getattr(model, col_name) == row_id) \
+            .delete()
+
+        session.commit()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        return None
+
+    return obj
+
+
+def get_columns(model_obj):
+    # Returns Names of the columns for a given Table (model_obj).
+    return [column.key for column in model_obj.__table__.columns]
+
+
+def row_to_dict(row):
+    return {column: getattr(row, column, None)
+            for column in get_columns(row)}
+
+
+def rows_to_dicts(rows):
+    return [row_to_dict(row) for row in rows]
+
+
+def refresh_row(model_obj):
+    """Refreshes the sqla object, used after a commit on given object.
+    if no refresh is done on a commited object, the object will have
+    unexpected behaviour."""
+    session.refresh(model_obj)
+
+
+def get_random_row(model):
+    if force_check:
+        session.commit()
+
+    return session.query(model).order_by(func.random()).first()
+
+
+def get_all_rows_ordered_by(model, col_name='Id'):
+    try:
+        if force_check:
+            session.commit()
+
+        result = session.query(model).order_by(col_name).all()
+    except exc.SQLAlchemyError as e:
+        print(e)
+        session.rollback()
+        result = []
+
+    return result
+
+
+def get_highest_row(model, col_name='Id'):
+    if force_check:
+        session.commit()
+
+    rows = session.query(model).order_by(col_name).all()
+    if len(rows) > 0:
+        return rows[-1]
