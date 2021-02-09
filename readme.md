@@ -1,5 +1,68 @@
-## webapp
-### Planning
+<center><h1>Ham Geo-Gallery</h1></center>
+<!-- TABLE OF CONTENTS -->
+
+<!--ts-->
+## Table of Contents ##
+* [Background](#background)
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Roadmap](#roadmap)
+  * [Planning](#planning-todo)
+  * [Project](#project-todo)
+* [Made by](#made-by)
+<!--te-->
+
+## Background ##
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+
+### Built With
+* [sqlalchemy](https://www.sqlalchemy.org/)
+* [Alembic](https://alembic.sqlalchemy.org/en/latest/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Follow the [installation](#installation) to get started
+
+### Prerequisites
+
+* Python 3+
+* Docker
+* Docker-compose
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/AntonMaxen/webapp-project-pgbpyh20.git
+```
+2. Install requirements
+```sh
+pip install requirements.txt 
+```
+3. start docker containers
+```sh
+docker-compose up
+```
+4. run alembic upgrade
+```
+alembic upgrade head
+```
+5. run setup_databases file in app
+6. Done
+
+## Roadmap
+
+### Planning TODO
  - [ ] Deadline is February 8th
  - [x] Choose database manager
  - [x] Chose Migration tool
@@ -26,3 +89,7 @@
  - [x] UI Layer styling
  - [ ] Make unit test
  - [ ] Finsih Readme
+
+
+## Made by
+Anton Maxén, Henrik Liman, Mattias Barth
