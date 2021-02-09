@@ -59,8 +59,8 @@ docker-compose up
 ```
 alembic upgrade head
 ```
-5. run setup_databases file in app
-6. Done
+5. run populate_database
+6. start webapp
 
 ## Roadmap
 
