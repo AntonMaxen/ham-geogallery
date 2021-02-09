@@ -24,8 +24,3 @@ class Badge(Base):
         back_populates='badge',
         passive_deletes=True
     )
-
-
-if __name__ == "__main__":
-    badge = Badge()
-    print("badge")

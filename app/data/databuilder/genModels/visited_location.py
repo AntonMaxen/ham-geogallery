@@ -8,8 +8,3 @@ class GenVisitedLocation:
         self.LocationId = getattr(random_location, 'Id', None)
         random_user = tf.get_random_row(User)
         self.UserId = getattr(random_user, 'Id', None)
-
-
-if __name__ == '__main__':
-    gen_visited_location = GenVisitedLocation()
-    print(gen_visited_location.__dict__)

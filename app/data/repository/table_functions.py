@@ -1,8 +1,6 @@
 from app.data.db import session
 from sqlalchemy.sql.expression import func
-from sqlalchemy import exc, desc
-from app.data.models.model_imports import *
-import datetime
+from sqlalchemy import exc
 force_check = True
 
 
@@ -207,10 +205,3 @@ def get_highest_row(model, col_name='Id'):
     rows = session.query(model).order_by(col_name).all()
     if len(rows) > 0:
         return rows[-1]
-
-
-if __name__ == '__main__':
-    print(get_rows_by_column(ReviewLike, 'sfdfs', 'ReviewId'))
-
-
-

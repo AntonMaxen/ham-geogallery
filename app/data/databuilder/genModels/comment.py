@@ -12,8 +12,3 @@ class GenComment:
         self.ReviewId = getattr(random_review, 'Id', None)
         random_user = tf.get_random_row(User)
         self.UserId = getattr(random_user, 'Id', None)
-
-
-if __name__ == '__main__':
-    gen_comment = GenComment()
-    print(gen_comment.__dict__)

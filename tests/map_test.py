@@ -1,8 +1,5 @@
 import unittest
-import time
 from selenium import webdriver
-import app.bl.user_controller as uc
-import app.bl.location_controller as lc
 import tests.selenium_utils as su
 import tests.testdata as td
 import os

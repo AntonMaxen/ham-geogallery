@@ -22,8 +22,3 @@ class CommentLike(Base):
 
     comment = relationship('Comment', back_populates='comment_like')
     user = relationship('User', back_populates='comment_like')
-
-
-if __name__ == "__main__":
-    comment_like = CommentLike()
-    print('comment_like')

@@ -1,6 +1,5 @@
 import app.data.repository.table_functions as tf
 from app.data.models.model_imports import *
-from app.utils import print_dict, print_dicts
 
 
 def get_all_comment_likes():
@@ -56,7 +55,3 @@ def update_comment_like(comment_like_row, col_name, new_value):
 
 def search_comment_like(col_name, value):
     return tf.get_rows_like_column_value(CommentLike, col_name, value)
-
-
-if __name__ == '__main__':
-    pass

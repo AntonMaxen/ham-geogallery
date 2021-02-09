@@ -1,6 +1,5 @@
 import requests
 from app.ui.external.api.mapbox import api_key
-# 'https://api.mapbox.com/geocoding/v5/mapbox.places/-73.40970188275578,40.690894499124994.json?access_token=pk.eyJ1IjoibWltc2xhZGUiLCJhIjoiY2trZnUxajFjMGY4djJ2bnc3OXdoN3J4YSJ9.RTrxB7_bNl0JOHPXYJeF4g'
 
 
 def get_geoinformation_by_latlng(lat, lng, **kwargs):
@@ -15,7 +14,3 @@ def get_geoinformation_by_latlng(lat, lng, **kwargs):
         return {'status': 404}
 
     return result.json()
-
-
-if __name__ == '__main__':
-    get_geoinformation_by_latlng('-1', '4')

@@ -44,7 +44,3 @@ class Review(Base):
         back_populates='review',
         passive_deletes=True
     )
-
-
-if __name__ == "__main__":
-    review = Review()

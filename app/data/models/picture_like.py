@@ -22,7 +22,3 @@ class PictureLike(Base):
 
     picture = relationship('Picture', back_populates='picture_like')
     user = relationship('User', back_populates='picture_like')
-
-
-if __name__ == "__main__":
-    picture_like = PictureLike()

@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, url_for, request
+from flask import Blueprint, render_template, request
 from flask_login import current_user
 import app.bl.location_controller as lc
 import app.bl.utility_controller as uc
-import json
 from app.utils import make_list_of_dicts_jsonable, make_dict_jsonable
 bp = Blueprint('map', __name__, url_prefix='/map')
 
@@ -25,12 +24,3 @@ def index():
         jinja_dict['user'] = user_dict
 
     return render_template('map.html', **jinja_dict)
-
-
-def test():
-    location_dicts = uc.rows_to_dicts(lc.get_all_locations())
-    print(make_list_of_dicts_jsonable(location_dicts))
-
-
-if __name__ == '__main__':
-    test()

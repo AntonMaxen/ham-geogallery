@@ -1,7 +1,8 @@
 from flask import Blueprint, redirect
+
 bp = Blueprint('index', __name__)
 
 
 @bp.route('/')
 def index():
-    return redirect('/map')
+    return redirect('/map/?location_id=1')

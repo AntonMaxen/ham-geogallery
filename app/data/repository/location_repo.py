@@ -68,9 +68,3 @@ def update_location(location_row, col_name, new_value):
 
 def search_location(col_name, value):
     return tf.get_rows_like_column_value(Location, col_name, value)
-
-
-
-
-if __name__ == '__main__':
-    pass

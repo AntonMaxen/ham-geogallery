@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import unittest
-import app.bl.location_controller as lc
+from app.data.models.model_imports import *
 from app.data.models.location import Location
 from app.data.db import *
 

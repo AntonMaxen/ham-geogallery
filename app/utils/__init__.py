@@ -35,7 +35,3 @@ def make_dict_jsonable(my_dict):
         new_dict[k] = insert_value
 
     return new_dict
-
-
-if __name__ == '__main__':
-    print(get_project_root())

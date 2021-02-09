@@ -1,5 +1,4 @@
 import datetime
-
 from flask import (
     Blueprint,
     render_template,
@@ -10,6 +9,7 @@ from flask import (
 )
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
+# external imports
 import app.bl.user_controller as uc
 
 bp = Blueprint('auth', __name__)
@@ -34,7 +34,6 @@ def login_post():
     if not user or not check_password_hash(user.Hash, password):
         flash('Please check your login details and try again.', 'danger')
         return redirect(url_for('auth.login'))
-
 
     login_user(user, remember=remember)
     uc.add_user_token(user)
@@ -78,5 +77,5 @@ def signup_post():
 def logout():
     uc.remove_user_token(current_user)
     logout_user()
-    flash('Logging out', 'info')
+    flash('Logging out', 'neutral')
     return redirect('/map')

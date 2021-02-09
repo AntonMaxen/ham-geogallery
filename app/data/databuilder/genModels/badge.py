@@ -8,8 +8,3 @@ class GenBadge:
         self.Description = gen.get_random_text(
             max_chars=gen.get_random_number(5, 255)
         )
-
-
-if __name__ == '__main__':
-    gen_badge = GenBadge()
-    print(gen_badge.__dict__)

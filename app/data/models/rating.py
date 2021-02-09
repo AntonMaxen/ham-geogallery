@@ -22,8 +22,3 @@ class Rating(Base):
 
     location = relationship('Location', back_populates='rating')
     user = relationship('User', back_populates='rating')
-
-
-if __name__ == "__main__":
-    rating = Rating()
-    print('rating')

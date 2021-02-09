@@ -11,7 +11,3 @@ class GenCommentLike:
         self.CommentId = getattr(random_comment, 'Id', None)
         self.Liked = gen.get_random_number(0, 1)
 
-
-if __name__ == '__main__':
-    gen_comment_like = GenCommentLike()
-    print(gen_comment_like.__dict__)

@@ -37,8 +37,3 @@ class Picture(Base):
         back_populates='picture',
         passive_deletes=True
     )
-
-
-if __name__ == "__main__":
-    picture = Picture()
-    print('picture')

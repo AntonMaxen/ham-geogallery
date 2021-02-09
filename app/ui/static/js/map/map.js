@@ -8,9 +8,9 @@ script.src = `https://maps.googleapis.com/maps/api/js?key=${api_key}&callback=in
 script.defer = true;
 
 window.initMap = async () => {
-    const map = await create_map()
-    let home = map.getCenter()
-    place_current_location_marker(map, home)
+    const map = await create_map();
+    let home = map.getCenter();
+    place_current_location_marker(map, home);
     let location_objects = load_locations(map, locations);
     let focused_location = init_center_map(map, location_objects);
     let start_location = get_location_obj(location_objects, location_id);

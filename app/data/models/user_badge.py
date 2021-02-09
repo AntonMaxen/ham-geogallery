@@ -23,8 +23,3 @@ class UserBadge(Base):
 
     badge = relationship('Badge', back_populates='user_has_badge')
     user = relationship('User', back_populates='user_has_badge')
-
-
-if __name__ == '__main__':
-    user_has_badge = UserBadge()
-    print(user_has_badge)

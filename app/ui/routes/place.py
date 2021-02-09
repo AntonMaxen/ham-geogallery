@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template
 import app.bl.location_controller as lc
-from app.data.db import *
 
 bp = Blueprint('place', __name__, url_prefix='/place')
 
@@ -13,9 +12,9 @@ def place():
         'place_name.html', location=location)
 
 
-@bp.route('/<place_name>')
-def place_name(place_name):
-    location = lc.get_location(place_name)
+@bp.route('/<name>')
+def place_name(name):
+    location = lc.get_location(name)
 
     return render_template(
         'place_name.html', location=location)
