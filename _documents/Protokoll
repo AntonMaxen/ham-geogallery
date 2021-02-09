@@ -430,6 +430,116 @@ Möteshållare: Mattias Barth
  - Nästa möte 210203 klockan 9:00
  - Anton håller nästa möte
 
+Datum: 2021-02-03
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - 
+
+* Granska PR
+ - Antons Profile / ihoplänkning granskades och inloggningscheckar,  mergades med dev
+ - Henrik fixade place route så att du kan få all resultat som default, mergad och inne
+
+* Lägga till nya kort/issues
+ - TESTING
+ - Skapa kort för varje view, kort tages för den view man har gjort
+
+* Fördela kort/issues
+ - Anton map testing
+ - Henrik Place testing
+ - Mattias Auth testing
+ 
+* Övriga kommentarer
+ - Kolla över projekt todo
+ - Preliminärt projektnam HAM - GeoGallery
+ - Fixa titeln och visningssidan någon gång till projektnamnet.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Torsdag 2021-02-04 09:00 - Henrik
+
+
+Datum: 2021-02-04
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Henrik Liman
+
+* Gå igenom aktuella plockade kort
+ - alla jobbar på med att testa sina delar
+
+* Granska PR
+- Anton fixade login checkar
+
+* Lägga till nya kort/issues
+- -
+
+* Fördela kort/issues
+- inga ny kort att fördela
+ 
+* Övriga kommentarer
+- 
+
+* Bestämma nästa möte och nästa ordförande
+- Fredag 2021-02-05 09:00 - Mattias
+
+
+Datum: 21-02-05
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Mattias Barth
+
+* Gå igenom aktuella plockade kort
+ - Henrik testar place och det framåt
+ - Anton testar map och det går framåt och har en god plan för vidare tester
+ - Mattias testar auth och det framåt
+
+* Granska PR
+ - Inga att kolla
+ 
+* Lägga till nya kort/issues
+ - Inga nya kort
+
+* Fördela kort/issues
+ - Inget att fördela
+ 
+* Övriga kommentarer
+ - Fick svar från Joakim angående när och hur redovisning/demo är.
+ - Projektet skall lämnas in under vecka 6, om det på fredag eller söndag vet vi inte.
+ - Mål att vara klara med allt tills på onsdag, ev justeringar efter demo och redovisning.
+ - Dokumentation görs på torsdag. 
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Näste möte efter föreläsningen
+ - Nästa ordförande är Anton
+ 
+Datum: 2021-02-08
+Närvarande:
+Mattias Barth, Henrik Liman, Anton Maxén
+Möteshållare: Anton Maxén
+
+* Gå igenom aktuella plockade kort
+ - Mattias fortfarande på login tester
+ - Henrik fortfarande igång med plats tester
+ - Anton forfarande igång med map tester
+
+* Granska PR
+ - inga pr
+
+* Lägga till nya kort/issues
+ - inga nya kort / issues
+
+* Fördela kort/issues
+ - inga nya kort/issues att fördela
+ 
+* Övriga kommentarer
+ - Vi har fått en absolut deadline, onsdag.
+ - Vi pushar in branches på mötet imorgon, oavsett hur färdiga dom är,
+ - och gör final touches + dokumentation.
+ 
+* Bestämma nästa möte och nästa ordförande
+ - Nästa möte 09:00 2021-02-09 sista mötet
+
 
 ***Mall:***
  

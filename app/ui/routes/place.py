@@ -7,7 +7,10 @@ bp = Blueprint('place', __name__, url_prefix='/place')
 
 @bp.route('/')
 def place():
-    return render_template('place.html')
+    location = lc.get_location("")
+
+    return render_template(
+        'place_name.html', location=location)
 
 
 @bp.route('/<place_name>')
@@ -15,4 +18,4 @@ def place_name(place_name):
     location = lc.get_location(place_name)
 
     return render_template(
-        'place_name.html', place_name=place_name, location=location)
+        'place_name.html', location=location)

@@ -46,6 +46,9 @@ class User(UserMixin, Base):
         sa.Integer,
         nullable=False
     )
+    Token = sa.Column(
+        sa.String(100)
+    )
 
     review = relationship(
         'Review',

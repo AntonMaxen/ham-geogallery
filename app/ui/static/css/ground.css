@@ -16,6 +16,10 @@ html, body {
     font-family: monospace;
 }
 
+#top-bar > div {
+    text-align: center;
+}
+
 #top-bar a {
     text-decoration: none;
     color: darkcyan;
