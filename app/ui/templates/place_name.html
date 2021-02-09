@@ -16,9 +16,9 @@
                             <div class="top_margin">
                                 <div class="align_center" font-size="20px"><a>{{r.Title}}</a></div>
 
-                                <div class="box">{{r.ReviewText}}</div>
+                                <div class="box"><revtext>{{r.ReviewText}}</revtext></div>
                                 <div id="myProgress"><div id="myBar"style="width:calc({{r.Score}}% * 10)"></div></div>
-                                <div class="username"><a>{{r.user.Username}}</a></div>
+                                <div class="username"><user>{{r.user.Username}}</user></div>
                             </div>
                         {% endfor %}
                     </div>
@@ -31,7 +31,7 @@
                     <div class="align_center">
                         <div class="pic_box" style="margin-left: 5%; margin-right: 5%">
                             {% for p in loc.picture %}
-                                <a><img src="http://127.0.0.1:5000/api/static/image/{{p.FileName}}" width="200" height="200"></a>
+                                <a><imag><img src="http://127.0.0.1:5000/api/static/image/{{p.FileName}}" width="200" height="200"></imag></a>
                             {% endfor %}
                         </div>
                     </div>
