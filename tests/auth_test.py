@@ -3,10 +3,14 @@ import unittest
 import app.bl.user_controller as uc
 from selenium import webdriver
 
-name = 'ab'
+name = 'abc'
 
 
 class AuthTestCase(unittest.TestCase):
+
+    @classmethod
+    def tearDownClass(cls):
+        uc.remove_user_by_email(f'{name}@mail.com')
 
     def setUp(self):
         self.driver = webdriver.Chrome('chromedriver.exe')
@@ -42,7 +46,6 @@ class AuthTestCase(unittest.TestCase):
         self.assertEqual(current_url, 'http://127.0.0.1:5000/map/')
 
     def tearDown(self):
-        uc.remove_user_by_email(f'{name}@mail.com')
         self.driver.close()
 
 
