@@ -32,6 +32,14 @@ def remove_location_by_id(row_id):
         return tf.remove_row_by_id(Location, row_id)
 
 
+def remove_locations_by_place_name(place_name):
+    return tf.remove_rows_by_column_name(
+        Location,
+        place_name,
+        col_name='Place'
+    )
+
+
 def remove_locations_by_user_id(row_id):
     if tf.validate_number(row_id):
         return tf.remove_rows_by_column_name(

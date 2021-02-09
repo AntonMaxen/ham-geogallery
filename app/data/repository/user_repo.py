@@ -20,6 +20,14 @@ def remove_user_by_id(row_id):
         return tf.remove_row_by_id(User, row_id)
 
 
+def remove_user_by_username(username):
+    return tf.remove_row_by_id(User, username, col_name='Username')
+
+
+def get_user_by_username(username):
+    return tf.get_row_by_column(User, username, col_name='Username')
+
+
 def add_user(row_dict):
     return tf.add_row(User, row_dict)
 

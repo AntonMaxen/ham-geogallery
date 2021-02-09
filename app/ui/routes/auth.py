@@ -35,7 +35,7 @@ def login_post():
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
     if not user or not check_password_hash(user.Hash, password):
-        flash('Please check your login details and try again.')
+        flash('Please check your login details and try again.', 'error')
         return redirect(url_for('auth.login'))  # if the user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
@@ -60,7 +60,7 @@ def signup_post():
     user = uc.get_user_by_email(email)
 
     if user:  # if a user is found, we want to redirect back to signup page so user can try again
-        flash('Email address already exists.')
+        flash('Email address already exists.', 'error')
         return redirect(url_for('auth.signup'))
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
