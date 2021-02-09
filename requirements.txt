@@ -1,12 +1,12 @@
 mysql-connector-python
-SQLAlchemy~=1.3.23
+SQLAlchemy
 sqlacodegen
-alembic~=1.5.4
-Flask~=1.1.2
-Faker~=6.0.0
-requests~=2.25.1
+alembic
+Flask
+Faker
+requests
 flask-cors
 flask_login
-werkzeug~=1.0.1
+werkzeug
 
-selenium~=3.141.0
+selenium
