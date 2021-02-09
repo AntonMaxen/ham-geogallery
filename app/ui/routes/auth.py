@@ -35,6 +35,7 @@ def login_post():
         flash('Please check your login details and try again.', 'danger')
         return redirect(url_for('auth.login'))
 
+
     login_user(user, remember=remember)
     uc.add_user_token(user)
 

@@ -17,12 +17,24 @@ def remove_user_token(user_row):
     return ur.remove_user_token(user_row)
 
 
+def remove_user_by_id(user_id):
+    return ur.remove_user_by_id(user_id)
+
+
+def remove_user_by_username(username):
+    return ur.remove_user_by_username(username)
+
+
 def get_user_by_token(token):
     return ur.get_user_by_token(token)
 
 
 def get_user_by_id(user_id):
     return ur.get_user_by_id(user_id)
+
+
+def get_user_by_username(username):
+    return ur.get_user_by_username(username)
 
 
 def add_user(row_dict):

@@ -3,13 +3,18 @@ from sqlalchemy.sql.expression import func
 from sqlalchemy import exc, desc
 from app.data.models.model_imports import *
 import datetime
+force_check = True
 
 
 def get_all_rows(model):
     # Return all rows in given table
     try:
+        if force_check:
+            session.commit()
+
         result = session.query(model).all()
-    except exc.SQLAlchemyError:
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         result = []
 
@@ -19,10 +24,14 @@ def get_all_rows(model):
 def get_row_by_column(model, row_id, col_name='Id'):
     # Returns First row that matches model.col_name == row_id
     try:
+        if force_check:
+            session.commit()
+
         result = session.query(model) \
             .filter(getattr(model, col_name) == row_id) \
             .one()
-    except exc.SQLAlchemyError:
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         result = None
 
@@ -31,9 +40,13 @@ def get_row_by_column(model, row_id, col_name='Id'):
 
 def get_rows_by_column(model, row_id, col_name='Id'):
     try:
+        if force_check:
+            session.commit()
+
         result = session.query(model) \
             .filter(getattr(model, col_name) == row_id).all()
-    except exc.SQLAlchemyError:
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         result = []
 
@@ -43,10 +56,14 @@ def get_rows_by_column(model, row_id, col_name='Id'):
 def get_rows_by_column_order_by_desc(model, row_id,
                                      col_name='Id', order_id='Id'):
     try:
+        if force_check:
+            session.commit()
+
         result = session.query(model) \
             .filter(getattr(model, col_name) == row_id) \
             .order_by(getattr(model, order_id).desc()).all()
-    except exc.SQLAlchemyError:
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         result = []
 
@@ -57,10 +74,14 @@ def get_rows_like_column_value(model, col_name, value):
     """Return all rows that contains model.col_name LIKE value
     Good way to search database. """
     try:
+        if force_check:
+            session.commit()
+
         result = session.query(model) \
             .filter(getattr(model, col_name).ilike(f'%{value}%')) \
             .all()
-    except exc.SQLAlchemyError:
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         result = []
 
@@ -84,8 +105,8 @@ def add_row(model, new_row):
         row = model(**new_row)
         session.add(row)
         session.commit()
-    except exc.SQLAlchemyError:
-        print('rollback add_row')
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         return None
 
@@ -97,8 +118,8 @@ def update_row_column(model_obj, col_name, new_value):
     try:
         setattr(model_obj, col_name, new_value)
         session.commit()
-    except exc.SQLAlchemyError:
-        print('rollback update_row_column')
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         return None
 
@@ -114,8 +135,8 @@ def remove_row_by_id(model, row_id, col_name='Id'):
 
         session.delete(obj)
         session.commit()
-    except exc.SQLAlchemyError:
-        print('rollback remove_row_by_id')
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         return None
 
@@ -127,9 +148,10 @@ def remove_rows_by_column_name(model, row_id, col_name='Id'):
         obj = session.query(model) \
             .filter(getattr(model, col_name) == row_id) \
             .delete()
+
         session.commit()
-    except exc.SQLAlchemyError:
-        print('rollback remove rows by col name')
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         return None
 
@@ -158,13 +180,20 @@ def refresh_row(model_obj):
 
 
 def get_random_row(model):
+    if force_check:
+        session.commit()
+
     return session.query(model).order_by(func.random()).first()
 
 
 def get_all_rows_ordered_by(model, col_name='Id'):
     try:
+        if force_check:
+            session.commit()
+
         result = session.query(model).order_by(col_name).all()
-    except exc.SQLAlchemyError:
+    except exc.SQLAlchemyError as e:
+        print(e)
         session.rollback()
         result = []
 
@@ -172,6 +201,9 @@ def get_all_rows_ordered_by(model, col_name='Id'):
 
 
 def get_highest_row(model, col_name='Id'):
+    if force_check:
+        session.commit()
+
     rows = session.query(model).order_by(col_name).all()
     if len(rows) > 0:
         return rows[-1]
