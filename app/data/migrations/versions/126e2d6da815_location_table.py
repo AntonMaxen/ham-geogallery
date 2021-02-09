@@ -31,11 +31,11 @@ def upgrade():
             nullable=False),
         sa.Column(
             'Longitude',
-            sa.DECIMAL(6, 3),
+            sa.DECIMAL(18, 15),
             nullable=False),
         sa.Column(
             'Latitude',
-            sa.DECIMAL(5, 3),
+            sa.DECIMAL(17, 15),
             nullable=False),
         sa.Column(
             'Name',

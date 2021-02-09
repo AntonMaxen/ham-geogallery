@@ -163,7 +163,7 @@ def add_image():
 
     if image and allowed_file(image.filename):
         recent_row = pc.get_most_recent_row()
-        highest_id = recent_row.Id
+        highest_id = recent_row.Id if recent_row is not None else 1
         flash('success', 'success')
 
         photo_dir = os.path.join(get_project_root(), 'Photos')

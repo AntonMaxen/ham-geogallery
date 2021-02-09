@@ -18,7 +18,6 @@ def index():
         'location_id': location_id,
     }
     if current_user.is_authenticated:
-        print(current_user)
         user_dict = uc.row_to_dict(current_user)
         user_dict = make_dict_jsonable(user_dict)
         jinja_dict['user'] = user_dict

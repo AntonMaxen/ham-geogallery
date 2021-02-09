@@ -213,8 +213,9 @@ let load_review_container = async (loc, amount) => {
 
 
 let load_sidebar_new_location_data = async(lat_lng, map) => {
-    let lat = Number(lat_lng.lat().toFixed(2));
-    let lng = Number(lat_lng.lng().toFixed(2));
+    console.log(lat_lng.lat(), lat_lng.lng());
+    let lat = lat_lng.lat();
+    let lng = lat_lng.lng();
     console.log(lat, lng);
     // let location_information = await api.get_location_info_by_latlng(lat, lng)
     sidebar_cleanup();
@@ -226,9 +227,9 @@ let load_sidebar_new_location_data = async(lat_lng, map) => {
     let header_extra_box = document.createElement('div');
     header_extra_box.setAttribute('class', 'header-extra-info');
     let header_lat_text = document.createElement('h6');
-    header_lat_text.innerText = `Lat: ${lat}`;
+    header_lat_text.innerText = `Lat: ${Number(lat.toFixed(4))}`;
     let header_lng_text = document.createElement('h6');
-    header_lng_text.innerText = `Lng: ${lng}`;
+    header_lng_text.innerText = `Lng: ${Number(lng.toFixed(4))}`;
     sidebar_header.appendChild(header_text);
     header_extra_box.appendChild(header_lat_text);
     header_extra_box.appendChild(header_lng_text);

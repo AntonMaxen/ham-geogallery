@@ -15,10 +15,10 @@ class Location(Base):
         sa.String(45),
         nullable=False)
     Longitude = sa.Column(
-        sa.DECIMAL(6, 3),
+        sa.DECIMAL(18, 15),
         nullable=False)
     Latitude = sa.Column(
-        sa.DECIMAL(5, 3),
+        sa.DECIMAL(17, 15),
         nullable=False)
     Name = sa.Column(
         sa.String(45),
