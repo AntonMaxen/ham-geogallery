@@ -1,5 +1,5 @@
 <center><h1>Ham Geo-Gallery</h1></center>
-<img src= "https://github.com/AntonMaxen/ham-geogallery/blob/AntonMaxen-patch-2/_documents/ham.png">
+<img src= "https://github.com/AntonMaxen/ham-geogallery/blob/dev/_documents/ham.png">
 
 ## Background ##
 We started this project as a schoolassignment to create a webapplication with a databaseconnection. In the planning process, we got inspired by a orienteering website where you check in to checkpoints via googlemaps. We took that idea with a spin-off where a user can upload their own places on the map and upload photos on that location. The geogallery was born.
@@ -31,7 +31,7 @@ Follow the [installation](#installation) to get started
 
 1. Clone the repo
 ```sh
-git clone https://github.com/AntonMaxen/webapp-project-pgbpyh20.git
+git clone https://github.com/AntonMaxen/ham-geogallery.git
 ```
 2. Install requirements
 ```sh
