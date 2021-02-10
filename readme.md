@@ -1,30 +1,16 @@
 <center><h1>Ham Geo-Gallery</h1></center>
-<!-- TABLE OF CONTENTS -->
-
-<!--ts-->
-## Table of Contents ##
-* [Background](#background)
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Roadmap](#roadmap)
-  * [Planning](#planning-todo)
-  * [Project](#project-todo)
-* [Made by](#made-by)
-<!--te-->
+<img src= "https://github.com/AntonMaxen/ham-geogallery/blob/dev/_documents/ham.png">
 
 ## Background ##
 We started this project as a schoolassignment to create a webapplication with a databaseconnection. In the planning process, we got inspired by a orienteering website where you check in to checkpoints via googlemaps. We took that idea with a spin-off where a user can upload their own places on the map and upload photos on that location. The geogallery was born.
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Project ##
 ham-geogallery is a flask-webapplication with a googlemaps integration, you can add places, reviews, images as a logged in user. Its a good way to explore the world via the integrated map-gallery.
 
 
-### Built With
+### Built With ##
 * [sqlalchemy](https://www.sqlalchemy.org/)
 * [Alembic](https://alembic.sqlalchemy.org/en/latest/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
@@ -45,7 +31,7 @@ Follow the [installation](#installation) to get started
 
 1. Clone the repo
 ```sh
-git clone https://github.com/AntonMaxen/webapp-project-pgbpyh20.git
+git clone https://github.com/AntonMaxen/ham-geogallery.git
 ```
 2. Install requirements
 ```sh
