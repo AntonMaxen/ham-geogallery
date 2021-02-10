@@ -1,6 +1,7 @@
 <center><h1>Ham Geo-Gallery</h1></center>
-<!-- TABLE OF CONTENTS -->
 
+<img src= "https://github.com/AntonMaxen/ham-geogallery/blob/AntonMaxen-patch-2/_documents/ham.png"/>
+<!-- TABLE OF CONTENTS -->
 <!--ts-->
 ## Table of Contents ##
 * [Background](#background)
